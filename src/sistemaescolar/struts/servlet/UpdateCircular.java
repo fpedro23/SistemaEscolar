@@ -1,3 +1,5 @@
+package sistemaescolar.struts.servlet;
+
 import com.google.gson.JsonObject;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;

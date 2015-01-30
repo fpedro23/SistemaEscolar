@@ -13,11 +13,11 @@
     </filter-mapping>
     <servlet>
         <servlet-name>DeleteCircular</servlet-name>
-        <servlet-class>DeleteCircular</servlet-class>
+        <servlet-class>sistemaescolar.struts.servlet.DeleteCircular</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateCircular</servlet-name>
-        <servlet-class>UpdateCircular</servlet-class>
+        <servlet-class>sistemaescolar.struts.servlet.UpdateCircular</servlet-class>
     </servlet>
 
     <servlet-mapping>
