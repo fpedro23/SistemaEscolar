@@ -11,4 +11,21 @@
         <filter-name>struts2</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    <servlet>
+        <servlet-name>DeleteCircular</servlet-name>
+        <servlet-class>DeleteCircular</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateCircular</servlet-name>
+        <servlet-class>UpdateCircular</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteCircular</servlet-name>
+        <url-pattern>/DeleteCircular</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCircular</servlet-name>
+        <url-pattern>/UpdateCircular</url-pattern>
+    </servlet-mapping>
 </web-app>

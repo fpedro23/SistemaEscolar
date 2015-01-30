@@ -37,6 +37,8 @@
     <orderEntry type="library" name="Hibernate 4.2.2-4.2.2" level="project" />
     <orderEntry type="library" name="Struts 2-2.3.20" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 7.0.42" level="application_server_libraries" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
+    <orderEntry type="library" name="gson-2.3.1" level="project" />
   </component>
 </module>
 
