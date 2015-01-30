@@ -14,6 +14,9 @@ import java.io.PrintWriter;
  */
 public class DeleteCircular extends javax.servlet.http.HttpServlet {
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+    }
+
+    protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         PrintWriter responseWriter = response.getWriter();
         responseWriter.print("Testing");
 
@@ -41,9 +44,5 @@ public class DeleteCircular extends javax.servlet.http.HttpServlet {
         }
 
         responseWriter.print(jsonResponse);
-    }
-
-    protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-
     }
 }
