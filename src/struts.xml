@@ -17,5 +17,13 @@
         <action name="getcircularall" class="sistemaescolar.action.CircularAction" method="getAll">
             <result name="success">/getcircularall.jsp</result>
         </action>
+
+        <action name="updatecircularbyid" class="sistemaescolar.action.CircularAction" method="update">
+            <result name="success">/resultado.jsp</result>
+        </action>
+
+        <action name="deletecircular" class="sistemaescolar.action.CircularAction" method="delete">
+            <result name="success">/resultado.jsp</result>
+        </action>
     </package>
 </struts>
