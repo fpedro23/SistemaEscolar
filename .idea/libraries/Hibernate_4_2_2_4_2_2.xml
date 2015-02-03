@@ -11,6 +11,7 @@
       <root url="jar://$PROJECT_DIR$/lib/jboss-transaction-api_1.1_spec-1.0.1.Final.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/hibernate-core-4.2.2.Final.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/orm.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/gson-2.2.4.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

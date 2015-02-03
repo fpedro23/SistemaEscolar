@@ -6,8 +6,35 @@
 
 <struts>
     <package name="sistemaescolar" namespace="/" extends="struts-default">
+
+        <!--Acciones de Circular -->
+
+
         <action name="crearcircular" class="sistemaescolar.action.CircularAction" method="create">
             <result name="success">/resultado.jsp</result>
         </action>
+
+        <!--Fin de Acciones de Circular -->
+
+
+        <!--Acciones de Evento -->
+        <action name="createEvent" class="sistemaescolar.action.EventoAction" method="createEvent">
+            <result name="success">/resultado.jsp</result>
+        </action>
+
+        <action name="readEvent" class="sistemaescolar.action.EventoAction" method="readEvents">
+            <result name="success">/ListaEventos.jsp</result>
+        </action>
+
+        <action name="updateEvent" class="sistemaescolar.action.EventoAction" method="updateEvent">
+            <result name="success">/resultado.jsp</result>
+        </action>
+
+        <action name="deleteEvent" class="sistemaescolar.action.EventoAction" method="deleteEvent">
+            <result name="success">/resultado.jsp</result>
+        </action>
+        <!--Fin de Acciones de Evento -->
+
+
     </package>
 </struts>
