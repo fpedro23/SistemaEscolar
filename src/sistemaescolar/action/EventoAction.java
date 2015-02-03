@@ -16,9 +16,8 @@ public class EventoAction extends ActionSupport {
     private Evento evento;
 
     public String createEvent() throws PersistentException {
-        EventoAD eventoManager = new EventoAD();
         try {
-            boolean transaccionExitosa = eventoManager.createEvent(fecha, remitente, contenido, titulo);
+            boolean transaccionExitosa = EventoAD.createEvent(fecha, remitente, contenido, titulo);
             resultado = "Evento creado existosamente";
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -29,15 +28,13 @@ public class EventoAction extends ActionSupport {
     }
 
     public String readEvents() throws PersistentException {
-        EventoAD eventoManager = new EventoAD();
-        eventos = eventoManager.listEvents();
+        eventos = EventoAD.listEvents();
         return "success";
     }
 
     public String updateEvent() throws PersistentException {
-        EventoAD eventoManager = new EventoAD();
         try {
-            boolean transaccionExitosa = eventoManager.updateEvent(id, fecha, remitente, contenido, titulo);
+            boolean transaccionExitosa = EventoAD.updateEvent(id, fecha, remitente, contenido, titulo);
             resultado = "Evento actualizado existosamente";
 
         } catch (Exception e) {
@@ -51,7 +48,7 @@ public class EventoAction extends ActionSupport {
     public String deleteEvent() throws PersistentException {
         EventoAD eventoManager = new EventoAD();
         try {
-            boolean transaccionExitosa = eventoManager.deleteEvento(id);
+            boolean transaccionExitosa = EventoAD.deleteEvento(id);
             resultado = "Evento eliminado existosamente";
 
         } catch (Exception e) {

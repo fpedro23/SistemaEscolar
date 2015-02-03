@@ -8,7 +8,7 @@ import org.orm.PersistentTransaction;
  */
 public class EventoAD {
 
-    public boolean createEvent(String fecha, String remitente, String contenido, String titulo) throws PersistentException {
+    public static boolean createEvent(String fecha, String remitente, String contenido, String titulo) throws PersistentException {
         PersistentTransaction t = sistemaescolar.EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
@@ -29,13 +29,13 @@ public class EventoAD {
         }
     }
 
-    public Evento[] listEvents() throws PersistentException {
+    public static Evento[] listEvents() throws PersistentException {
         System.out.println("Listing Evento...");
         sistemaescolar.Evento[] sistemaEscolarEventos = sistemaescolar.EventoDAO.listEventoByQuery(null, null);
         return sistemaEscolarEventos;
     }
 
-    public boolean updateEvent(int idEvento, String fecha, String remitente, String contenido, String titulo) throws PersistentException {
+    public static boolean updateEvent(int idEvento, String fecha, String remitente, String contenido, String titulo) throws PersistentException {
         PersistentTransaction t = sistemaescolar.EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
@@ -55,7 +55,7 @@ public class EventoAD {
 
     }
 
-    public boolean deleteEvento(int idEvento) throws PersistentException {
+    public static boolean deleteEvento(int idEvento) throws PersistentException {
         PersistentTransaction t = sistemaescolar.EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {

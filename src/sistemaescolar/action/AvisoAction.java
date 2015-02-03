@@ -16,9 +16,8 @@ public class AvisoAction extends ActionSupport {
     private Aviso aviso;
 
     public String createAviso() throws PersistentException {
-        AvisoAD avisoManager = new AvisoAD();
         try {
-            boolean transaccionExitosa = avisoManager.createAviso(fecha, remitente, contenido, titulo);
+            boolean transaccionExitosa = AvisoAD.createAviso(fecha, remitente, contenido, titulo);
             resultado = "Aviso creado existosamente";
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -29,15 +28,13 @@ public class AvisoAction extends ActionSupport {
     }
 
     public String readAvisos() throws PersistentException {
-        AvisoAD avisoManager = new AvisoAD();
-        avisos = avisoManager.listAvisos();
+        avisos = AvisoAD.listAvisos();
         return "success";
     }
 
     public String updateAviso() throws PersistentException {
-        AvisoAD avisoManager = new AvisoAD();
         try {
-            boolean transaccionExitosa = avisoManager.updateAviso(id, fecha, remitente, contenido, titulo);
+            boolean transaccionExitosa = AvisoAD.updateAviso(id, fecha, remitente, contenido, titulo);
             resultado = "Aviso actualizado existosamente";
 
         } catch (Exception e) {
@@ -49,9 +46,8 @@ public class AvisoAction extends ActionSupport {
     }
 
     public String deleteAviso() throws PersistentException {
-        AvisoAD avisoManager = new AvisoAD();
         try {
-            boolean transaccionExitosa = avisoManager.deleteAviso(id);
+            boolean transaccionExitosa = AvisoAD.deleteAviso(id);
             resultado = "Aviso eliminado existosamente";
 
         } catch (Exception e) {

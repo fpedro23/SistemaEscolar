@@ -8,7 +8,7 @@ import org.orm.PersistentTransaction;
  */
 public class AvisoAD {
 
-    public boolean createAviso(String fecha, String remitente, String contenido, String titulo) throws PersistentException {
+    public static boolean createAviso(String fecha, String remitente, String contenido, String titulo) throws PersistentException {
         PersistentTransaction t = sistemaescolar.EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
@@ -29,13 +29,13 @@ public class AvisoAD {
         }
     }
 
-    public Aviso[] listAvisos() throws PersistentException {
+    public static Aviso[] listAvisos() throws PersistentException {
         System.out.println("Listing Avisos...");
         Aviso[] sistemaEscolarAviso = AvisoDAO.listAvisoByQuery(null, null);
         return sistemaEscolarAviso;
     }
 
-    public boolean updateAviso(int idAviso, String fecha, String remitente, String contenido, String titulo) throws PersistentException {
+    public static boolean updateAviso(int idAviso, String fecha, String remitente, String contenido, String titulo) throws PersistentException {
         PersistentTransaction t = sistemaescolar.EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
@@ -55,7 +55,7 @@ public class AvisoAD {
 
     }
 
-    public boolean deleteAviso(int idAviso) throws PersistentException {
+    public static boolean deleteAviso(int idAviso) throws PersistentException {
         PersistentTransaction t = sistemaescolar.EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
