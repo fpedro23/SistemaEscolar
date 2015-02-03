@@ -9,8 +9,23 @@
 
         <!--Acciones de Circular -->
 
-
         <action name="crearcircular" class="sistemaescolar.action.CircularAction" method="create">
+            <result name="success">/resultado.jsp</result>
+        </action>
+        
+        <action name="getcircularbyid" class="sistemaescolar.action.CircularAction" method="getById">
+            <result name="success">/getcircularbyid.jsp</result>
+        </action>
+
+        <action name="getcircularall" class="sistemaescolar.action.CircularAction" method="getAll">
+            <result name="success">/getcircularall.jsp</result>
+        </action>
+
+        <action name="updatecircularbyid" class="sistemaescolar.action.CircularAction" method="update">
+            <result name="success">/resultado.jsp</result>
+        </action>
+
+        <action name="deletecircular" class="sistemaescolar.action.CircularAction" method="delete">
             <result name="success">/resultado.jsp</result>
         </action>
 
@@ -53,22 +68,5 @@
         </action>
         <!--Fin de Acciones de Aviso -->
 
-
-
-        <action name="getcircularbyid" class="sistemaescolar.action.CircularAction" method="getById">
-            <result name="success">/getcircularbyid.jsp</result>
-        </action>
-
-        <action name="getcircularall" class="sistemaescolar.action.CircularAction" method="getAll">
-            <result name="success">/getcircularall.jsp</result>
-        </action>
-
-        <action name="updatecircularbyid" class="sistemaescolar.action.CircularAction" method="update">
-            <result name="success">/resultado.jsp</result>
-        </action>
-
-        <action name="deletecircular" class="sistemaescolar.action.CircularAction" method="delete">
-            <result name="success">/resultado.jsp</result>
-        </action>
     </package>
 </struts>
