@@ -13,14 +13,8 @@ public class CircularAction extends ActionSupport{
     private String fecha, remitente, contenido, titulo;
     private Circular circular;
     private Circular[] circulars;
+    public String resultado;
 
-    public Circular[] getCirculars() {
-        return circulars;
-    }
-
-    public void setCirculars(Circular[] circulars) {
-        this.circulars = circulars;
-    }
 
 
     @Override
@@ -34,10 +28,14 @@ public class CircularAction extends ActionSupport{
                 getFecha(),
                 getRemitente(),
                 getContenido()
-        ))
+        )) {
+            resultado = "success";
             return "success";
-        else
+        }
+        else {
+            resultado = "failure";
             return "failure";
+        }
     }
 
     public String update() {
@@ -47,17 +45,25 @@ public class CircularAction extends ActionSupport{
                 getFecha(),
                 getRemitente(),
                 getContenido()
-        ))
+        )) {
+            resultado = "success";
             return "success";
-        else
+        }
+        else {
+            resultado = "failure";
             return "failure";
+        }
     }
 
     public String delete() {
-        if(CircularDBManager.delete(getId()))
+        if(CircularDBManager.delete(getId())) {
+            resultado = "success";
             return "success";
-        else
+        }
+        else {
+            resultado = "failure";
             return "failure";
+        }
     }
 
     public String getAll() {
@@ -126,5 +132,13 @@ public class CircularAction extends ActionSupport{
 
     public void setCircular(Circular circular) {
         this.circular = circular;
+    }
+
+    public Circular[] getCirculars() {
+        return circulars;
+    }
+
+    public void setCirculars(Circular[] circulars) {
+        this.circulars = circulars;
     }
 }
