@@ -14,6 +14,7 @@ public class EventoAction extends ActionSupport {
     private int id;
     private String fecha, remitente, contenido, titulo;
     private Evento evento;
+    private boolean mobile;
 
     public String createEvent() throws PersistentException {
         try {
@@ -29,7 +30,8 @@ public class EventoAction extends ActionSupport {
 
     public String readEvents() throws PersistentException {
         eventos = EventoAD.listEvents();
-        return "success";
+        if(isMobile()) return "json";
+        else return "success";
     }
 
 
@@ -65,6 +67,14 @@ public class EventoAction extends ActionSupport {
         return "success";
     }
 
+
+    public boolean isMobile() {
+        return mobile;
+    }
+
+    public void setMobile(boolean mobile) {
+        this.mobile = mobile;
+    }
 
     public int getId() {
         return id;

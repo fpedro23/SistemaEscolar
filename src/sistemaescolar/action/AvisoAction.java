@@ -14,6 +14,7 @@ public class AvisoAction extends ActionSupport {
     private int id;
     private String fecha, remitente, contenido, titulo;
     private Aviso aviso;
+    private boolean mobile;
 
     public String createAviso() throws PersistentException {
         try {
@@ -29,6 +30,8 @@ public class AvisoAction extends ActionSupport {
 
     public String readAvisos() throws PersistentException {
         avisos = AvisoAD.listAvisos();
+        if(isMobile()) return "json";
+        else
         return "success";
     }
 
@@ -63,6 +66,14 @@ public class AvisoAction extends ActionSupport {
         return "success";
     }
 
+
+    public boolean isMobile() {
+        return mobile;
+    }
+
+    public void setMobile(boolean mobile) {
+        this.mobile = mobile;
+    }
 
     public int getId() {
         return id;

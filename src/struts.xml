@@ -9,7 +9,7 @@
 
         <!--Acciones de Circular -->
 
-        <action name="crearcircular" class="sistemaescolar.action.CircularAction" method="create">
+        <action name="createCircular" class="sistemaescolar.action.CircularAction" method="create">
             <result name="success">/resultado.jsp</result>
         </action>
         
@@ -17,15 +17,16 @@
             <result name="success">/getcircularbyid.jsp</result>
         </action>
 
-        <action name="getcircularall" class="sistemaescolar.action.CircularAction" method="getAll">
-            <result name="success">/getcircularall.jsp</result>
+        <action name="readCircular" class="sistemaescolar.action.CircularAction" method="getAll">
+            <result name="success">/listCircular.jsp</result>
+            <result name="json">/getcircularall.jsp</result>
         </action>
 
-        <action name="updatecircularbyid" class="sistemaescolar.action.CircularAction" method="update">
+        <action name="updateCircular" class="sistemaescolar.action.CircularAction" method="update">
             <result name="success">/resultado.jsp</result>
         </action>
 
-        <action name="deletecircular" class="sistemaescolar.action.CircularAction" method="delete">
+        <action name="deleteCircular" class="sistemaescolar.action.CircularAction" method="delete">
             <result name="success">/resultado.jsp</result>
         </action>
 
@@ -38,7 +39,13 @@
         </action>
 
         <action name="readEvent" class="sistemaescolar.action.EventoAction" method="readEvents">
-            <result name="success">/ListaEventos.jsp</result>
+            <result name="json">/ListaEventos.jsp</result>
+            <result name="success">/listEvento.jsp</result>
+
+        </action>
+
+        <action name="readEventById" class="sistemaescolar.action.EventoAction" method="readEventById">
+            <result name="success">/editarRegistro.jsp</result>
         </action>
 
         <action name="updateEvent" class="sistemaescolar.action.EventoAction" method="updateEvent">
@@ -56,7 +63,13 @@
         </action>
 
         <action name="readAvisos" class="sistemaescolar.action.AvisoAction" method="readAvisos">
-            <result name="success">/ListaAvisos.jsp</result>
+            <result name="json">/ListaAvisos.jsp</result>
+            <result name="success">/listAviso.jsp</result>
+
+        </action>
+
+        <action name="readAvisoById" class="sistemaescolar.action.AvisoAction" method="readAvisoById">
+            <result name="success">/editarRegistro.jsp</result>
         </action>
 
         <action name="updateAviso" class="sistemaescolar.action.AvisoAction" method="updateAviso">
