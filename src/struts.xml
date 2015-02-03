@@ -35,6 +35,24 @@
         </action>
         <!--Fin de Acciones de Evento -->
 
+        <!--Acciones de Aviso -->
+        <action name="createAviso" class="sistemaescolar.action.AvisoAction" method="createAviso">
+            <result name="success">/resultado.jsp</result>
+        </action>
+
+        <action name="readAvisos" class="sistemaescolar.action.AvisoAction" method="readAvisos">
+            <result name="success">/ListaAvisos.jsp</result>
+        </action>
+
+        <action name="updateAviso" class="sistemaescolar.action.AvisoAction" method="updateAviso">
+            <result name="success">/resultado.jsp</result>
+        </action>
+
+        <action name="deleteAviso" class="sistemaescolar.action.AvisoAction" method="deleteAviso">
+            <result name="success">/resultado.jsp</result>
+        </action>
+        <!--Fin de Acciones de Aviso -->
+
 
     </package>
 </struts>
