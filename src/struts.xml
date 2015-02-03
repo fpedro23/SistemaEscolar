@@ -12,7 +12,7 @@
         <action name="crearcircular" class="sistemaescolar.action.CircularAction" method="create">
             <result name="success">/resultado.jsp</result>
         </action>
-        
+
         <action name="getcircularbyid" class="sistemaescolar.action.CircularAction" method="getById">
             <result name="success">/getcircularbyid.jsp</result>
         </action>
@@ -41,6 +41,10 @@
             <result name="success">/ListaEventos.jsp</result>
         </action>
 
+        <action name="readEventoById" class="sistemaescolar.action.EventoAction" method="readEventById">
+            <result name="success">/ListaEventos.jsp</result>
+        </action>
+
         <action name="updateEvent" class="sistemaescolar.action.EventoAction" method="updateEvent">
             <result name="success">/resultado.jsp</result>
         </action>
@@ -65,6 +69,9 @@
 
         <action name="deleteAviso" class="sistemaescolar.action.AvisoAction" method="deleteAviso">
             <result name="success">/resultado.jsp</result>
+        </action>
+        <action name="readActionById" class="sistemaescolar.action.AvisoAction" method="readAvisoById">
+            <result name="success">/ListaEventos.jsp</result>
         </action>
         <!--Fin de Acciones de Aviso -->
 

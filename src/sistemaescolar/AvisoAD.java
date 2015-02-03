@@ -35,6 +35,11 @@ public class AvisoAD {
         return sistemaEscolarAviso;
     }
 
+    public static Aviso listAvisosById(int idAviso) throws PersistentException {
+        Aviso sistemaEscolarAviso = AvisoDAO.getAvisoByORMID(idAviso);
+        return sistemaEscolarAviso;
+    }
+
     public static boolean updateAviso(int idAviso, String fecha, String remitente, String contenido, String titulo) throws PersistentException {
         PersistentTransaction t = sistemaescolar.EscuelaPersistentManager.instance().getSession().beginTransaction();
 

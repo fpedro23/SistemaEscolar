@@ -32,6 +32,12 @@ public class EventoAction extends ActionSupport {
         return "success";
     }
 
+
+    public String readEventById() throws PersistentException {
+        evento = EventoAD.listEventById(id);
+        return "success";
+    }
+
     public String updateEvent() throws PersistentException {
         try {
             boolean transaccionExitosa = EventoAD.updateEvent(id, fecha, remitente, contenido, titulo);
