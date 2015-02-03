@@ -35,6 +35,12 @@ public class EventoAD {
         return sistemaEscolarEventos;
     }
 
+    public static Evento listEventById(int idEvento) throws PersistentException {
+        System.out.println("Listing Evento...");
+        sistemaescolar.Evento sistemaEscolarEvento = sistemaescolar.EventoDAO.getEventoByORMID(idEvento);
+        return sistemaEscolarEvento;
+    }
+
     public static boolean updateEvent(int idEvento, String fecha, String remitente, String contenido, String titulo) throws PersistentException {
         PersistentTransaction t = sistemaescolar.EscuelaPersistentManager.instance().getSession().beginTransaction();
 

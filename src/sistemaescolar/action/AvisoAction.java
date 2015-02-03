@@ -32,6 +32,11 @@ public class AvisoAction extends ActionSupport {
         return "success";
     }
 
+    public String readAvisoById() throws PersistentException {
+        aviso = AvisoAD.listAvisosById(id);
+        return "success";
+    }
+
     public String updateAviso() throws PersistentException {
         try {
             boolean transaccionExitosa = AvisoAD.updateAviso(id, fecha, remitente, contenido, titulo);
