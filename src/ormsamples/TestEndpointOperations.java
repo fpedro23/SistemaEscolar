@@ -5,6 +5,7 @@ import org.orm.PersistentTransaction;
 import sistemaescolar.Circular;
 import sistemaescolar.CircularDAO;
 import sistemaescolar.EscuelaPersistentManager;
+import sistemaescolar.dbmanagement.CircularDBManager;
 
 /**
  * SistemaEscolar
@@ -13,17 +14,15 @@ import sistemaescolar.EscuelaPersistentManager;
 public class TestEndpointOperations {
 
     public void update(int id) throws PersistentException {
-        PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
-        Circular circular = CircularDAO.getCircularByORMID(id);
-        circular.setContenido("Nuevo contenido");
-        t.commit();
+        CircularDBManager.update(id,
+                null,
+                null,
+                null,
+                "Contenido actualizado");
     }
 
     public void delete(int id) throws PersistentException {
-        PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
-        Circular circular = CircularDAO.getCircularByORMID(id);
-        CircularDAO.delete(circular);
-        t.commit();
+        CircularDBManager.delete(id);
     }
 
     public static void main(String[] args) {
@@ -31,6 +30,7 @@ public class TestEndpointOperations {
             TestEndpointOperations test = new TestEndpointOperations();
             try {
                 test.update(3);
+                test.delete(3);
             }
             finally {
                 EscuelaPersistentManager.instance().disposePersistentManager();

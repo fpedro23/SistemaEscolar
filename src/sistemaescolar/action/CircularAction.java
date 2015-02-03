@@ -2,6 +2,7 @@ package sistemaescolar.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import sistemaescolar.Circular;
+import sistemaescolar.dbmanagement.CircularDBManager;
 
 /**
  * SistemaEscolar
@@ -11,7 +12,15 @@ public class CircularAction extends ActionSupport{
     private int  id;
     private String fecha, remitente, contenido, titulo;
     private Circular circular;
-    public String resultado;
+    private Circular[] circulars;
+
+    public Circular[] getCirculars() {
+        return circulars;
+    }
+
+    public void setCirculars(Circular[] circulars) {
+        this.circulars = circulars;
+    }
 
 
     @Override
@@ -20,7 +29,55 @@ public class CircularAction extends ActionSupport{
     }
 
     public String create() {
-        return "success";
+        if(CircularDBManager.create(
+                getTitulo(),
+                getFecha(),
+                getRemitente(),
+                getContenido()
+        ))
+            return "success";
+        else
+            return "failure";
+    }
+
+    public String update() {
+        if(CircularDBManager.update(
+                getId(),
+                getTitulo(),
+                getFecha(),
+                getRemitente(),
+                getContenido()
+        ))
+            return "success";
+        else
+            return "failure";
+    }
+
+    public String delete() {
+        if(CircularDBManager.delete(getId()))
+            return "success";
+        else
+            return "failure";
+    }
+
+    public String getAll() {
+        Circular[] circulars = CircularDBManager.getAll();
+        if(circulars != null) {
+            setCirculars(circulars);
+            return "success";
+        }
+        else
+            return "failure";
+    }
+
+    public String getById() {
+        Circular circular = CircularDBManager.getById(getId());
+        if(circular != null) {
+            setCircular(circular);
+            return "success";
+        }
+        else
+            return "failure";
     }
 
     public int getId() {

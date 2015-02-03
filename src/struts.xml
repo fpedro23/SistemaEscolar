@@ -54,5 +54,13 @@
         <!--Fin de Acciones de Aviso -->
 
 
+
+        <action name="getcircularbyid" class="sistemaescolar.action.CircularAction" method="getById">
+            <result name="success">/getcircularbyid.jsp</result>
+        </action>
+
+        <action name="getcircularall" class="sistemaescolar.action.CircularAction" method="getAll">
+            <result name="success">/getcircularall.jsp</result>
+        </action>
     </package>
 </struts>
