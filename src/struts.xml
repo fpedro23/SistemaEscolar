@@ -18,7 +18,8 @@
         </action>
 
         <action name="readCirculars" class="sistemaescolar.action.CircularAction" method="getAll">
-            <result name="success">/getcircularall.jsp</result>
+            <result name="json">/getcircularall.jsp</result>
+            <result name="success">/listCircular.jsp</result>
         </action>
 
         <action name="updateCircular" class="sistemaescolar.action.CircularAction" method="update">

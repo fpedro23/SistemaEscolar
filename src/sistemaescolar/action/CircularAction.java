@@ -11,6 +11,7 @@ import sistemaescolar.dbmanagement.CircularDBManager;
 public class CircularAction extends ActionSupport{
     private int  id;
     private String fecha, remitente, contenido, titulo;
+    private boolean mobile;
     private Circular circular;
     private Circular[] circulars;
     public String resultado;
@@ -70,7 +71,10 @@ public class CircularAction extends ActionSupport{
         Circular[] circulars = CircularDBManager.getAll();
         if(circulars != null) {
             setCirculars(circulars);
-            return "success";
+            if(isMobile())
+                return "json";
+            else
+                return "success";
         }
         else
             return "failure";
@@ -84,6 +88,14 @@ public class CircularAction extends ActionSupport{
         }
         else
             return "failure";
+    }
+
+    public boolean isMobile() {
+        return mobile;
+    }
+
+    public void setMobile(boolean mobile) {
+        this.mobile = mobile;
     }
 
     public int getId() {
