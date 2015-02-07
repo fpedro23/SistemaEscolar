@@ -4,15 +4,16 @@
  */
 package ormsamples;
 
+import sistemaescolar.model.EscuelaPersistentManager;
 import org.orm.*;
+
 public class CreateEscuelaDatabaseSchema {
-	public static void main(String[] args) {
-		try {
-			ORMDatabaseInitiator.createSchema(sistemaescolar.EscuelaPersistentManager.instance());
-			sistemaescolar.EscuelaPersistentManager.instance().disposePersistentManager();
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    public static void main(String[] args) {
+        try {
+            ORMDatabaseInitiator.createSchema(EscuelaPersistentManager.instance());
+            EscuelaPersistentManager.instance().disposePersistentManager();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

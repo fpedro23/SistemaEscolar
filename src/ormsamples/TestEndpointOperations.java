@@ -1,10 +1,7 @@
 package ormsamples;
 
 import org.orm.PersistentException;
-import org.orm.PersistentTransaction;
-import sistemaescolar.Circular;
-import sistemaescolar.CircularDAO;
-import sistemaescolar.EscuelaPersistentManager;
+import sistemaescolar.model.EscuelaPersistentManager;
 import sistemaescolar.dbmanagement.CircularDBManager;
 
 /**
@@ -31,12 +28,10 @@ public class TestEndpointOperations {
             try {
                 test.update(3);
                 test.delete(3);
-            }
-            finally {
+            } finally {
                 EscuelaPersistentManager.instance().disposePersistentManager();
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

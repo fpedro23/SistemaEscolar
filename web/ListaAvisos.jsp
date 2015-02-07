@@ -7,7 +7,7 @@
 --%>
 
 <%@ page contentType="text/html; charset=UTF-8" language="java" import="com.google.gson.Gson" errorPage="" %>
-<%@ page contentType="text/html; charset=UTF-8" language="java" import="sistemaescolar.Aviso" errorPage="" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" import="sistemaescolar.model.Aviso" errorPage="" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" errorPage="" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" errorPage="" %>
 

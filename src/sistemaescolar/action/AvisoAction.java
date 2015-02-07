@@ -2,8 +2,8 @@ package sistemaescolar.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.orm.PersistentException;
-import sistemaescolar.Aviso;
-import sistemaescolar.AvisoAD;
+import sistemaescolar.model.Aviso;
+import sistemaescolar.dbmanagement.AvisoAD;
 
 /**
  * Created by Pedro on 03/02/15.
@@ -30,9 +30,9 @@ public class AvisoAction extends ActionSupport {
 
     public String readAvisos() throws PersistentException {
         avisos = AvisoAD.listAvisos();
-        if(isMobile()) return "json";
+        if (isMobile()) return "json";
         else
-        return "success";
+            return "success";
     }
 
     public String readAvisoById() throws PersistentException {

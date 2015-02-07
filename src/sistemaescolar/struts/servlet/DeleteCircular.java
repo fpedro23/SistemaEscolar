@@ -2,9 +2,9 @@ package sistemaescolar.struts.servlet;
 
 import com.google.gson.JsonObject;
 import org.orm.PersistentTransaction;
-import sistemaescolar.Circular;
-import sistemaescolar.CircularDAO;
-import sistemaescolar.EscuelaPersistentManager;
+import sistemaescolar.model.Circular;
+import sistemaescolar.model.CircularDAO;
+import sistemaescolar.model.EscuelaPersistentManager;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,20 +25,18 @@ public class DeleteCircular extends javax.servlet.http.HttpServlet {
         JsonObject jsonResponse = new JsonObject();
 
 
-        if(param != null) {
+        if (param != null) {
             try {
                 PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
                 int id = Integer.parseInt(param);
 
                 Circular circular = CircularDAO.getCircularByORMID(id);
-                if(sistemaescolar.CircularDAO.delete(circular)) {
+                if (CircularDAO.delete(circular)) {
                     t.commit();
                     jsonResponse.addProperty("Result", "Success");
-                }
-                else
+                } else
                     jsonResponse.addProperty("Result", "Failure");
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 jsonResponse.addProperty("Result", "Failure");
             }

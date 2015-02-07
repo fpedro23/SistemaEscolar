@@ -1,7 +1,10 @@
-package sistemaescolar;
+package sistemaescolar.dbmanagement;
 
+import sistemaescolar.model.EscuelaPersistentManager;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
+import sistemaescolar.model.Aviso;
+import sistemaescolar.model.AvisoDAO;
 
 /**
  * Created by Pedro on 03/02/15.
@@ -9,7 +12,7 @@ import org.orm.PersistentTransaction;
 public class AvisoAD {
 
     public static boolean createAviso(String fecha, String remitente, String contenido, String titulo) throws PersistentException {
-        PersistentTransaction t = sistemaescolar.EscuelaPersistentManager.instance().getSession().beginTransaction();
+        PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
             Aviso sistemaEscolarAviso = AvisoDAO.createAviso();
@@ -25,7 +28,7 @@ public class AvisoAD {
             t.rollback();
             return false;
         } finally {
-            sistemaescolar.EscuelaPersistentManager.instance().disposePersistentManager();
+            EscuelaPersistentManager.instance().disposePersistentManager();
         }
     }
 
@@ -41,7 +44,7 @@ public class AvisoAD {
     }
 
     public static boolean updateAviso(int idAviso, String fecha, String remitente, String contenido, String titulo) throws PersistentException {
-        PersistentTransaction t = sistemaescolar.EscuelaPersistentManager.instance().getSession().beginTransaction();
+        PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
             Aviso sistemaEscolarAviso = AvisoDAO.getAvisoByORMID(idAviso);
@@ -61,7 +64,7 @@ public class AvisoAD {
     }
 
     public static boolean deleteAviso(int idAviso) throws PersistentException {
-        PersistentTransaction t = sistemaescolar.EscuelaPersistentManager.instance().getSession().beginTransaction();
+        PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
             Aviso sistemaEscolarAviso = AvisoDAO.getAvisoByORMID(idAviso);
@@ -73,7 +76,7 @@ public class AvisoAD {
             t.rollback();
             return false;
         } finally {
-            sistemaescolar.EscuelaPersistentManager.instance().disposePersistentManager();
+            EscuelaPersistentManager.instance().disposePersistentManager();
         }
     }
 }

@@ -1,5 +1,4 @@
-
-<%@ page import="sistemaescolar.Evento" %>
+<%@ page import="sistemaescolar.model.Evento" %>
 <%--
   Created by IntelliJ IDEA.
   User: mng687
@@ -13,39 +12,43 @@
     <title>Lista</title>
 </head>
 <body>
-    <table>
-        <tr>
-            <th>Título</th>
-            <th>Remitente</th>
-            <th>Fecha</th>
-            <th>Contenido</th>
-        </tr>
-        <%
-            for(Evento evento: (Evento[])request.getAttribute("eventos")) {
-        %>
-            <tr>
-                <td> <%= evento.getTitulo()    %> </td>
-                <td> <%= evento.getRemitente() %> </td>
-                <td> <%= evento.getFecha()     %> </td>
-                <td> <%= evento.getContenido() %> </td>
-                <td>
-                    <form action="readCircularById" method="get">
-                        <input type="hidden" name="id" value="<%= evento.getIdCircular() %>"/>
-                        <input type="hidden" name="tipo" value="Circular">
-                        <input type="submit" value="Editar" name="delete"/>
-                    </form>
-                </td>
-                <td>
-                    <form action="deleteCircular" method="get">
-                        <input type="hidden" name="id" value="<%= evento.getIdCircular() %>"/>
-                        <input type="hidden" name="tipo" value="Circular">
-                        <input type="submit" value="Borrar" name="delete"/>
-                    </form>
-                </td>
-            </tr>
-        <%
-            }
-        %>
-    </table>
+<table>
+    <tr>
+        <th>Título</th>
+        <th>Remitente</th>
+        <th>Fecha</th>
+        <th>Contenido</th>
+    </tr>
+    <%
+        for (Evento evento : (Evento[]) request.getAttribute("eventos")) {
+    %>
+    <tr>
+        <td><%= evento.getTitulo()    %>
+        </td>
+        <td><%= evento.getRemitente() %>
+        </td>
+        <td><%= evento.getFecha()     %>
+        </td>
+        <td><%= evento.getContenido() %>
+        </td>
+        <td>
+            <form action="readEventById" method="get">
+                <input type="hidden" name="id" value="<%= evento.getIdCircular() %>"/>
+                <input type="hidden" name="tipo" value="Event">
+                <input type="submit" value="Editar" name="delete"/>
+            </form>
+        </td>
+        <td>
+            <form action="deleteEvent" method="get">
+                <input type="hidden" name="id" value="<%= evento.getIdCircular() %>"/>
+                <input type="hidden" name="tipo" value="Circular">
+                <input type="submit" value="Borrar" name="delete"/>
+            </form>
+        </td>
+    </tr>
+    <%
+        }
+    %>
+</table>
 </body>
 </html>

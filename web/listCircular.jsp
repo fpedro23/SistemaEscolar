@@ -1,4 +1,4 @@
-<%@ page import="sistemaescolar.Circular" %>
+<%@ page import="sistemaescolar.model.Circular" %>
 <%--
   Created by IntelliJ IDEA.
   User: mng687

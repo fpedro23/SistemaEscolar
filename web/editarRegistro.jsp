@@ -1,6 +1,6 @@
-<%@ page import="sistemaescolar.Evento" %>
-<%@ page import="sistemaescolar.Circular" %>
-<%@ page import="sistemaescolar.Aviso" %>
+<%@ page import="sistemaescolar.model.Evento" %>
+<%@ page import="sistemaescolar.model.Circular" %>
+<%@ page import="sistemaescolar.model.Aviso" %>
 <%--
   Created by IntelliJ IDEA.
   User: mng687
@@ -45,9 +45,9 @@
 <%
     // tipo debe ser: Circular, Event o Aviso
     String tipo = request.getParameter("tipo");
-    Circular circular = (Circular) request.getAttribute("circular");
-    Evento evento = (Evento) request.getAttribute("evento");
-    Aviso aviso = (Aviso) request.getAttribute("aviso");
+    sistemaescolar.model.Circular circular = (sistemaescolar.model.Circular) request.getAttribute("circular");
+    sistemaescolar.model.Evento evento = (sistemaescolar.model.Evento) request.getAttribute("evento");
+    sistemaescolar.model.Aviso aviso = (sistemaescolar.model.Aviso) request.getAttribute("aviso");
 %>
 <form action="update<%= tipo %>" method="get" name="registro" onsubmit="return validateForm()">
     <table>

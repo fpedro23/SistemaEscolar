@@ -1,5 +1,8 @@
-package sistemaescolar;
+package sistemaescolar.dbmanagement;
 
+import sistemaescolar.model.EscuelaPersistentManager;
+import sistemaescolar.model.Evento;
+import sistemaescolar.model.EventoDAO;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
@@ -9,49 +12,49 @@ import org.orm.PersistentTransaction;
 public class EventoAD {
 
     public static boolean createEvent(String fecha, String remitente, String contenido, String titulo) throws PersistentException {
-        PersistentTransaction t = sistemaescolar.EscuelaPersistentManager.instance().getSession().beginTransaction();
+        PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
-            sistemaescolar.Evento sistemaEscolarEvento = sistemaescolar.EventoDAO.createEvento();
+            Evento sistemaEscolarEvento = EventoDAO.createEvento();
             // Initialize the properties of the persistent object here
             sistemaEscolarEvento.setTitulo(titulo);
             sistemaEscolarEvento.setRemitente(remitente);
             sistemaEscolarEvento.setFecha(fecha);
             sistemaEscolarEvento.setContenido(contenido);
-            sistemaescolar.EventoDAO.save(sistemaEscolarEvento);
+            EventoDAO.save(sistemaEscolarEvento);
             t.commit();
             return true;
         } catch (Exception e) {
             t.rollback();
             return false;
         } finally {
-            sistemaescolar.EscuelaPersistentManager.instance().disposePersistentManager();
+            EscuelaPersistentManager.instance().disposePersistentManager();
         }
     }
 
     public static Evento[] listEvents() throws PersistentException {
         System.out.println("Listing Evento...");
-        sistemaescolar.Evento[] sistemaEscolarEventos = sistemaescolar.EventoDAO.listEventoByQuery(null, null);
+        Evento[] sistemaEscolarEventos = EventoDAO.listEventoByQuery(null, null);
         return sistemaEscolarEventos;
     }
 
     public static Evento listEventById(int idEvento) throws PersistentException {
         System.out.println("Listing Evento...");
-        sistemaescolar.Evento sistemaEscolarEvento = sistemaescolar.EventoDAO.getEventoByORMID(idEvento);
+        Evento sistemaEscolarEvento = EventoDAO.getEventoByORMID(idEvento);
         return sistemaEscolarEvento;
     }
 
     public static boolean updateEvent(int idEvento, String fecha, String remitente, String contenido, String titulo) throws PersistentException {
-        PersistentTransaction t = sistemaescolar.EscuelaPersistentManager.instance().getSession().beginTransaction();
+        PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
-            sistemaescolar.Evento sistemaEscolarEvento = sistemaescolar.EventoDAO.getEventoByORMID(idEvento);
+            Evento sistemaEscolarEvento = EventoDAO.getEventoByORMID(idEvento);
             // Update the properties of the persistent object
             sistemaEscolarEvento.setFecha(fecha);
             sistemaEscolarEvento.setRemitente(remitente);
             sistemaEscolarEvento.setContenido(contenido);
             sistemaEscolarEvento.setTitulo(titulo);
-            sistemaescolar.EventoDAO.save(sistemaEscolarEvento);
+            EventoDAO.save(sistemaEscolarEvento);
             t.commit();
             return true;
         } catch (Exception e) {
@@ -62,11 +65,11 @@ public class EventoAD {
     }
 
     public static boolean deleteEvento(int idEvento) throws PersistentException {
-        PersistentTransaction t = sistemaescolar.EscuelaPersistentManager.instance().getSession().beginTransaction();
+        PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
-            sistemaescolar.Evento sistemaEscolarEvento = sistemaescolar.EventoDAO.getEventoByORMID(idEvento);
-            sistemaescolar.EventoDAO.delete(sistemaEscolarEvento);
+            Evento sistemaEscolarEvento = EventoDAO.getEventoByORMID(idEvento);
+            EventoDAO.delete(sistemaEscolarEvento);
             t.commit();
             return true;
 
@@ -74,7 +77,7 @@ public class EventoAD {
             t.rollback();
             return false;
         } finally {
-            sistemaescolar.EscuelaPersistentManager.instance().disposePersistentManager();
+            EscuelaPersistentManager.instance().disposePersistentManager();
         }
     }
 }

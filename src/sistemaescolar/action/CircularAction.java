@@ -2,21 +2,20 @@ package sistemaescolar.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.orm.PersistentException;
-import sistemaescolar.Circular;
+import sistemaescolar.model.Circular;
 import sistemaescolar.dbmanagement.CircularDBManager;
 
 /**
  * SistemaEscolar
  * Created by mng687 on 1/30/15 at 2:25 PM
  */
-public class CircularAction extends ActionSupport{
-    private int  id;
+public class CircularAction extends ActionSupport {
+    private int id;
     private String fecha, remitente, contenido, titulo;
     private boolean mobile;
     private Circular circular;
     private Circular[] circulars;
     public String resultado;
-
 
 
     @Override
@@ -25,7 +24,7 @@ public class CircularAction extends ActionSupport{
     }
 
     public String create() throws PersistentException {
-        if(CircularDBManager.create(
+        if (CircularDBManager.create(
                 getTitulo(),
                 getFecha(),
                 getRemitente(),
@@ -33,8 +32,7 @@ public class CircularAction extends ActionSupport{
         )) {
             resultado = "success";
             return "success";
-        }
-        else {
+        } else {
             resultado = "failure";
             return "failure";
         }
@@ -42,7 +40,7 @@ public class CircularAction extends ActionSupport{
 
 
     public String update() throws PersistentException {
-        if(CircularDBManager.update(
+        if (CircularDBManager.update(
                 getId(),
                 getTitulo(),
                 getFecha(),
@@ -51,19 +49,17 @@ public class CircularAction extends ActionSupport{
         )) {
             resultado = "success";
             return "success";
-        }
-        else {
+        } else {
             resultado = "failure";
             return "failure";
         }
     }
 
     public String delete() throws PersistentException {
-        if(CircularDBManager.delete(getId())) {
+        if (CircularDBManager.delete(getId())) {
             resultado = "success";
             return "success";
-        }
-        else {
+        } else {
             resultado = "failure";
             return "failure";
         }
@@ -71,24 +67,22 @@ public class CircularAction extends ActionSupport{
 
     public String getAll() throws PersistentException {
         Circular[] circulars = CircularDBManager.getAll();
-        if(circulars != null) {
+        if (circulars != null) {
             setCirculars(circulars);
-            if(isMobile())
+            if (isMobile())
                 return "json";
             else
                 return "success";
-        }
-        else
+        } else
             return "failure";
     }
 
     public String getById() throws PersistentException {
         Circular circular = CircularDBManager.getById(getId());
-        if(circular != null) {
+        if (circular != null) {
             setCircular(circular);
             return "success";
-        }
-        else
+        } else
             return "failure";
     }
 

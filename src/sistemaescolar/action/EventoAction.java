@@ -2,8 +2,8 @@ package sistemaescolar.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.orm.PersistentException;
-import sistemaescolar.Evento;
-import sistemaescolar.EventoAD;
+import sistemaescolar.model.Evento;
+import sistemaescolar.dbmanagement.EventoAD;
 
 /**
  * Created by Pedro on 03/02/15.
@@ -30,7 +30,7 @@ public class EventoAction extends ActionSupport {
 
     public String readEvents() throws PersistentException {
         eventos = EventoAD.listEvents();
-        if(isMobile()) return "json";
+        if (isMobile()) return "json";
         else return "success";
     }
 

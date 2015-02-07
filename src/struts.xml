@@ -10,9 +10,9 @@
         <!--Acciones de Circular -->
 
         <action name="createCircular" class="sistemaescolar.action.CircularAction" method="create">
-            <result name="success">/getcircularall.jsp</result>
+            <result name="success" type="redirectAction">readCircular</result>
         </action>
-        
+
         <action name="readCircularById" class="sistemaescolar.action.CircularAction" method="getById">
             <result name="success">/getcircularbyid.jsp</result>
         </action>
@@ -27,11 +27,11 @@
         </action>
 
         <action name="updateCircular" class="sistemaescolar.action.CircularAction" method="update">
-            <result name="success">/getcircularall.jsp</result>
+            <result name="success" type="redirectAction">readCircular</result>
         </action>
 
         <action name="deleteCircular" class="sistemaescolar.action.CircularAction" method="delete">
-            <result name="success">/getcircularall.jsp</result>
+            <result name="success" type="redirectAction">readCircular</result>
         </action>
 
         <!--Fin de Acciones de Circular -->
@@ -39,7 +39,7 @@
 
         <!--Acciones de Evento -->
         <action name="createEvent" class="sistemaescolar.action.EventoAction" method="createEvent">
-            <result name="success">/resultado.jsp</result>
+            <result name="success" type="redirectAction">readEvent</result>
         </action>
 
         <action name="readEvent" class="sistemaescolar.action.EventoAction" method="readEvents">
@@ -53,17 +53,17 @@
         </action>
 
         <action name="updateEvent" class="sistemaescolar.action.EventoAction" method="updateEvent">
-            <result name="success">/resultado.jsp</result>
+            <result name="success" type="redirectAction">readEvent</result>
         </action>
 
         <action name="deleteEvent" class="sistemaescolar.action.EventoAction" method="deleteEvent">
-            <result name="success">/resultado.jsp</result>
+            <result name="success" type="redirectAction">readEvent</result>
         </action>
         <!--Fin de Acciones de Evento -->
 
         <!--Acciones de Aviso -->
         <action name="createAviso" class="sistemaescolar.action.AvisoAction" method="createAviso">
-            <result name="success">/resultado.jsp</result>
+            <result name="success" type="redirectAction">readAvisos</result>
         </action>
 
         <action name="readAvisos" class="sistemaescolar.action.AvisoAction" method="readAvisos">
@@ -77,11 +77,11 @@
         </action>
 
         <action name="updateAviso" class="sistemaescolar.action.AvisoAction" method="updateAviso">
-            <result name="success">/resultado.jsp</result>
+            <result name="success" type="redirectAction">readAvisos</result>
         </action>
 
         <action name="deleteAviso" class="sistemaescolar.action.AvisoAction" method="deleteAviso">
-            <result name="success">/resultado.jsp</result>
+            <result name="success" type="redirectAction">readAvisos</result>
         </action>
         <!--Fin de Acciones de Aviso -->
 

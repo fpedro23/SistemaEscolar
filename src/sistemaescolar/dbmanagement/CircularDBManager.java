@@ -2,9 +2,9 @@ package sistemaescolar.dbmanagement;
 
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
-import sistemaescolar.Circular;
-import sistemaescolar.CircularDAO;
-import sistemaescolar.EscuelaPersistentManager;
+import sistemaescolar.model.Circular;
+import sistemaescolar.model.CircularDAO;
+import sistemaescolar.model.EscuelaPersistentManager;
 
 /**
  * SistemaEscolar
@@ -31,7 +31,7 @@ public class CircularDBManager {
             } catch (Exception e) { // Not a very good practice but it'll do for now
                 e.printStackTrace();
             } finally {
-                sistemaescolar.EscuelaPersistentManager.instance().disposePersistentManager();
+                EscuelaPersistentManager.instance().disposePersistentManager();
             }
 
         return success;
@@ -59,7 +59,7 @@ public class CircularDBManager {
             e.printStackTrace();
             success = false;
         } finally {
-            sistemaescolar.EscuelaPersistentManager.instance().disposePersistentManager();
+            EscuelaPersistentManager.instance().disposePersistentManager();
         }
 
         return success;
@@ -79,7 +79,7 @@ public class CircularDBManager {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            sistemaescolar.EscuelaPersistentManager.instance().disposePersistentManager();
+            EscuelaPersistentManager.instance().disposePersistentManager();
         }
 
         return success;
@@ -95,7 +95,7 @@ public class CircularDBManager {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            sistemaescolar.EscuelaPersistentManager.instance().disposePersistentManager();
+            EscuelaPersistentManager.instance().disposePersistentManager();
         }
 
         return circular;
@@ -111,7 +111,7 @@ public class CircularDBManager {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            sistemaescolar.EscuelaPersistentManager.instance().disposePersistentManager();
+            EscuelaPersistentManager.instance().disposePersistentManager();
         }
 
         return circulars;
