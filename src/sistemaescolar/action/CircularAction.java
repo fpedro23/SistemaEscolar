@@ -1,6 +1,7 @@
 package sistemaescolar.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.orm.PersistentException;
 import sistemaescolar.Circular;
 import sistemaescolar.dbmanagement.CircularDBManager;
 
@@ -23,7 +24,7 @@ public class CircularAction extends ActionSupport{
         return super.execute();
     }
 
-    public String create() {
+    public String create() throws PersistentException {
         if(CircularDBManager.create(
                 getTitulo(),
                 getFecha(),
@@ -39,7 +40,8 @@ public class CircularAction extends ActionSupport{
         }
     }
 
-    public String update() {
+
+    public String update() throws PersistentException {
         if(CircularDBManager.update(
                 getId(),
                 getTitulo(),
@@ -56,7 +58,7 @@ public class CircularAction extends ActionSupport{
         }
     }
 
-    public String delete() {
+    public String delete() throws PersistentException {
         if(CircularDBManager.delete(getId())) {
             resultado = "success";
             return "success";
@@ -67,7 +69,7 @@ public class CircularAction extends ActionSupport{
         }
     }
 
-    public String getAll() {
+    public String getAll() throws PersistentException {
         Circular[] circulars = CircularDBManager.getAll();
         if(circulars != null) {
             setCirculars(circulars);
@@ -80,7 +82,7 @@ public class CircularAction extends ActionSupport{
             return "failure";
     }
 
-    public String getById() {
+    public String getById() throws PersistentException {
         Circular circular = CircularDBManager.getById(getId());
         if(circular != null) {
             setCircular(circular);

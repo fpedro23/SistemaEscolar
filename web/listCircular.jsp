@@ -1,4 +1,3 @@
-
 <%@ page import="sistemaescolar.Circular" %>
 <%--
   Created by IntelliJ IDEA.
@@ -13,39 +12,43 @@
     <title>Lista</title>
 </head>
 <body>
-    <table>
-        <tr>
-            <th>Título</th>
-            <th>Remitente</th>
-            <th>Fecha</th>
-            <th>Contenido</th>
-        </tr>
-        <%
-            for(Circular circular : (Circular [])request.getAttribute("circulars")) {
-        %>
-            <tr>
-                <td> <%= circular.getTitulo()    %> </td>
-                <td> <%= circular.getRemitente() %> </td>
-                <td> <%= circular.getFecha()     %> </td>
-                <td> <%= circular.getContenido() %> </td>
-                <td>
-                    <form action="readCircularById" method="get">
-                        <input type="hidden" name="id" value="<%= circular.getIdCircular() %>"/>
-                        <input type="hidden" name="tipo" value="Circular">
-                        <input type="submit" value="Editar" name="delete"/>
-                    </form>
-                </td>
-                <td>
-                    <form action="deleteCircular" method="get">
-                        <input type="hidden" name="id" value="<%= circular.getIdCircular() %>"/>
-                        <input type="hidden" name="tipo" value="Circular">
-                        <input type="submit" value="Borrar" name="delete"/>
-                    </form>
-                </td>
-            </tr>
-        <%
-            }
-        %>
-    </table>
+<table>
+    <tr>
+        <th>Título</th>
+        <th>Remitente</th>
+        <th>Fecha</th>
+        <th>Contenido</th>
+    </tr>
+    <%
+        for (Circular circular : (Circular[]) request.getAttribute("circulars")) {
+    %>
+    <tr>
+        <td><%= circular.getTitulo()    %>
+        </td>
+        <td><%= circular.getRemitente() %>
+        </td>
+        <td><%= circular.getFecha()     %>
+        </td>
+        <td><%= circular.getContenido() %>
+        </td>
+        <td>
+            <form action="editCircular" method="get">
+                <input type="hidden" name="id" value="<%= circular.getIdCircular() %>"/>
+                <input type="hidden" name="tipo" value="Circular">
+                <input type="submit" value="Editar" name="delete"/>
+            </form>
+        </td>
+        <td>
+            <form action="deleteCircular" method="get">
+                <input type="hidden" name="id" value="<%= circular.getIdCircular() %>"/>
+                <input type="hidden" name="tipo" value="Circular">
+                <input type="submit" value="Borrar" name="delete"/>
+            </form>
+        </td>
+    </tr>
+    <%
+        }
+    %>
+</table>
 </body>
 </html>

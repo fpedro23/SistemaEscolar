@@ -10,7 +10,7 @@
         <!--Acciones de Circular -->
 
         <action name="createCircular" class="sistemaescolar.action.CircularAction" method="create">
-            <result name="success">/resultado.jsp</result>
+            <result name="success">/getcircularall.jsp</result>
         </action>
         
         <action name="readCircularById" class="sistemaescolar.action.CircularAction" method="getById">
@@ -22,12 +22,16 @@
             <result name="json">/getcircularall.jsp</result>
         </action>
 
+        <action name="editCircular" class="sistemaescolar.action.CircularAction" method="getById">
+            <result name="success">/editarRegistro.jsp</result>
+        </action>
+
         <action name="updateCircular" class="sistemaescolar.action.CircularAction" method="update">
-            <result name="success">/resultado.jsp</result>
+            <result name="success">/getcircularall.jsp</result>
         </action>
 
         <action name="deleteCircular" class="sistemaescolar.action.CircularAction" method="delete">
-            <result name="success">/resultado.jsp</result>
+            <result name="success">/getcircularall.jsp</result>
         </action>
 
         <!--Fin de Acciones de Circular -->
