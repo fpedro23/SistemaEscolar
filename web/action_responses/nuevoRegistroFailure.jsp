@@ -1,0 +1,1 @@
+<h1 class="failure">Hubo un error al realizar el registro</h1>

@@ -23,6 +23,43 @@ body {
     overflow-x: hidden;
 }
 
+.centered_div {
+    align-content: center;
+}
+
+table {
+    border-spacing: 10px;
+    border-collapse: collapse;
+}
+
+tr {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+input[type=text] {
+    padding: 10px;
+    background-color: #ed8151;
+    border-radius: 10px;
+    border: none;
+    color: #ffffff;
+}
+
+input[type=date] {
+    padding: 10px;
+    background-color: #ed8151;
+    border-radius: 10px;
+    border: none;
+    color: #ffffff;
+}
+
+.error {
+    text-decoration: none;
+    color: #ed8151;
+    outline: none;
+}
+
 a {
     text-decoration: none;
     color: #ed8151;

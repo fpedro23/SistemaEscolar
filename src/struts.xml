@@ -10,16 +10,17 @@
         <!--Acciones de Circular -->
 
         <action name="createCircular" class="sistemaescolar.action.CircularAction" method="create">
-            <result name="success" type="redirectAction">readCircular</result>
+            <result name="success">action_responses/nuevoRegistroSuccess.jsp</result>
+            <result name="failure">action_responses/nuevoRegistroFailure.jsp</result>
         </action>
 
         <action name="readCircularById" class="sistemaescolar.action.CircularAction" method="getById">
-            <result name="success">/getcircularbyid.jsp</result>
+            <result name="success">/action_responses/getcircularbyid.jsp</result>
         </action>
 
         <action name="readCircular" class="sistemaescolar.action.CircularAction" method="getAll">
             <result name="success">/listCircular.jsp</result>
-            <result name="json">/getcircularall.jsp</result>
+            <result name="json">/action_responses/getcircularall.jsp</result>
         </action>
 
         <action name="editCircular" class="sistemaescolar.action.CircularAction" method="getById">
@@ -27,7 +28,8 @@
         </action>
 
         <action name="updateCircular" class="sistemaescolar.action.CircularAction" method="update">
-            <result name="success" type="redirectAction">readCircular</result>
+            <result name="success">action_responses/editarRegistroSuccess.jsp</result>
+            <result name="failre">action_responses/editarRegistroFailure.jsp</result>
         </action>
 
         <action name="deleteCircular" class="sistemaescolar.action.CircularAction" method="delete">
@@ -39,11 +41,12 @@
 
         <!--Acciones de Evento -->
         <action name="createEvent" class="sistemaescolar.action.EventoAction" method="createEvent">
-            <result name="success" type="redirectAction">readEvent</result>
+            <result name="success">action_responses/nuevoRegistroSuccess.jsp</result>
+            <result name="failure">action_responses/nuevoRegistroFailure.jsp</result>
         </action>
 
         <action name="readEvent" class="sistemaescolar.action.EventoAction" method="readEvents">
-            <result name="json">/ListaEventos.jsp</result>
+            <result name="json">/action_responses/ListaEventos.jsp</result>
             <result name="success">/listEvento.jsp</result>
 
         </action>
@@ -53,7 +56,8 @@
         </action>
 
         <action name="updateEvent" class="sistemaescolar.action.EventoAction" method="updateEvent">
-            <result name="success" type="redirectAction">readEvent</result>
+            <result name="success">action_responses/editarRegistroSuccess.jsp</result>
+            <result name="failre">action_responses/editarRegistroFailure.jsp</result>
         </action>
 
         <action name="deleteEvent" class="sistemaescolar.action.EventoAction" method="deleteEvent">
@@ -63,11 +67,12 @@
 
         <!--Acciones de Aviso -->
         <action name="createAviso" class="sistemaescolar.action.AvisoAction" method="createAviso">
-            <result name="success" type="redirectAction">readAvisos</result>
+            <result name="success">action_responses/nuevoRegistroSuccess.jsp</result>
+            <result name="failure">action_responses/nuevoRegistroFailure.jsp</result>
         </action>
 
         <action name="readAvisos" class="sistemaescolar.action.AvisoAction" method="readAvisos">
-            <result name="json">/ListaAvisos.jsp</result>
+            <result name="json">/action_responses/ListaAvisos.jsp</result>
             <result name="success">/listAviso.jsp</result>
 
         </action>
@@ -77,7 +82,8 @@
         </action>
 
         <action name="updateAviso" class="sistemaescolar.action.AvisoAction" method="updateAviso">
-            <result name="success" type="redirectAction">readAvisos</result>
+            <result name="success">action_responses/editarRegistroSuccess.jsp</result>
+            <result name="failre">action_responses/editarRegistroFailure.jsp</result>
         </action>
 
         <action name="deleteAviso" class="sistemaescolar.action.AvisoAction" method="deleteAviso">

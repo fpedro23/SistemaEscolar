@@ -1,0 +1,1 @@
+<h1 class="success">Registro editado exitosamente</h1>
