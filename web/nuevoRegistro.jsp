@@ -53,8 +53,8 @@
         // tipo debe ser: Circular, Event o Aviso
         String tipo = request.getParameter("tipo");
     %>
-    <form action="create<%= tipo %>" method="get" name="registro"  id="registro">
-        <div align="center">
+    <form action="create<%= tipo %>" method="post" name="registro" id="registro" accept-charset="utf-8">
+    <div align="center">
             <table cellspacing="30">
                 <tr>
                     <td>T&iacute;tulo</td>
