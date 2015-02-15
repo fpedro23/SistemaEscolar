@@ -70,7 +70,7 @@
                 </tr>
                 <tr>
                     <td>Contenido</td>
-                    <td><input type="text" name="contenido" id="contenido"/></td>
+                    <td><textarea name="contenido" id="contenido"> </textarea></td>
                 </tr>
             </table>
             <br>

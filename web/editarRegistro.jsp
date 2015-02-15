@@ -83,11 +83,12 @@
                 </tr>
                 <tr>
                     <td>Contenido</td>
-                    <td><input type="text" name="contenido" value="<%=
-                            circular != null ? circular.getContenido() :
+                    <td><textarea name="contenido" id="contenido"><%=
+                    circular != null ? circular.getContenido() :
                             evento   != null ? evento.getContenido()   :
-                                               aviso.getContenido()
-                        %>"/>
+                                    aviso.getContenido()
+                    %>
+                    </textarea>
                     </td>
                 </tr>
             </table>
