@@ -65,7 +65,7 @@
                         <h1 id="title"></h1>
                     </header>
 
-                    <!-- This is where all our will go krnl -->
+                    <!-- This is where all our content will go krnl -->
                     <div id="gimmeContent" class="main clearfix" style="overflow: hidden">
                     </div>
                     <!-- /main -->

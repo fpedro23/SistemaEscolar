@@ -38,12 +38,22 @@ tr {
 }
 
 
-input[type=text] {
+input[type=text]{
     padding: 10px;
     background-color: #ed8151;
     border-radius: 10px;
     border: none;
     color: #ffffff;
+}
+
+textarea {
+    padding: 10px;
+    background-color: #ed8151;
+    border-radius: 10px;
+    border: none;
+    color: #ffffff;
+    width: 100em;
+    height: 30em;
 }
 
 input[type=date] {

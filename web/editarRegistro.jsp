@@ -20,7 +20,7 @@
                             {
                                 rules: {
                                     titulo: 'required',
-                                    fecha: 'required',
+                                    fecha: 'date',
                                     remitente: 'required',
                                     contenido: 'required'
                                 },
