@@ -11,7 +11,7 @@
  * Licensee: 
  * License Type: Evaluation
  */
-package sistemaescolar.model;
+package sistemaescolar;
 
 import org.orm.*;
 import org.orm.cfg.JDBCConnectionSetting;
@@ -33,21 +33,12 @@ public class EscuelaPersistentManager extends PersistentManager {
         setFlushMode(FlushMode.AUTO);
     }
 
-    public String getProjectName() {
-        return PROJECT_NAME;
-    }
-
     public static synchronized final PersistentManager instance() throws PersistentException {
         if (_instance == null) {
             _instance = new EscuelaPersistentManager();
         }
 
         return _instance;
-    }
-
-    public void disposePersistentManager() throws PersistentException {
-        _instance = null;
-        super.disposePersistentManager();
     }
 
     public static void setSessionType(SessionType sessionType) throws PersistentException {
@@ -97,5 +88,14 @@ public class EscuelaPersistentManager extends PersistentManager {
 
     public static void saveJDBCConnectionSetting() {
         PersistentManager.saveJDBCConnectionSetting(PROJECT_NAME, _connectionSetting);
+    }
+
+    public String getProjectName() {
+        return PROJECT_NAME;
+    }
+
+    public void disposePersistentManager() throws PersistentException {
+        _instance = null;
+        super.disposePersistentManager();
     }
 }

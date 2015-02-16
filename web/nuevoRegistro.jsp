@@ -17,7 +17,7 @@
     <script type="text/javascript">
         // Setup form validation and ajax execution instead of loading new page
         $(document).ready(
-                function() {
+                function () {
                     $('#registro').validate(
                             {
                                 rules: {
@@ -28,14 +28,14 @@
                                 },
                                 messages: {
                                     titulo: 'Debes ingresar un t&iacute;tulo',
-                                    fecha:  'Debes ingresar una fecha',
+                                    fecha: 'Debes ingresar una fecha',
                                     remitente: 'Debes ingresar un remitente',
                                     contenido: 'Debes ingresar un contenido'
                                 },
-                                submitHandler: function(form) {
+                                submitHandler: function (form) {
                                     $(form).ajaxSubmit(
                                             {
-                                                beforeSend: function() {
+                                                beforeSend: function () {
                                                     $('#result').empty().append('Cargando');
                                                 },
                                                 target: "#result"
@@ -49,34 +49,34 @@
     </script>
 </head>
 <body>
-    <%
-        // tipo debe ser: Circular, Event o Aviso
-        String tipo = request.getParameter("tipo");
-    %>
-    <form action="create<%= tipo %>" method="post" name="registro" id="registro" accept-charset="utf-8">
+<%
+    // tipo debe ser: Circular, Event o Aviso
+    String tipo = request.getParameter("tipo");
+%>
+<form action="create<%= tipo %>" method="post" name="registro" id="registro" accept-charset="utf-8">
     <div align="center">
-            <table cellspacing="30">
-                <tr>
-                    <td>T&iacute;tulo</td>
-                    <td><input type="text" name="titulo" id="titulo"/></td>
-                </tr>
-                <tr>
-                    <td>Fecha</td>
-                    <td><input type="date" name="fecha" id="fecha"/></td>
-                </tr>
-                <tr>
-                    <td>Remitente</td>
-                    <td><input type="text" name="remitente" id="remitente"/></td>
-                </tr>
-                <tr>
-                    <td>Contenido</td>
-                    <td><textarea name="contenido" id="contenido"> </textarea></td>
-                </tr>
-            </table>
-            <br>
-            <button type="submit" value="Enviar">Enviar</button>
-            <div id="result"></div>
-        </div>
-    </form>
+        <table cellspacing="30">
+            <tr>
+                <td>T&iacute;tulo</td>
+                <td><input type="text" name="titulo" id="titulo"/></td>
+            </tr>
+            <tr>
+                <td>Fecha</td>
+                <td><input type="date" name="fecha" id="fecha"/></td>
+            </tr>
+            <tr>
+                <td>Remitente</td>
+                <td><input type="text" name="idRemitente" id="remitente"/></td>
+            </tr>
+            <tr>
+                <td>Contenido</td>
+                <td><textarea name="contenido" id="contenido"> </textarea></td>
+            </tr>
+        </table>
+        <br>
+        <button type="submit" value="Enviar">Enviar</button>
+        <div id="result"></div>
+    </div>
+</form>
 </body>
 </html>

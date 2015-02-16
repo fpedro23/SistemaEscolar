@@ -11,7 +11,7 @@
  * Licensee: 
  * License Type: Evaluation
  */
-package sistemaescolar.model;
+package sistemaescolar;
 
 import org.hibernate.Criteria;
 import org.orm.PersistentException;
@@ -22,7 +22,8 @@ public class CircularCriteria extends AbstractORMCriteria {
     public final IntegerExpression idCircular;
     public final StringExpression titulo;
     public final StringExpression fecha;
-    public final StringExpression remitente;
+    public final IntegerExpression administradoridAdministradorId;
+    public final AssociationExpression administradoridAdministrador;
     public final StringExpression contenido;
 
     public CircularCriteria(Criteria criteria) {
@@ -30,7 +31,8 @@ public class CircularCriteria extends AbstractORMCriteria {
         idCircular = new IntegerExpression("idCircular", this);
         titulo = new StringExpression("titulo", this);
         fecha = new StringExpression("fecha", this);
-        remitente = new StringExpression("remitente", this);
+        administradoridAdministradorId = new IntegerExpression("administradoridAdministrador.idAdministrador", this);
+        administradoridAdministrador = new AssociationExpression("administradoridAdministrador", this);
         contenido = new StringExpression("contenido", this);
     }
 
@@ -40,6 +42,10 @@ public class CircularCriteria extends AbstractORMCriteria {
 
     public CircularCriteria() throws PersistentException {
         this(EscuelaPersistentManager.instance().getSession());
+    }
+
+    public AdministradorCriteria createAdministradoridAdministradorCriteria() {
+        return new AdministradorCriteria(createCriteria("administradoridAdministrador"));
     }
 
     public Circular uniqueCircular() {

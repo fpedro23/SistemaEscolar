@@ -11,7 +11,7 @@
  * Licensee: 
  * License Type: Evaluation
  */
-package sistemaescolar.model;
+package sistemaescolar;
 
 import java.util.List;
 
@@ -23,7 +23,8 @@ public class CircularDetachedCriteria extends AbstractORMDetachedCriteria {
     public final IntegerExpression idCircular;
     public final StringExpression titulo;
     public final StringExpression fecha;
-    public final StringExpression remitente;
+    public final IntegerExpression administradoridAdministradorId;
+    public final AssociationExpression administradoridAdministrador;
     public final StringExpression contenido;
 
     public CircularDetachedCriteria() {
@@ -31,7 +32,8 @@ public class CircularDetachedCriteria extends AbstractORMDetachedCriteria {
         idCircular = new IntegerExpression("idCircular", this.getDetachedCriteria());
         titulo = new StringExpression("titulo", this.getDetachedCriteria());
         fecha = new StringExpression("fecha", this.getDetachedCriteria());
-        remitente = new StringExpression("remitente", this.getDetachedCriteria());
+        administradoridAdministradorId = new IntegerExpression("administradoridAdministrador.idAdministrador", this.getDetachedCriteria());
+        administradoridAdministrador = new AssociationExpression("administradoridAdministrador", this.getDetachedCriteria());
         contenido = new StringExpression("contenido", this.getDetachedCriteria());
     }
 
@@ -40,8 +42,13 @@ public class CircularDetachedCriteria extends AbstractORMDetachedCriteria {
         idCircular = new IntegerExpression("idCircular", this.getDetachedCriteria());
         titulo = new StringExpression("titulo", this.getDetachedCriteria());
         fecha = new StringExpression("fecha", this.getDetachedCriteria());
-        remitente = new StringExpression("remitente", this.getDetachedCriteria());
+        administradoridAdministradorId = new IntegerExpression("administradoridAdministrador.idAdministrador", this.getDetachedCriteria());
+        administradoridAdministrador = new AssociationExpression("administradoridAdministrador", this.getDetachedCriteria());
         contenido = new StringExpression("contenido", this.getDetachedCriteria());
+    }
+
+    public AdministradorDetachedCriteria createAdministradoridAdministradorCriteria() {
+        return new AdministradorDetachedCriteria(createCriteria("administradoridAdministrador"));
     }
 
     public Circular uniqueCircular(PersistentSession session) {

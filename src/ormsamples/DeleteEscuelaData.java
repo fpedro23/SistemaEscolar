@@ -4,12 +4,7 @@
  */
 package ormsamples;
 
-import com.google.gson.JsonObject;
-import sistemaescolar.model.Circular;
-import sistemaescolar.model.CircularDAO;
-import sistemaescolar.model.EscuelaPersistentManager;
-import org.orm.PersistentException;
-import org.orm.PersistentTransaction;
+import org.orm.*;
 
 public class DeleteEscuelaData {
     public static void main(String[] args) {
@@ -18,7 +13,7 @@ public class DeleteEscuelaData {
             try {
                 deleteEscuelaData.deleteTestData();
             } finally {
-                EscuelaPersistentManager.instance().disposePersistentManager();
+                sistemaescolar.EscuelaPersistentManager.instance().disposePersistentManager();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -26,26 +21,27 @@ public class DeleteEscuelaData {
     }
 
     public void deleteTestData() throws PersistentException {
-        PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
-        JsonObject jsonResponse = new JsonObject();
+        PersistentTransaction t = sistemaescolar.EscuelaPersistentManager.instance().getSession().beginTransaction();
         try {
-            Circular sistemaEscolarCircular = CircularDAO.getCircularByORMID(2);
+            sistemaescolar.Circular sistemaEscolarCircular = sistemaescolar.CircularDAO.loadCircularByQuery(null, null);
             // Delete the persistent object
-            if (CircularDAO.delete(sistemaEscolarCircular))
-                jsonResponse.addProperty("Result", "Success");
-            else
-                jsonResponse.addProperty("Result", "Failure");
-
-//			sistemaescolar.model.Aviso sistemaEscolarAviso = sistemaescolar.model.AvisoDAO.loadAvisoByQuery(null, null);
-//			// Delete the persistent object
-//			sistemaescolar.model.AvisoDAO.delete(sistemaEscolarAviso);
-
-//			sistemaescolar.model.Evento sistemaEscolarEvento = sistemaescolar.model.EventoDAO.loadEventoByQuery(null, null);
-//			// Delete the persistent object
-//			sistemaescolar.model.EventoDAO.delete(sistemaEscolarEvento);
+            sistemaescolar.CircularDAO.delete(sistemaEscolarCircular);
+            sistemaescolar.Aviso sistemaEscolarAviso = sistemaescolar.AvisoDAO.loadAvisoByQuery(null, null);
+            // Delete the persistent object
+            sistemaescolar.AvisoDAO.delete(sistemaEscolarAviso);
+            sistemaescolar.Evento sistemaEscolarEvento = sistemaescolar.EventoDAO.loadEventoByQuery(null, null);
+            // Delete the persistent object
+            sistemaescolar.EventoDAO.delete(sistemaEscolarEvento);
+            sistemaescolar.Alumno sistemaEscolarAlumno = sistemaescolar.AlumnoDAO.loadAlumnoByQuery(null, null);
+            // Delete the persistent object
+            sistemaescolar.AlumnoDAO.delete(sistemaEscolarAlumno);
+            sistemaescolar.Administrador sistemaEscolarAdministrador = sistemaescolar.AdministradorDAO.loadAdministradorByQuery(null, null);
+            // Delete the persistent object
+            sistemaescolar.AdministradorDAO.delete(sistemaEscolarAdministrador);
+            sistemaescolar.Devices sistemaEscolarDevices = sistemaescolar.DevicesDAO.loadDevicesByQuery(null, null);
+            // Delete the persistent object
+            sistemaescolar.DevicesDAO.delete(sistemaEscolarDevices);
             t.commit();
-
-            System.out.println(jsonResponse);
         } catch (Exception e) {
             t.rollback();
         }

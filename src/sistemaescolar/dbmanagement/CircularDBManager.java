@@ -1,27 +1,29 @@
 package sistemaescolar.dbmanagement;
 
+import org.hibernate.Hibernate;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
-import sistemaescolar.model.Circular;
-import sistemaescolar.model.CircularDAO;
-import sistemaescolar.model.EscuelaPersistentManager;
+import sistemaescolar.AdministradorDAO;
+import sistemaescolar.Circular;
+import sistemaescolar.CircularDAO;
+import sistemaescolar.EscuelaPersistentManager;
 
 /**
  * SistemaEscolar
  * Created by mng687 on 1/30/15 at 2:50 PM
  */
 public class CircularDBManager {
-    public static boolean create(String titulo, String fecha, String remitente, String contenido) throws PersistentException {
+    public static boolean create(String titulo, String fecha, Integer idRemitente, String contenido) throws PersistentException {
         boolean success = false;
 
-        if (titulo != null && fecha != null && remitente != null && contenido != null)
+        if (titulo != null && fecha != null && idRemitente != null && contenido != null)
             try {
                 PersistentTransaction transaction = EscuelaPersistentManager.instance().getSession().beginTransaction();
                 Circular circular = CircularDAO.createCircular();
 
                 circular.setTitulo(titulo);
                 circular.setFecha(fecha);
-                circular.setRemitente(remitente);
+                circular.setAdministradoridAdministrador(AdministradorDAO.getAdministradorByORMID(idRemitente));
                 circular.setContenido(contenido);
 
                 if (CircularDAO.save(circular)) {
@@ -37,7 +39,7 @@ public class CircularDBManager {
         return success;
     }
 
-    public static boolean update(int id, String titulo, String fecha, String remitente, String contenido) throws PersistentException {
+    public static boolean update(int id, String titulo, String fecha, Integer idRemitente, String contenido) throws PersistentException {
         boolean success = false;
 
         try {
@@ -48,8 +50,8 @@ public class CircularDBManager {
                     circular.setTitulo(titulo);
                 if (fecha != null)
                     circular.setFecha(fecha);
-                if (remitente != null)
-                    circular.setRemitente(remitente);
+                if (idRemitente != null)
+                    circular.setAdministradoridAdministrador(AdministradorDAO.getAdministradorByORMID(idRemitente));
                 if (contenido != null)
                     circular.setContenido(contenido);
                 transaction.commit();

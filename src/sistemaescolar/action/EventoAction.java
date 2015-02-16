@@ -2,7 +2,7 @@ package sistemaescolar.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.orm.PersistentException;
-import sistemaescolar.model.Evento;
+import sistemaescolar.Evento;
 import sistemaescolar.dbmanagement.EventoAD;
 
 /**
@@ -12,13 +12,17 @@ public class EventoAction extends ActionSupport {
     public String resultado;
     public Evento[] eventos;
     private int id;
-    private String fecha, remitente, contenido, titulo;
+    private String fecha, idRemitente, contenido, titulo;
     private Evento evento;
     private boolean mobile;
 
     public String createEvent() throws PersistentException {
         try {
-            boolean transaccionExitosa = EventoAD.createEvent(fecha, remitente, contenido, titulo);
+            boolean transaccionExitosa = EventoAD.createEvent(
+                    fecha,
+                    Integer.parseInt(getIdRemitente()),
+                    contenido,
+                    titulo);
             resultado = "Evento creado existosamente";
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -42,7 +46,12 @@ public class EventoAction extends ActionSupport {
 
     public String updateEvent() throws PersistentException {
         try {
-            boolean transaccionExitosa = EventoAD.updateEvent(id, fecha, remitente, contenido, titulo);
+            boolean transaccionExitosa = EventoAD.updateEvent(
+                    id,
+                    fecha,
+                    Integer.parseInt(getIdRemitente()),
+                    contenido,
+                    titulo);
             resultado = "Evento actualizado existosamente";
 
         } catch (Exception e) {
@@ -92,12 +101,12 @@ public class EventoAction extends ActionSupport {
         this.fecha = fecha;
     }
 
-    public String getRemitente() {
-        return remitente;
+    public String getIdRemitente() {
+        return idRemitente;
     }
 
-    public void setRemitente(String remitente) {
-        this.remitente = remitente;
+    public void setIdRemitente(String idRemitente) {
+        this.idRemitente = idRemitente;
     }
 
     public String getContenido() {

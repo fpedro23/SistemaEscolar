@@ -1,8 +1,9 @@
 package sistemaescolar.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.hibernate.Hibernate;
 import org.orm.PersistentException;
-import sistemaescolar.model.Circular;
+import sistemaescolar.Circular;
 import sistemaescolar.dbmanagement.CircularDBManager;
 
 /**
@@ -10,13 +11,12 @@ import sistemaescolar.dbmanagement.CircularDBManager;
  * Created by mng687 on 1/30/15 at 2:25 PM
  */
 public class CircularAction extends ActionSupport {
+    public String resultado;
     private int id;
-    private String fecha, remitente, contenido, titulo;
+    private String fecha, idRemitente, contenido, titulo;
     private boolean mobile;
     private Circular circular;
     private Circular[] circulars;
-    public String resultado;
-
 
     @Override
     public String execute() throws Exception {
@@ -27,7 +27,7 @@ public class CircularAction extends ActionSupport {
         if (CircularDBManager.create(
                 getTitulo(),
                 getFecha(),
-                getRemitente(),
+                Integer.parseInt(getIdRemitente()),
                 getContenido()
         )) {
             resultado = "success";
@@ -44,7 +44,7 @@ public class CircularAction extends ActionSupport {
                 getId(),
                 getTitulo(),
                 getFecha(),
-                getRemitente(),
+                Integer.parseInt(getIdRemitente()),
                 getContenido()
         )) {
             resultado = "success";
@@ -69,8 +69,9 @@ public class CircularAction extends ActionSupport {
         Circular[] circulars = CircularDBManager.getAll();
         if (circulars != null) {
             setCirculars(circulars);
-            if (isMobile())
+            if (isMobile()) {
                 return "json";
+            }
             else
                 return "success";
         } else
@@ -110,12 +111,12 @@ public class CircularAction extends ActionSupport {
         this.fecha = fecha;
     }
 
-    public String getRemitente() {
-        return remitente;
+    public String getIdRemitente() {
+        return idRemitente;
     }
 
-    public void setRemitente(String remitente) {
-        this.remitente = remitente;
+    public void setIdRemitente(String idRemitente) {
+        this.idRemitente = idRemitente;
     }
 
     public String getContenido() {

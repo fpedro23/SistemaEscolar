@@ -11,7 +11,7 @@
  * Licensee: 
  * License Type: Evaluation
  */
-package sistemaescolar.model;
+package sistemaescolar;
 
 import org.orm.*;
 import org.hibernate.Query;
@@ -137,7 +137,7 @@ public class EventoDAO {
     }
 
     public static List queryEvento(PersistentSession session, String condition, String orderBy) throws PersistentException {
-        StringBuffer sb = new StringBuffer("From sistemaescolar.model.Evento as Evento");
+        StringBuffer sb = new StringBuffer("From sistemaescolar.Evento as Evento");
         if (condition != null)
             sb.append(" Where ").append(condition);
         if (orderBy != null)
@@ -152,7 +152,7 @@ public class EventoDAO {
     }
 
     public static List queryEvento(PersistentSession session, String condition, String orderBy, LockMode lockMode) throws PersistentException {
-        StringBuffer sb = new StringBuffer("From sistemaescolar.model.Evento as Evento");
+        StringBuffer sb = new StringBuffer("From sistemaescolar.Evento as Evento");
         if (condition != null)
             sb.append(" Where ").append(condition);
         if (orderBy != null)
@@ -244,7 +244,7 @@ public class EventoDAO {
     }
 
     public static java.util.Iterator iterateEventoByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
-        StringBuffer sb = new StringBuffer("From sistemaescolar.model.Evento as Evento");
+        StringBuffer sb = new StringBuffer("From sistemaescolar.Evento as Evento");
         if (condition != null)
             sb.append(" Where ").append(condition);
         if (orderBy != null)
@@ -259,7 +259,7 @@ public class EventoDAO {
     }
 
     public static java.util.Iterator iterateEventoByQuery(PersistentSession session, String condition, String orderBy, LockMode lockMode) throws PersistentException {
-        StringBuffer sb = new StringBuffer("From sistemaescolar.model.Evento as Evento");
+        StringBuffer sb = new StringBuffer("From sistemaescolar.Evento as Evento");
         if (condition != null)
             sb.append(" Where ").append(condition);
         if (orderBy != null)
@@ -292,6 +292,37 @@ public class EventoDAO {
         try {
             EscuelaPersistentManager.instance().deleteObject(evento);
             return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new PersistentException(e);
+        }
+    }
+
+    public static boolean deleteAndDissociate(Evento evento) throws PersistentException {
+        try {
+            if (evento.getAdministradoridAdministrador() != null) {
+                evento.getAdministradoridAdministrador().evento.remove(evento);
+            }
+
+            return delete(evento);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new PersistentException(e);
+        }
+    }
+
+    public static boolean deleteAndDissociate(Evento evento, PersistentSession session) throws PersistentException {
+        try {
+            if (evento.getAdministradoridAdministrador() != null) {
+                evento.getAdministradoridAdministrador().evento.remove(evento);
+            }
+
+            try {
+                session.delete(evento);
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             throw new PersistentException(e);

@@ -11,7 +11,7 @@
  * Licensee: 
  * License Type: Evaluation
  */
-package sistemaescolar.model;
+package sistemaescolar;
 
 import java.util.List;
 
@@ -23,16 +23,20 @@ public class EventoDetachedCriteria extends AbstractORMDetachedCriteria {
     public final IntegerExpression idCircular;
     public final StringExpression titulo;
     public final StringExpression fecha;
-    public final StringExpression remitente;
     public final StringExpression contenido;
+    public final TimeExpression hora;
+    public final IntegerExpression administradoridAdministradorId;
+    public final AssociationExpression administradoridAdministrador;
 
     public EventoDetachedCriteria() {
         super(Evento.class, EventoCriteria.class);
         idCircular = new IntegerExpression("idCircular", this.getDetachedCriteria());
         titulo = new StringExpression("titulo", this.getDetachedCriteria());
         fecha = new StringExpression("fecha", this.getDetachedCriteria());
-        remitente = new StringExpression("remitente", this.getDetachedCriteria());
         contenido = new StringExpression("contenido", this.getDetachedCriteria());
+        hora = new TimeExpression("hora", this.getDetachedCriteria());
+        administradoridAdministradorId = new IntegerExpression("administradoridAdministrador.idAdministrador", this.getDetachedCriteria());
+        administradoridAdministrador = new AssociationExpression("administradoridAdministrador", this.getDetachedCriteria());
     }
 
     public EventoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -40,8 +44,14 @@ public class EventoDetachedCriteria extends AbstractORMDetachedCriteria {
         idCircular = new IntegerExpression("idCircular", this.getDetachedCriteria());
         titulo = new StringExpression("titulo", this.getDetachedCriteria());
         fecha = new StringExpression("fecha", this.getDetachedCriteria());
-        remitente = new StringExpression("remitente", this.getDetachedCriteria());
         contenido = new StringExpression("contenido", this.getDetachedCriteria());
+        hora = new TimeExpression("hora", this.getDetachedCriteria());
+        administradoridAdministradorId = new IntegerExpression("administradoridAdministrador.idAdministrador", this.getDetachedCriteria());
+        administradoridAdministrador = new AssociationExpression("administradoridAdministrador", this.getDetachedCriteria());
+    }
+
+    public AdministradorDetachedCriteria createAdministradoridAdministradorCriteria() {
+        return new AdministradorDetachedCriteria(createCriteria("administradoridAdministrador"));
     }
 
     public Evento uniqueEvento(PersistentSession session) {

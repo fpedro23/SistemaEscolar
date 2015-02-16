@@ -1,24 +1,25 @@
 package sistemaescolar.dbmanagement;
 
-import sistemaescolar.model.EscuelaPersistentManager;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
-import sistemaescolar.model.Aviso;
-import sistemaescolar.model.AvisoDAO;
+import sistemaescolar.AdministradorDAO;
+import sistemaescolar.Aviso;
+import sistemaescolar.AvisoDAO;
+import sistemaescolar.EscuelaPersistentManager;
 
 /**
  * Created by Pedro on 03/02/15.
  */
 public class AvisoAD {
 
-    public static boolean createAviso(String fecha, String remitente, String contenido, String titulo) throws PersistentException {
+    public static boolean createAviso(String fecha, Integer idRemitente, String contenido, String titulo) throws PersistentException {
         PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
             Aviso sistemaEscolarAviso = AvisoDAO.createAviso();
             // Initialize the properties of the persistent object here
             sistemaEscolarAviso.setTitulo(titulo);
-            sistemaEscolarAviso.setRemitente(remitente);
+            sistemaEscolarAviso.setAdministradoridAdministrador(AdministradorDAO.getAdministradorByORMID(idRemitente));
             sistemaEscolarAviso.setFecha(fecha);
             sistemaEscolarAviso.setContenido(contenido);
             AvisoDAO.save(sistemaEscolarAviso);
@@ -43,14 +44,14 @@ public class AvisoAD {
         return sistemaEscolarAviso;
     }
 
-    public static boolean updateAviso(int idAviso, String fecha, String remitente, String contenido, String titulo) throws PersistentException {
+    public static boolean updateAviso(int idAviso, String fecha, Integer idRemitente, String contenido, String titulo) throws PersistentException {
         PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
             Aviso sistemaEscolarAviso = AvisoDAO.getAvisoByORMID(idAviso);
             // Update the properties of the persistent object
             sistemaEscolarAviso.setFecha(fecha);
-            sistemaEscolarAviso.setRemitente(remitente);
+            sistemaEscolarAviso.setAdministradoridAdministrador(AdministradorDAO.getAdministradorByORMID(idRemitente));
             sistemaEscolarAviso.setContenido(contenido);
             sistemaEscolarAviso.setTitulo(titulo);
             AvisoDAO.save(sistemaEscolarAviso);

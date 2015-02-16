@@ -1,24 +1,25 @@
 package sistemaescolar.dbmanagement;
 
-import sistemaescolar.model.EscuelaPersistentManager;
-import sistemaescolar.model.Evento;
-import sistemaescolar.model.EventoDAO;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
+import sistemaescolar.AdministradorDAO;
+import sistemaescolar.EscuelaPersistentManager;
+import sistemaescolar.Evento;
+import sistemaescolar.EventoDAO;
 
 /**
  * Created by Pedro on 03/02/15.
  */
 public class EventoAD {
 
-    public static boolean createEvent(String fecha, String remitente, String contenido, String titulo) throws PersistentException {
+    public static boolean createEvent(String fecha, Integer idRemitente, String contenido, String titulo) throws PersistentException {
         PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
             Evento sistemaEscolarEvento = EventoDAO.createEvento();
             // Initialize the properties of the persistent object here
             sistemaEscolarEvento.setTitulo(titulo);
-            sistemaEscolarEvento.setRemitente(remitente);
+            sistemaEscolarEvento.setAdministradoridAdministrador(AdministradorDAO.getAdministradorByORMID(idRemitente));
             sistemaEscolarEvento.setFecha(fecha);
             sistemaEscolarEvento.setContenido(contenido);
             EventoDAO.save(sistemaEscolarEvento);
@@ -44,14 +45,14 @@ public class EventoAD {
         return sistemaEscolarEvento;
     }
 
-    public static boolean updateEvent(int idEvento, String fecha, String remitente, String contenido, String titulo) throws PersistentException {
+    public static boolean updateEvent(int idEvento, String fecha, Integer idRemitente, String contenido, String titulo) throws PersistentException {
         PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
             Evento sistemaEscolarEvento = EventoDAO.getEventoByORMID(idEvento);
             // Update the properties of the persistent object
             sistemaEscolarEvento.setFecha(fecha);
-            sistemaEscolarEvento.setRemitente(remitente);
+            sistemaEscolarEvento.setAdministradoridAdministrador(AdministradorDAO.getAdministradorByORMID(idRemitente));
             sistemaEscolarEvento.setContenido(contenido);
             sistemaEscolarEvento.setTitulo(titulo);
             EventoDAO.save(sistemaEscolarEvento);

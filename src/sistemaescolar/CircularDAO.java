@@ -11,7 +11,7 @@
  * Licensee: 
  * License Type: Evaluation
  */
-package sistemaescolar.model;
+package sistemaescolar;
 
 import org.orm.*;
 import org.hibernate.Query;
@@ -137,7 +137,7 @@ public class CircularDAO {
     }
 
     public static List queryCircular(PersistentSession session, String condition, String orderBy) throws PersistentException {
-        StringBuffer sb = new StringBuffer("From sistemaescolar.model.Circular as Circular");
+        StringBuffer sb = new StringBuffer("From sistemaescolar.Circular as Circular");
         if (condition != null)
             sb.append(" Where ").append(condition);
         if (orderBy != null)
@@ -152,7 +152,7 @@ public class CircularDAO {
     }
 
     public static List queryCircular(PersistentSession session, String condition, String orderBy, LockMode lockMode) throws PersistentException {
-        StringBuffer sb = new StringBuffer("From sistemaescolar.model.Circular as Circular");
+        StringBuffer sb = new StringBuffer("From sistemaescolar.Circular as Circular");
         if (condition != null)
             sb.append(" Where ").append(condition);
         if (orderBy != null)
@@ -244,7 +244,7 @@ public class CircularDAO {
     }
 
     public static java.util.Iterator iterateCircularByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
-        StringBuffer sb = new StringBuffer("From sistemaescolar.model.Circular as Circular");
+        StringBuffer sb = new StringBuffer("From sistemaescolar.Circular as Circular");
         if (condition != null)
             sb.append(" Where ").append(condition);
         if (orderBy != null)
@@ -259,7 +259,7 @@ public class CircularDAO {
     }
 
     public static java.util.Iterator iterateCircularByQuery(PersistentSession session, String condition, String orderBy, LockMode lockMode) throws PersistentException {
-        StringBuffer sb = new StringBuffer("From sistemaescolar.model.Circular as Circular");
+        StringBuffer sb = new StringBuffer("From sistemaescolar.Circular as Circular");
         if (condition != null)
             sb.append(" Where ").append(condition);
         if (orderBy != null)
@@ -292,6 +292,37 @@ public class CircularDAO {
         try {
             EscuelaPersistentManager.instance().deleteObject(circular);
             return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new PersistentException(e);
+        }
+    }
+
+    public static boolean deleteAndDissociate(Circular circular) throws PersistentException {
+        try {
+            if (circular.getAdministradoridAdministrador() != null) {
+                circular.getAdministradoridAdministrador().circular.remove(circular);
+            }
+
+            return delete(circular);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new PersistentException(e);
+        }
+    }
+
+    public static boolean deleteAndDissociate(Circular circular, PersistentSession session) throws PersistentException {
+        try {
+            if (circular.getAdministradoridAdministrador() != null) {
+                circular.getAdministradoridAdministrador().circular.remove(circular);
+            }
+
+            try {
+                session.delete(circular);
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             throw new PersistentException(e);
