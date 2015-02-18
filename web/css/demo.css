@@ -38,7 +38,7 @@ tr {
 }
 
 
-input[type=text]{
+input[type=text], select {
     padding: 10px;
     background-color: #ed8151;
     border-radius: 10px;
@@ -52,7 +52,7 @@ textarea {
     border-radius: 10px;
     border: none;
     color: #ffffff;
-    width: 100em;
+    width: 50em;
     height: 30em;
 }
 
@@ -74,6 +74,7 @@ a {
     text-decoration: none;
     color: #ed8151;
     outline: none;
+    font-size: large;
 }
 
 a:hover, a:focus {

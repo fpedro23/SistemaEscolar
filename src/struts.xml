@@ -151,14 +151,35 @@
             <interceptor-ref name="loggingStack"/>
             <result name="success" type="redirectAction">readAvisos</result>
         </action>
+        <!--Fin de Acciones de Aviso -->
 
         <action name="nuevoRegistroAviso" class="sistemaescolar.action.AvisoAction" method="nuevoRegistro">
             <interceptor-ref name="loggingStack"/>
             <result name="success">nuevoRegistro.jsp</result>
         </action>
 
-        <!--Fin de Acciones de Aviso -->
+        <!--Acciones de Administrador -->
+        <action name="createAdministrador" class="sistemaescolar.action.AdministradorAction"
+                method="createAdministrador">
+            <result name="success">action_responses/nuevoRegistroSuccess.jsp</result>
+            <result name="failure">action_responses/nuevoRegistroFailure.jsp</result>
+        </action>
 
+        <action name="readAdministradorById" class="sistemaescolar.action.AdministradorAction" method="readAdministradorByID">
+            <result name="success">editarRegistro.jsp</result>
+        </action>
+
+        <action name="updateAdministrador" class="sistemaescolar.action.AdministradorAction" method="updateAdministrador">
+            <result name="success">action_responses/editarRegistroSuccess.jsp</result>
+            <result name="failure">action_responses/editarRegistroFailure.jsp</result>
+        </action>
+
+        <action name="deleteAdministrador" class="sistemaescolar.action.AdministradorAction" method="deleteAdministrador">
+            <result name="success" type="redirectAction">readAdministrador</result>
+        </action>
+
+
+        <!--Fin de Acciones de Administrador -->
 
 
     </package>

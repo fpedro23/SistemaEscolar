@@ -1,3 +1,5 @@
+<%@ page import="sistemaescolar.dbmanagement.AdministratorDBManager" %>
+<%@ page import="sistemaescolar.Administrador" %>
 <%--
   Created by IntelliJ IDEA.
   User: mng687
@@ -66,7 +68,19 @@
             </tr>
             <tr>
                 <td>Remitente</td>
-                <td><input type="text" name="idRemitente" id="remitente"/></td>
+                <td>
+                    <select name="idRemitente" id="idRemitente" style="padding: 10px;">
+                        <%
+                            Administrador[] administradors = AdministratorDBManager.listAdministrators();
+                            for(Administrador administrador : administradors) {
+                        %>
+                                <option value="<%= administrador.getIdAdministrador() %>"><%= administrador.getNombreAdministrador() %></option>
+                        <%
+                            }
+                        %>
+                    </select>
+                </td>
+                <%--<td><input type="text" name="idRemitente" id="remitente"/></td>--%>
             </tr>
             <tr>
                 <td>Contenido</td>
