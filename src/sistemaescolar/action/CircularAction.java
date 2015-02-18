@@ -1,6 +1,7 @@
 package sistemaescolar.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.Preparable;
 import org.hibernate.Hibernate;
 import org.orm.PersistentException;
 import sistemaescolar.Circular;
@@ -17,6 +18,7 @@ public class CircularAction extends ActionSupport {
     private boolean mobile;
     private Circular circular;
     private Circular[] circulars;
+    private String tipo;
 
     @Override
     public String execute() throws Exception {
@@ -36,6 +38,11 @@ public class CircularAction extends ActionSupport {
             resultado = "failure";
             return "failure";
         }
+    }
+
+    public String nuevoRegistro(){
+        tipo= "Circular";
+        return "success";
     }
 
 
@@ -85,6 +92,15 @@ public class CircularAction extends ActionSupport {
             return "success";
         } else
             return "failure";
+    }
+
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public boolean isMobile() {
@@ -150,4 +166,6 @@ public class CircularAction extends ActionSupport {
     public void setCirculars(Circular[] circulars) {
         this.circulars = circulars;
     }
+
+
 }

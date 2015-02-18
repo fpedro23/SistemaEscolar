@@ -1,21 +1,43 @@
 package sistemaescolar.action;
 
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.interceptor.SessionAware;
 import org.orm.PersistentException;
 import sistemaescolar.Administrador;
 import sistemaescolar.dbmanagement.AdministratorDBManager;
 import sistemaescolar.dbmanagement.AvisoAD;
 
+import java.util.Map;
+
 /**
  * Created by Pedro on 17/02/15.
  */
-public class AdministradorAction {
+public class AdministradorAction extends ActionSupport implements SessionAware {
     public String resultado;
     public Administrador[] administradors;
     private int id;
     private String nombre, password;
     private Administrador administrador;
     private boolean mobile;
+    private Map<String, Object> sessionMap;
+    public String mensajeResultado;
 
+    public String doLogin() throws PersistentException {
+
+        Administrador resultado = AdministratorDBManager.doLogin(nombre, password);
+        System.out.println("Nombre: "+nombre+"User"+resultado.getNombreAdministrador());
+
+        if (resultado != null) {
+            mensajeResultado = "Bienvenido " + resultado.getNombreAdministrador();
+
+            sessionMap.put("USER", resultado);
+            return "success";
+        } else {
+            mensajeResultado = "Login Fallido";
+            return "error";
+        }
+
+    }
 
     public String createAdministrador() throws PersistentException {
         try {
@@ -110,4 +132,14 @@ public class AdministradorAction {
     public void setMobile(boolean mobile) {
         this.mobile = mobile;
     }
+
+    public Map<String, Object> getSessionMap() {
+        return sessionMap;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> sessionMap) {
+        this.sessionMap = sessionMap;
+    }
+
 }

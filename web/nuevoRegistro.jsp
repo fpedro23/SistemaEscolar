@@ -51,7 +51,7 @@
 <body>
 <%
     // tipo debe ser: Circular, Event o Aviso
-    String tipo = request.getParameter("tipo");
+    String tipo = (String)request.getAttribute("tipo");
 %>
 <form action="create<%= tipo %>" method="post" name="registro" id="registro" accept-charset="utf-8">
     <div align="center">

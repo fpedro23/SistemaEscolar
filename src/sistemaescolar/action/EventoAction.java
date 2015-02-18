@@ -15,6 +15,8 @@ public class EventoAction extends ActionSupport {
     private String fecha, idRemitente, contenido, titulo;
     private Evento evento;
     private boolean mobile;
+    private String tipo;
+
 
     public String createEvent() throws PersistentException {
         try {
@@ -77,6 +79,11 @@ public class EventoAction extends ActionSupport {
     }
 
 
+    public String nuevoRegistro(){
+        tipo= "Event";
+        return "success";
+    }
+
     public boolean isMobile() {
         return mobile;
     }
@@ -131,5 +138,13 @@ public class EventoAction extends ActionSupport {
 
     public void setEvento(Evento evento) {
         this.evento = evento;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }

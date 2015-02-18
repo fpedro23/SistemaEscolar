@@ -5,35 +5,82 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+
     <package name="sistemaescolar" namespace="/" extends="struts-default">
+        <interceptors>
+            <interceptor name="mylogging"
+                         class="sistemaescolar.MyLoggingInterceptor">
+            </interceptor>
+            <interceptor-stack name="loggingStack">
+                <interceptor-ref name="mylogging" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>
+
+        <!-- <default-interceptor-ref name="loggingStack"></default-interceptor-ref> -->
+
+        <global-results>
+            <result name="needLogin">login.jsp</result>
+        </global-results>
+
+
+        <!--Acciones de Administrador -->
+
+        <action name="doLogin" class="sistemaescolar.action.AdministradorAction" method="doLogin">
+            <result name="success">index.jsp</result>
+            <result name="failure">login.jsp</result>
+        </action>
+
+        <action name="createAdministrador" class="sistemaescolar.action.AdministradorAction"
+                method="createAdministrador">
+            <interceptor-ref name="loggingStack"/>
+            <result name="success">action_responses/nuevoRegistroSuccess.jsp</result>
+            <result name="failure">action_responses/nuevoRegistroFailure.jsp</result>
+        </action>
+
+
+
+        <!--Fin de Acciones de Administrador -->
+
 
         <!--Acciones de Circular -->
 
         <action name="createCircular" class="sistemaescolar.action.CircularAction" method="create">
+            <interceptor-ref name="loggingStack"/>
             <result name="success">action_responses/nuevoRegistroSuccess.jsp</result>
             <result name="failure">action_responses/nuevoRegistroFailure.jsp</result>
         </action>
 
         <action name="readCircularById" class="sistemaescolar.action.CircularAction" method="getById">
+            <interceptor-ref name="loggingStack"/>
             <result name="success">/action_responses/getcircularbyid.jsp</result>
         </action>
 
         <action name="readCircular" class="sistemaescolar.action.CircularAction" method="getAll">
+            <interceptor-ref name="loggingStack"/>
             <result name="success">/listCircular.jsp</result>
             <result name="json">/action_responses/getcircularall.jsp</result>
         </action>
 
         <action name="editCircular" class="sistemaescolar.action.CircularAction" method="getById">
+            <interceptor-ref name="loggingStack"/>
             <result name="success">/editarRegistro.jsp</result>
         </action>
 
         <action name="updateCircular" class="sistemaescolar.action.CircularAction" method="update">
+            <interceptor-ref name="loggingStack"/>
             <result name="success">action_responses/editarRegistroSuccess.jsp</result>
             <result name="failre">action_responses/editarRegistroFailure.jsp</result>
         </action>
 
         <action name="deleteCircular" class="sistemaescolar.action.CircularAction" method="delete">
+            <interceptor-ref name="loggingStack"/>
             <result name="success" type="redirectAction">readCircular</result>
+        </action>
+
+        <action name="nuevoRegistroCircular" class="sistemaescolar.action.CircularAction" method="nuevoRegistro">
+            <interceptor-ref name="loggingStack"/>
+            <result name="success">nuevoRegistro.jsp</result>
         </action>
 
         <!--Fin de Acciones de Circular -->
@@ -41,65 +88,77 @@
 
         <!--Acciones de Evento -->
         <action name="createEvent" class="sistemaescolar.action.EventoAction" method="createEvent">
+            <interceptor-ref name="loggingStack"/>
             <result name="success">action_responses/nuevoRegistroSuccess.jsp</result>
             <result name="failure">action_responses/nuevoRegistroFailure.jsp</result>
         </action>
 
         <action name="readEvent" class="sistemaescolar.action.EventoAction" method="readEvents">
+            <interceptor-ref name="loggingStack"/>
             <result name="json">/action_responses/ListaEventos.jsp</result>
             <result name="success">/listEvento.jsp</result>
-
         </action>
 
         <action name="readEventById" class="sistemaescolar.action.EventoAction" method="readEventById">
+            <interceptor-ref name="loggingStack"/>
             <result name="success">/editarRegistro.jsp</result>
         </action>
 
         <action name="updateEvent" class="sistemaescolar.action.EventoAction" method="updateEvent">
+            <interceptor-ref name="loggingStack"/>
             <result name="success">action_responses/editarRegistroSuccess.jsp</result>
             <result name="failre">action_responses/editarRegistroFailure.jsp</result>
         </action>
 
         <action name="deleteEvent" class="sistemaescolar.action.EventoAction" method="deleteEvent">
+            <interceptor-ref name="loggingStack"/>
             <result name="success" type="redirectAction">readEvent</result>
         </action>
+
+        <action name="nuevoRegistroEvento" class="sistemaescolar.action.EventoAction" method="nuevoRegistro">
+            <interceptor-ref name="loggingStack"/>
+            <result name="success">nuevoRegistro.jsp</result>
+        </action>
+
+
         <!--Fin de Acciones de Evento -->
 
         <!--Acciones de Aviso -->
         <action name="createAviso" class="sistemaescolar.action.AvisoAction" method="createAviso">
+            <interceptor-ref name="loggingStack"/>
             <result name="success">action_responses/nuevoRegistroSuccess.jsp</result>
             <result name="failure">action_responses/nuevoRegistroFailure.jsp</result>
         </action>
 
         <action name="readAvisos" class="sistemaescolar.action.AvisoAction" method="readAvisos">
+            <interceptor-ref name="loggingStack"/>
             <result name="json">/action_responses/ListaAvisos.jsp</result>
             <result name="success">/listAviso.jsp</result>
-
         </action>
 
         <action name="readAvisoById" class="sistemaescolar.action.AvisoAction" method="readAvisoById">
+            <interceptor-ref name="loggingStack"/>
             <result name="success">/editarRegistro.jsp</result>
         </action>
 
         <action name="updateAviso" class="sistemaescolar.action.AvisoAction" method="updateAviso">
+            <interceptor-ref name="loggingStack"/>
             <result name="success">action_responses/editarRegistroSuccess.jsp</result>
             <result name="failre">action_responses/editarRegistroFailure.jsp</result>
         </action>
 
         <action name="deleteAviso" class="sistemaescolar.action.AvisoAction" method="deleteAviso">
+            <interceptor-ref name="loggingStack"/>
             <result name="success" type="redirectAction">readAvisos</result>
         </action>
-        <!--Fin de Acciones de Aviso -->
 
-        <!--Acciones de Evento -->
-        <action name="createAdministrador" class="sistemaescolar.action.AdministradorAction"
-                method="createAdministrador">
-            <result name="success">action_responses/nuevoRegistroSuccess.jsp</result>
-            <result name="failure">action_responses/nuevoRegistroFailure.jsp</result>
+        <action name="nuevoRegistroAviso" class="sistemaescolar.action.AvisoAction" method="nuevoRegistro">
+            <interceptor-ref name="loggingStack"/>
+            <result name="success">nuevoRegistro.jsp</result>
         </action>
 
+        <!--Fin de Acciones de Aviso -->
 
-        <!--Fin de Acciones de Evento -->
 
 
     </package>

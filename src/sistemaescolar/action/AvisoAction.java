@@ -15,6 +15,7 @@ public class AvisoAction extends ActionSupport {
     private String fecha, idRemitente, contenido, titulo;
     private Aviso aviso;
     private boolean mobile;
+    private String tipo;
 
     public String createAviso() throws PersistentException {
         try {
@@ -75,6 +76,11 @@ public class AvisoAction extends ActionSupport {
         return "success";
     }
 
+    public String nuevoRegistro(){
+        tipo= "Aviso";
+        return "success";
+    }
+
 
     public boolean isMobile() {
         return mobile;
@@ -130,5 +136,13 @@ public class AvisoAction extends ActionSupport {
 
     public void setAviso(Aviso aviso) {
         this.aviso = aviso;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }

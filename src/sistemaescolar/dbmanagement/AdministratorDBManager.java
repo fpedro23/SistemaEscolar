@@ -1,13 +1,36 @@
 package sistemaescolar.dbmanagement;
 
+import org.apache.struts2.interceptor.SessionAware;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 import sistemaescolar.*;
 
+import java.util.Map;
+
 /**
  * Created by Pedro on 03/02/15.
  */
-public class AdministratorDBManager {
+public class AdministratorDBManager{
+
+
+    public static Administrador doLogin(String nombreAdministrador, String password) throws PersistentException {
+
+        System.out.println("Listing Usuario...");
+        AdministradorCriteria administradorCriteria = new AdministradorCriteria();
+        administradorCriteria.nombreAdministrador.eq(nombreAdministrador);
+        administradorCriteria.password.eq(password);
+
+        Administrador[] administradors = AdministradorDAO.listAdministradorByCriteria(administradorCriteria);
+
+        if (administradors.length == 1) {
+            return administradors[0];
+        } else {
+            return null;
+
+        }
+
+    }
+
 
     public static boolean createAdministrator(String nombre, String password) throws PersistentException {
         PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
@@ -73,4 +96,5 @@ public class AdministratorDBManager {
             EscuelaPersistentManager.instance().disposePersistentManager();
         }
     }
+
 }
