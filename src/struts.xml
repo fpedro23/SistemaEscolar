@@ -91,5 +91,16 @@
         </action>
         <!--Fin de Acciones de Aviso -->
 
+        <!--Acciones de Evento -->
+        <action name="createAdministrador" class="sistemaescolar.action.AdministradorAction"
+                method="createAdministrador">
+            <result name="success">action_responses/nuevoRegistroSuccess.jsp</result>
+            <result name="failure">action_responses/nuevoRegistroFailure.jsp</result>
+        </action>
+
+
+        <!--Fin de Acciones de Evento -->
+
+
     </package>
 </struts>
