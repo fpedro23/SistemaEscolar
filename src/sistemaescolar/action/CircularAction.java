@@ -94,6 +94,14 @@ public class CircularAction extends ActionSupport {
             return "failure";
     }
 
+    public String getAllMobile() throws PersistentException {
+        setCirculars(CircularDBManager.getAll());
+        if(circulars != null)
+            return "json";
+        else
+            return "failure";
+    }
+
 
     public String getTipo() {
         return tipo;

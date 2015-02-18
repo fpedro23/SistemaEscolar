@@ -84,6 +84,15 @@ public class EventoAction extends ActionSupport {
         return "success";
     }
 
+    public String readEventsMobile() throws PersistentException {
+        eventos = EventoAD.listEvents();
+
+        if(eventos != null)
+            return "json";
+        else
+            return "failure";
+    }
+
     public boolean isMobile() {
         return mobile;
     }

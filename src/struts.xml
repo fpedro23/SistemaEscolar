@@ -23,6 +23,23 @@
             <result name="needLogin">login.jsp</result>
         </global-results>
 
+        <!-- Acciones para el API movil -->
+        <action name="mobileReadCircular" class="sistemaescolar.action.CircularAction" method="getAllMobile">
+            <result name="json">action_responses/getcircularall.jsp</result>
+        </action>
+
+        <action name="mobileReadAvisos" class="sistemaescolar.action.AvisoAction" method="readAvisosMobile">
+            <result name="json">action_responses/ListaAvisos.jsp</result>
+        </action>
+
+        <action name="mobileReadEvents" class="sistemaescolar.action.EventoAction" method="readEventsMobile">
+            <result name="json">action_responses/ListaEventos.jsp</result>
+        </action>
+
+        <action name="mobileLogin" class="sistemaescolar.action.AdministradorAction" method="doMobileLogin">
+            <result name="success">action_responses/login.jsp</result>
+        </action>
+
 
         <!--Acciones de Administrador -->
 
@@ -85,7 +102,6 @@
         <action name="readCircular" class="sistemaescolar.action.CircularAction" method="getAll">
             <interceptor-ref name="loggingStack"/>
             <result name="success">/listCircular.jsp</result>
-            <result name="json">/action_responses/getcircularall.jsp</result>
         </action>
 
         <action name="editCircular" class="sistemaescolar.action.CircularAction" method="getById">
@@ -121,7 +137,6 @@
 
         <action name="readEvent" class="sistemaescolar.action.EventoAction" method="readEvents">
             <interceptor-ref name="loggingStack"/>
-            <result name="json">/action_responses/ListaEventos.jsp</result>
             <result name="success">/listEvento.jsp</result>
         </action>
 
@@ -133,7 +148,7 @@
         <action name="updateEvent" class="sistemaescolar.action.EventoAction" method="updateEvent">
             <interceptor-ref name="loggingStack"/>
             <result name="success">action_responses/editarRegistroSuccess.jsp</result>
-            <result name="failre">action_responses/editarRegistroFailure.jsp</result>
+            <result name="failure">action_responses/editarRegistroFailure.jsp</result>
         </action>
 
         <action name="deleteEvent" class="sistemaescolar.action.EventoAction" method="deleteEvent">
@@ -158,7 +173,6 @@
 
         <action name="readAvisos" class="sistemaescolar.action.AvisoAction" method="readAvisos">
             <interceptor-ref name="loggingStack"/>
-            <result name="json">/action_responses/ListaAvisos.jsp</result>
             <result name="success">/listAviso.jsp</result>
         </action>
 
@@ -170,7 +184,7 @@
         <action name="updateAviso" class="sistemaescolar.action.AvisoAction" method="updateAviso">
             <interceptor-ref name="loggingStack"/>
             <result name="success">action_responses/editarRegistroSuccess.jsp</result>
-            <result name="failre">action_responses/editarRegistroFailure.jsp</result>
+            <result name="failure">action_responses/editarRegistroFailure.jsp</result>
         </action>
 
         <action name="deleteAviso" class="sistemaescolar.action.AvisoAction" method="deleteAviso">

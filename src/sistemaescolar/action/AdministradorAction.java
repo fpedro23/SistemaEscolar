@@ -22,6 +22,7 @@ public class AdministradorAction extends ActionSupport implements SessionAware {
     private Map<String, Object> sessionMap;
     public String mensajeResultado;
     private String tipo;
+    public Administrador user;
 
     public String doLogin() throws PersistentException {
 
@@ -38,6 +39,14 @@ public class AdministradorAction extends ActionSupport implements SessionAware {
             return "error";
         }
 
+    }
+
+    public String doMobileLogin() throws PersistentException {
+        user = AdministratorDBManager.doLogin(nombre, password);
+        if(resultado != null)
+            return "success";
+        else
+            return "failure";
     }
 
     public String nuevoRegistro() {

@@ -81,6 +81,14 @@ public class AvisoAction extends ActionSupport {
         return "success";
     }
 
+    public String readAvisosMobile() throws PersistentException {
+        avisos = AvisoAD.listAvisos();
+
+        if(avisos != null)
+            return "json";
+        else
+            return "failure";
+    }
 
     public boolean isMobile() {
         return mobile;
