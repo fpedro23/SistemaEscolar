@@ -13,6 +13,8 @@
  */
 package sistemaescolar;
 
+import com.google.gson.annotations.Expose;
+
 public class Aviso {
     org.orm.util.ORMAdapter _ormAdapter = new org.orm.util.AbstractORMAdapter() {
         public void setOwner(Object owner, int key) {
@@ -20,10 +22,15 @@ public class Aviso {
         }
 
     };
+    @Expose
     private int idCircular;
+    @Expose
     private String titulo;
+    @Expose
     private String fecha;
+    @Expose
     private String contenido;
+    @Expose
     private Administrador administradoridAdministrador;
 
     public Aviso() {

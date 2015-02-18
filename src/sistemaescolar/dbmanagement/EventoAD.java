@@ -35,7 +35,7 @@ public class EventoAD {
 
     public static Evento[] listEvents() throws PersistentException {
         System.out.println("Listing Evento...");
-        Evento[] sistemaEscolarEventos = EventoDAO.listEventoByQuery(null, null);
+        Evento[] sistemaEscolarEventos = EventoDAO.listEventoByQuery(null, "fecha DESC");
         return sistemaEscolarEventos;
     }
 

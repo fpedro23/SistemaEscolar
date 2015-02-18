@@ -35,7 +35,7 @@ public class AvisoAD {
 
     public static Aviso[] listAvisos() throws PersistentException {
         System.out.println("Listing Avisos...");
-        Aviso[] sistemaEscolarAviso = AvisoDAO.listAvisoByQuery(null, null);
+        Aviso[] sistemaEscolarAviso = AvisoDAO.listAvisoByQuery(null, "fecha DESC");
         return sistemaEscolarAviso;
     }
 

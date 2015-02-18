@@ -108,7 +108,7 @@ public class CircularDBManager {
         Circular[] circulars = null;
         try {
             PersistentTransaction transaction = EscuelaPersistentManager.instance().getSession().beginTransaction();
-            circulars = CircularDAO.listCircularByQuery(null, null);
+            circulars = CircularDAO.listCircularByQuery(null, "fecha DESC");
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
