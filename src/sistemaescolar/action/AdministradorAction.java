@@ -38,7 +38,11 @@ public class AdministradorAction {
 
     public String readAdministradorByID() throws PersistentException {
         administrador = AdministratorDBManager.listAdministradorById(id);
-        return "success";
+
+        if(isMobile())
+            return "json";
+        else
+            return "success";
     }
 
     public String updateAdministrador() throws PersistentException {

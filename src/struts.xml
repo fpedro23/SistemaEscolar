@@ -57,7 +57,7 @@
 
         <action name="updateEvent" class="sistemaescolar.action.EventoAction" method="updateEvent">
             <result name="success">action_responses/editarRegistroSuccess.jsp</result>
-            <result name="failre">action_responses/editarRegistroFailure.jsp</result>
+            <result name="failure">action_responses/editarRegistroFailure.jsp</result>
         </action>
 
         <action name="deleteEvent" class="sistemaescolar.action.EventoAction" method="deleteEvent">
@@ -83,7 +83,7 @@
 
         <action name="updateAviso" class="sistemaescolar.action.AvisoAction" method="updateAviso">
             <result name="success">action_responses/editarRegistroSuccess.jsp</result>
-            <result name="failre">action_responses/editarRegistroFailure.jsp</result>
+            <result name="failure">action_responses/editarRegistroFailure.jsp</result>
         </action>
 
         <action name="deleteAviso" class="sistemaescolar.action.AvisoAction" method="deleteAviso">
@@ -91,15 +91,33 @@
         </action>
         <!--Fin de Acciones de Aviso -->
 
-        <!--Acciones de Evento -->
+        <!--Acciones de Administrador -->
         <action name="createAdministrador" class="sistemaescolar.action.AdministradorAction"
                 method="createAdministrador">
             <result name="success">action_responses/nuevoRegistroSuccess.jsp</result>
             <result name="failure">action_responses/nuevoRegistroFailure.jsp</result>
         </action>
 
+        <action name="readAdministrador" class="sistemaescolar.action.AdministradorAction" method="readAdministrators">
+            <result name="json">action_responses/getAdministradorAll.jsp</result>
+            <result name="success">listAdministrador.jsp</result>
+        </action>
 
-        <!--Fin de Acciones de Evento -->
+        <action name="readAdministradorById" class="sistemaescolar.action.AdministradorAction" method="readAdministradorByID">
+            <result name="success">editarRegistro.jsp</result>
+        </action>
+
+        <action name="updateAdministrador" class="sistemaescolar.action.AdministradorAction" method="updateAdministrador">
+            <result name="success">action_responses/editarRegistroSuccess.jsp</result>
+            <result name="failure">action_responses/editarRegistroFailure.jsp</result>
+        </action>
+
+        <action name="deleteAdministrador" class="sistemaescolar.action.AdministradorAction" method="deleteAdministrador">
+            <result name="success" type="redirectAction">readAdministrador</result>
+        </action>
+
+
+        <!--Fin de Acciones de Administrador -->
 
 
     </package>

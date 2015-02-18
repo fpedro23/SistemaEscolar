@@ -24,22 +24,35 @@
 
         <script type="text/javascript">
             function loadPage(newHeader, fileName) {
-                $('#title').empty().append("Cargando...");
-                $('#gimmeContent').empty();
+                alert(document.title);
 
-                $("#gimmeContent").load(fileName, function(responseText, textStatus, req) {
+
+                var myContainer = $('#gimmeContent');
+                var myTitle = $('#title');
+                myTitle .empty().append("Cargando...");
+
+                myContainer.empty();
+
+                myContainer.load(fileName, function(responseText, textStatus, req) {
                     if(textStatus == 'error') {
-                        $('#title').empty().append("Error");
-                        $('#gimmeContent').empty().append('<h1 class="error">Hubo un error al cargar la p&aacute;gina</h1>');
+                        myTitle.empty().append("Error");
+                        myContainer.empty().append('<h1 class="error">Hubo un error al cargar la p&aacute;gina</h1>');
                     }
                     else {
-                        $('#title').empty().append(newHeader);
+                        myTitle.empty().append(newHeader);
                     }
                 });
             }
 
             function init() {
                 loadPage("Nueva Circular", "nuevoRegistro.jsp?tipo=Circular");
+
+                $("a").click(
+                        function() {
+                            loadPage(this.innerHTML, this.href);
+                            return false;
+                        }
+                );
             }
 
             $(document).ready(function() {
@@ -80,10 +93,12 @@
 
                     <ul style="list-style-type: none">
                         <li>
-                            <a href="#" class="typcn-plus-outline" onclick="loadPage('Nueva Circular', 'nuevoRegistro.jsp?tipo=Circular')">Crear Nueva Circular</a>
+                            <%--<a href="#" class="typcn-plus-outline" onclick="loadPage('Nueva Circular', 'nuevoRegistro.jsp?tipo=Circular')">Crear Nueva Circular</a>--%>
+                            <a id="menu_link_crear_circular" href="nuevoRegistro.jsp?tipo=Circular" class="typcn-plus-outline">Crear Nueva Circular</a>
                         </li>
                         <li>
-                            <a href="#" onclick="loadPage('Administrar Circulares', 'readCircular')" class="typcn-folder-open">Administrar Circulares</a>
+                            <%--<a href="readCircular.action" onclick="loadPage('Administrar Circulares', 'readCircular')" class="typcn-folder-open">Administrar Circulares</a>--%>
+                            <a id="menu_link_adminsitrar_circular" href="readCircular.action" onclick="loadPage('Administrar Circulares', 'readCircular')" class="typcn-folder-open">Administrar Circulares</a>
                         </li>
                     </ul>
 
@@ -91,23 +106,46 @@
 
                     <ul style="list-style-type: none">
                         <li>
-                            <a href="#" onclick="loadPage('Nuevo Aviso', 'nuevoRegistro.jsp?tipo=Aviso')" class="typcn-plus-outline">Crear Nuevo Aviso</a>
+                            <%--<a href="#" onclick="loadPage('Nuevo Aviso', 'nuevoRegistro.jsp?tipo=Aviso')" class="typcn-plus-outline">Crear Nuevo Aviso</a>--%>
+                            <a id="menu_link_aviso" href="nuevoRegistro.jsp?tipo=Aviso" class="typcn-plus-outline">Crear Nuevo Aviso</a>
                         </li>
                         <li>
-                            <a href="#" onclick="loadPage('Administrar Avisos', 'readAvisos')" class="typcn-folder-open">Administrar Avisos</a>
+                            <%--<a href="readAvisos.action" onclick="loadPage('Administrar Avisos', 'readAvisos')" class="typcn-folder-open">Administrar Avisos</a>--%>
+                            <a id="menu_link_administrar_aviso" href="readAvisos.action" class="typcn-folder-open">Administrar Avisos</a>
                         </li>
                     </ul>
 
-                    <a class="typcn-calendar">Eventos</a>
+                    <a class="typcn-calendar">Calendario</a>
 
 
                     <ul style="list-style-type: none">
                         <li>
-                            <a href="#" onclick="loadPage('Nuevo Evento', 'nuevoRegistro.jsp?tipo=Event')" class="typcn-plus-outline">Crear Nuevo Evento</a>
+                            <%--<a href="#" onclick="loadPage('Nuevo Evento', 'nuevoRegistro.jsp?tipo=Event')" class="typcn-plus-outline">Crear Nuevo Evento</a>--%>
+                                <a id="menu_link_crear_evento" href="nuevoRegistro.jsp?tipo=Event" class="typcn-plus-outline">Crear Nuevo Evento</a>
                         </li>
                         <li>
-                            <a href="#" onclick="loadPage('Administrar Eventos', 'readEvent')" class="typcn-folder-open">Administrar Eventos</a>
+                            <%--<a href="readEvent.action" onclick="loadPage('Administrar Eventos', 'readEvent')" class="typcn-folder-open">Administrar Eventos</a>--%>
+                                <a id="menu_link_administrar_evento" href="readEvent.action" class="typcn-folder-open">Administrar Eventos</a>
                         </li>
+                    </ul>
+
+                    <a class="typcn-clipboard">Administradores</a>
+                    <ul style="list-style-type: none">
+                        <li>
+                            <%--<a href="#" onclick="loadPage('Nuevo Administrador', 'nuevoRegistro.jsp?TipoEvent')" class="typcn-plus-outline">--%>
+                                <%--Crear Nuevo Administrador--%>
+                            <%--</a>--%>
+                            <a id="menu_link_crear_administrador" href="nuevoRegistro.jsp?tipo=Administrador" class="typcn-plus-outline">
+                                Crear Nuevo Administrador
+                            </a>
+                            <%--<a href="readAdministrador.action" onclick="loadPage('Administrar Administradores', 'readAdministrador')" class="typcn-folder-open">--%>
+                                <%--Administrar Administradores--%>
+                            <%--</a>--%>
+                            <a id="menu_link_administrar_evento" href="readAdministrador.action" class="typcn-folder-open">
+                                Administrar Administradores
+                            </a>
+                        </li>
+
                     </ul>
 
                 </ul>
