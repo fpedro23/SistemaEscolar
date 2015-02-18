@@ -45,7 +45,7 @@
 </head>
 <body>
 <div align="center">
-    <form action="#" method="get" name="registro" id="editForm">
+    <form action="createAdministrador.action" method="get" name="registro" id="editForm">
         <table>
             <tr>
                 <td>Nombre</td>
@@ -53,15 +53,14 @@
             </tr>
             <tr>
                 <td>
-                    Nueva contrase&ntilde;a
+                    Contrase&ntilde;a
                 </td>
-                <td><input type="password" name="password" id="password"/></td>
-                <td><input type="password" name="confirmPassword"/></td>
+                <td><input type="password" name="password" id="password"/>
             </tr>
         </table>
         <br>
         <input type="hidden" name="id"/>
-        <button type="submit">Editar</button>
+        <button type="submit">Enviar</button>
 
         <div id="result"></div>
     </form>

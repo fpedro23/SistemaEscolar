@@ -71,7 +71,7 @@
         if (circulars == null || circulars.length == 0) {
     %>
     <span><h1 class="error">No hay Circulares registradas</h1></span>
-    <button onclick="loadPage('Nueva Circular', 'nuevoRegistro.jsp?tipo=Circular')">Crea una nueva</button>
+    <button onclick="loadPage('Crear Nueva Circular', 'nuevoRegistroCircular.action')">Crea una nueva</button>
     <%
     } else {
 

@@ -71,7 +71,7 @@
         if (eventos == null || eventos.length == 0) {
     %>
     <span><h1 class="error">No hay Eventos registrados</h1></span>
-    <button onclick="loadPage('Nuevo Evento', 'nuevoRegistro.jsp?tipo=Event')">Crear uno nuevo</button>
+    <button onclick="loadPage('Nuevo Evento', 'nuevoRegistroEvento.action')">Crear uno nuevo</button>
     <%
     } else {
     %>

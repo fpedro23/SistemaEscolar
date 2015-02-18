@@ -38,6 +38,32 @@
             <result name="failure">action_responses/nuevoRegistroFailure.jsp</result>
         </action>
 
+        <action name="readAdministrador" class="sistemaescolar.action.AdministradorAction" method="readAdministrators">
+            <interceptor-ref name="loggingStack"/>
+            <result name="success">listAdministrador.jsp</result>
+        </action>
+
+        <action name="readAdministradorById" class="sistemaescolar.action.AdministradorAction" method="readAdministradorByID">
+            <interceptor-ref name="loggingStack"/>
+            <result name="success">editAdministrador.jsp</result>
+        </action>
+
+        <action name="updateAdministrador" class="sistemaescolar.action.AdministradorAction" method="updateAdministrador">
+            <interceptor-ref name="loggingStack"/>
+            <result name="success">action_responses/editarRegistroSuccess.jsp</result>
+            <result name="failure">action_responses/editarRegistroFailure.jsp</result>
+        </action>
+
+        <action name="deleteAdministrador" class="sistemaescolar.action.AdministradorAction" method="deleteAdministrador">
+            <interceptor-ref name="loggingStack"/>
+            <result name="success" type="redirectAction">readAdministrador</result>
+        </action>
+
+        <action name="nuevoRegistroAdministrador" class="sistemaescolar.action.AdministradorAction" method="nuevoRegistro">
+            <interceptor-ref name="loggingStack"/>
+            <result name="success">nuevoAdministrador.jsp</result>
+        </action>
+
 
 
         <!--Fin de Acciones de Administrador -->
@@ -157,29 +183,6 @@
             <interceptor-ref name="loggingStack"/>
             <result name="success">nuevoRegistro.jsp</result>
         </action>
-
-        <!--Acciones de Administrador -->
-        <action name="createAdministrador" class="sistemaescolar.action.AdministradorAction"
-                method="createAdministrador">
-            <result name="success">action_responses/nuevoRegistroSuccess.jsp</result>
-            <result name="failure">action_responses/nuevoRegistroFailure.jsp</result>
-        </action>
-
-        <action name="readAdministradorById" class="sistemaescolar.action.AdministradorAction" method="readAdministradorByID">
-            <result name="success">editarRegistro.jsp</result>
-        </action>
-
-        <action name="updateAdministrador" class="sistemaescolar.action.AdministradorAction" method="updateAdministrador">
-            <result name="success">action_responses/editarRegistroSuccess.jsp</result>
-            <result name="failure">action_responses/editarRegistroFailure.jsp</result>
-        </action>
-
-        <action name="deleteAdministrador" class="sistemaescolar.action.AdministradorAction" method="deleteAdministrador">
-            <result name="success" type="redirectAction">readAdministrador</result>
-        </action>
-
-
-        <!--Fin de Acciones de Administrador -->
 
 
     </package>

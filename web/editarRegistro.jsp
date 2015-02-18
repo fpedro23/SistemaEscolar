@@ -1,6 +1,8 @@
 <%@ page import="sistemaescolar.Evento" %>
 <%@ page import="sistemaescolar.Circular" %>
 <%@ page import="sistemaescolar.Aviso" %>
+<%@ page import="sistemaescolar.Administrador" %>
+<%@ page import="sistemaescolar.dbmanagement.AdministratorDBManager" %>
 <%--
   Created by IntelliJ IDEA.
   User: mng687
@@ -59,31 +61,62 @@
         <table>
             <tr>
                 <td>T&iacute;tulo</td>
-                <td><input type="text" name="titulo" value="<%=
+                <td>
+                    <input type="text" name="titulo" value="<%=
                             circular != null ? circular.getTitulo() :
                             evento   != null ? evento.getTitulo()   :
                                                aviso.getTitulo()
-                        %>"/></td>
+                        %>"/>
+                </td>
             </tr>
             <tr>
                 <td>Fecha</td>
-                <td><input type="date" name="fecha" value="<%=
+                <td>
+                    <input type="date" name="fecha" value="<%=
                             circular != null ? circular.getFecha() :
                             evento   != null ? evento.getFecha()   :
                                                aviso.getFecha()
-                        %>"/></td>
+                        %>"/>
+                </td>
             </tr>
             <tr>
                 <td>Remitente</td>
-                <td><input type="text" name="remitente" value="<%=
-                            circular != null ? circular.getRemitente() :
-                            evento   != null ? evento.getRemitente()   :
-                                               aviso.getRemitente()
-                        %>"/></td>
+                <td>
+                    <%--<input type="text" name="remitente" value="<%--%>
+                            <%--Administrador remitente = circular != null ? circular.getAdministradoridAdministrador() :--%>
+                                                      <%--evento   != null ? evento.getAdministradoridAdministrador()   :--%>
+                                                                         <%--aviso.getAdministradoridAdministrador();--%>
+                            <%--response.getWriter().print(remitente.getIdAdministrador());--%>
+                        <%--%>"/>--%>
+                    <select name="idRemitente">
+                        <%
+                            Administrador remitente = circular != null ? circular.getAdministradoridAdministrador() :
+                                                      evento   != null ? evento.getAdministradoridAdministrador()   :
+                                                                         aviso.getAdministradoridAdministrador();
+                            Administrador[] administradors = AdministratorDBManager.listAdministrators();
+                            for(Administrador administrador : administradors) {
+                        %>
+                            <option value="<%= administrador.getIdAdministrador() %>"
+                                    <%
+                                        if(administrador.getIdAdministrador() == remitente.getIdAdministrador()) {
+                                    %>
+                                            selected="selected"
+                                    <%
+                                        }
+                                    %>
+                            >
+                                <%= administrador.getNombreAdministrador() %>
+                            </option>
+                        <%
+                            }
+                        %>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>Contenido</td>
-                <td><textarea name="contenido" id="contenido"><%=
+                <td>
+                    <textarea name="contenido" id="contenido"><%=
                 circular != null ? circular.getContenido() :
                         evento != null ? evento.getContenido() :
                                 aviso.getContenido()

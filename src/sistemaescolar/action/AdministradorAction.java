@@ -21,13 +21,14 @@ public class AdministradorAction extends ActionSupport implements SessionAware {
     private boolean mobile;
     private Map<String, Object> sessionMap;
     public String mensajeResultado;
+    private String tipo;
 
     public String doLogin() throws PersistentException {
 
         Administrador resultado = AdministratorDBManager.doLogin(nombre, password);
-        System.out.println("Nombre: "+nombre+"User"+resultado.getNombreAdministrador());
 
         if (resultado != null) {
+            System.out.println("Nombre: "+nombre+"User"+resultado.getNombreAdministrador());
             mensajeResultado = "Bienvenido " + resultado.getNombreAdministrador();
 
             sessionMap.put("USER", resultado);
@@ -37,6 +38,11 @@ public class AdministradorAction extends ActionSupport implements SessionAware {
             return "error";
         }
 
+    }
+
+    public String nuevoRegistro() {
+        tipo = "Administrador";
+        return "success";
     }
 
     public String createAdministrador() throws PersistentException {
@@ -139,6 +145,14 @@ public class AdministradorAction extends ActionSupport implements SessionAware {
 
     public Map<String, Object> getSessionMap() {
         return sessionMap;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     @Override

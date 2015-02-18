@@ -28,7 +28,7 @@
 		</li>		<li id="li_2" >
 		<label class="description" for="element_2">Password </label>
 		<div>
-			<input id="element_2" name="password" class="element text medium" type="text" maxlength="255" value=""/>
+			<input id="element_2" name="password" class="element text medium" type="password" maxlength="255" value=""/>
 		</div> 
 		</li>
 			

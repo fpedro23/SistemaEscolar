@@ -20,9 +20,7 @@
                                     nombre: 'required',
                                     oldPassword: 'required',
                                     password: 'required',
-                                    confirmPassword: {
-                                        equalto: "#password"
-                                    }
+                                    confirmPassword: 'required'
                                 },
                                 messages: {
                                     nombre: 'Debes ingresar un Nombre',
@@ -53,7 +51,7 @@
     Administrador administrador = (Administrador) request.getAttribute("administrador");
 %>
 <div align="center">
-    <form action="#" method="get" name="registro" id="editForm">
+    <form action="updateAdministrador.action" method="get" name="registro" id="editForm">
         <table>
             <tr>
                 <td>Nombre</td>
@@ -68,6 +66,8 @@
                     Nueva contrase&ntilde;a
                 </td>
                 <td><input type="password" name="password" id="password"/></td>
+            </tr>
+                <td>Comfirmar Contrase&ntilde;a</td>
                 <td><input type="password" name="confirmPassword"/></td>
             </tr>
         </table>

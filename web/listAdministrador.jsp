@@ -71,7 +71,7 @@
         if (administradors == null || administradors.length == 0) {
     %>
     <span><h1 class="error">No hay administradores registrados</h1></span>
-    <button onclick="loadPage('Nuevo Administrador','nuevoRegistro.jsp?tipo=Administrador')">Crea uno nuevo</button>
+    <button onclick="loadPage('Nuevo Administrador','nuevoRegistroAdministrador.action')">Crea uno nuevo</button>
     <%
     } else {
     %>
