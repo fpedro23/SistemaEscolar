@@ -24,7 +24,9 @@ public class EventoAction extends ActionSupport {
                     fecha,
                     Integer.parseInt(getIdRemitente()),
                     contenido,
-                    titulo,horaInicio,horaFinal);
+                    titulo,
+                    horaInicio,
+                    horaFinal);
             resultado = "Evento creado existosamente";
         } catch (Exception e) {
             System.out.println(e.toString());

@@ -88,34 +88,13 @@ public class CircularDBManager {
     }
 
     public static Circular getById(int id) throws PersistentException {
-        Circular circular = null;
-
-        try {
-            PersistentTransaction transaction = EscuelaPersistentManager.instance().getSession().beginTransaction();
-
-            circular = CircularDAO.getCircularByORMID(id);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            EscuelaPersistentManager.instance().disposePersistentManager();
-        }
-
+        Circular circular = CircularDAO.getCircularByORMID(id);
         return circular;
     }
 
 
     public static Circular[] getAll() throws PersistentException {
-        Circular[] circulars = null;
-        try {
-            PersistentTransaction transaction = EscuelaPersistentManager.instance().getSession().beginTransaction();
-            circulars = CircularDAO.listCircularByQuery(null, "fecha DESC");
-            transaction.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            EscuelaPersistentManager.instance().disposePersistentManager();
-        }
-
+        Circular[] circulars = CircularDAO.listCircularByQuery(null, "fecha DESC");
         return circulars;
     }
 }

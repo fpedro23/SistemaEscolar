@@ -15,7 +15,7 @@ public class AdministratorDBManager{
 
     public static Administrador doLogin(String nombreAdministrador, String password) throws PersistentException {
 
-        System.out.println("Listing Usuario...");
+        System.out.println("Listing Usuario..."+nombreAdministrador);
         AdministradorCriteria administradorCriteria = new AdministradorCriteria();
         administradorCriteria.nombreAdministrador.eq(nombreAdministrador);
         administradorCriteria.password.eq(password);
@@ -23,6 +23,8 @@ public class AdministratorDBManager{
         Administrador[] administradors = AdministradorDAO.listAdministradorByCriteria(administradorCriteria);
 
         if (administradors.length == 1) {
+            System.out.println(" Usuario autenticado...");
+
             return administradors[0];
         } else {
             return null;

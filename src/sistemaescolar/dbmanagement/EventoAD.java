@@ -22,10 +22,6 @@ public class EventoAD {
         PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat(horaInicio);
-
-
-
             Evento sistemaEscolarEvento = EventoDAO.createEvento();
             // Initialize the properties of the persistent object here
             sistemaEscolarEvento.setTitulo(titulo);
@@ -33,20 +29,39 @@ public class EventoAD {
             sistemaEscolarEvento.setFecha(fecha);
             sistemaEscolarEvento.setContenido(contenido);
 
-            long ms = sdf.parse(horaInicio).getTime();
-            Time timeInicio = new Time(ms);
 
-            sistemaEscolarEvento.setHoraInicio(timeInicio);
+            try{
+                SimpleDateFormat sdf = new SimpleDateFormat(horaInicio);
 
-            ms = sdf.parse(horaFinal).getTime();
-            Time timeFinal = new Time(ms);
+                long ms = sdf.parse(horaInicio).getTime();
+                Time timeInicio = new Time(ms);
+
+                sistemaEscolarEvento.setHoraInicio(timeInicio);
+
+                ms = sdf.parse(horaFinal).getTime();
+                Time timeFinal = new Time(ms);
+                sistemaEscolarEvento.setHoraFinal(timeFinal);
+
+            }
+            catch (Exception e){
+                sistemaEscolarEvento.setHoraInicio(null);
+                sistemaEscolarEvento.setHoraFinal(null);
+                e.printStackTrace();
+            }
 
 
-            sistemaEscolarEvento.setHoraFinal(timeFinal);
+
+
+
+
+
+
+
             EventoDAO.save(sistemaEscolarEvento);
             t.commit();
             return true;
         } catch (Exception e) {
+            e.printStackTrace();
             t.rollback();
             return false;
         } finally {
