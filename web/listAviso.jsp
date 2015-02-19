@@ -71,7 +71,7 @@
         if (avisos == null || avisos.length == 0) {
     %>
     <span><h1 class="error">No hay avisos registrados</h1></span>
-    <button onclick="loadPage('Nuevo Aviso','nuevoRegistro.jsp?tipo=Aviso')">Crea uno nuevo</button>
+    <button onclick="loadPage('Nuevo Aviso','nuevoRegistroAviso.action')">Crea uno nuevo</button>
     <%
     } else {
     %>
