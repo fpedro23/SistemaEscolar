@@ -37,6 +37,12 @@ tr {
     padding-bottom: 10px;
 }
 
+td {
+    overflow: hidden;
+    height: auto;
+    max-height: 5em;
+}
+
 
 input[type=text], input[type=password], select {
     padding: 10px;

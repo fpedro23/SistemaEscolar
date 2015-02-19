@@ -93,7 +93,8 @@
             </td>
             <td><%= aviso.getFecha()     %>
             </td>
-            <td><%= aviso.getContenido() %>
+            <td>
+                <%= aviso.getContenido() %>
             </td>
             <td>
                 <form action="readAvisoById.action" method="get" id="editAviso<%=aviso.getIdCircular()%>">

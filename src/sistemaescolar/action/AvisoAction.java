@@ -25,7 +25,8 @@ public class AvisoAction extends ActionSupport {
                     contenido,
                     titulo);
             resultado = "Aviso creado existosamente";
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             System.out.println(e.toString());
             resultado = "Error al crear Aviso";
         }
