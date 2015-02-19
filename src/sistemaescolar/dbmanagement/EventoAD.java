@@ -7,21 +7,42 @@ import sistemaescolar.EscuelaPersistentManager;
 import sistemaescolar.Evento;
 import sistemaescolar.EventoDAO;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Formatter;
+
 /**
  * Created by Pedro on 03/02/15.
  */
 public class EventoAD {
 
-    public static boolean createEvent(String fecha, Integer idRemitente, String contenido, String titulo) throws PersistentException {
+
+    public static boolean createEvent(String fecha, Integer idRemitente, String contenido, String titulo, String horaInicio, String horaFinal) throws PersistentException {
         PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
+            SimpleDateFormat sdf = new SimpleDateFormat(horaInicio);
+
+
+
             Evento sistemaEscolarEvento = EventoDAO.createEvento();
             // Initialize the properties of the persistent object here
             sistemaEscolarEvento.setTitulo(titulo);
             sistemaEscolarEvento.setAdministradoridAdministrador(AdministradorDAO.getAdministradorByORMID(idRemitente));
             sistemaEscolarEvento.setFecha(fecha);
             sistemaEscolarEvento.setContenido(contenido);
+
+            long ms = sdf.parse(horaInicio).getTime();
+            Time timeInicio = new Time(ms);
+
+            sistemaEscolarEvento.setHoraInicio(timeInicio);
+
+            ms = sdf.parse(horaFinal).getTime();
+            Time timeFinal = new Time(ms);
+
+
+            sistemaEscolarEvento.setHoraFinal(timeFinal);
             EventoDAO.save(sistemaEscolarEvento);
             t.commit();
             return true;

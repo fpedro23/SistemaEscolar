@@ -12,7 +12,7 @@ public class EventoAction extends ActionSupport {
     public String resultado;
     public Evento[] eventos;
     private int id;
-    private String fecha, idRemitente, contenido, titulo;
+    private String fecha, idRemitente, contenido, titulo, horaInicio, horaFinal;
     private Evento evento;
     private boolean mobile;
     private String tipo;
@@ -24,7 +24,7 @@ public class EventoAction extends ActionSupport {
                     fecha,
                     Integer.parseInt(getIdRemitente()),
                     contenido,
-                    titulo);
+                    titulo,horaInicio,horaFinal);
             resultado = "Evento creado existosamente";
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -155,5 +155,21 @@ public class EventoAction extends ActionSupport {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getHoraInicio() {
+        return horaInicio;
+    }
+
+    public void setHoraInicio(String horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public String getHoraFinal() {
+        return horaFinal;
+    }
+
+    public void setHoraFinal(String horaFinal) {
+        this.horaFinal = horaFinal;
     }
 }

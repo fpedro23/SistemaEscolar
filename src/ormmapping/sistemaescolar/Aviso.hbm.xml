@@ -3,19 +3,17 @@
 Licensee: 
 License Type: Evaluation
 -->
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="sistemaescolar.Aviso" table="Aviso" lazy="false">
-        <id name="idCircular" column="idCircular" type="integer" unsaved-value="0">
-            <generator class="native">
-            </generator>
-        </id>
-        <property name="titulo" column="titulo" type="string" length="100" not-null="false" lazy="false"/>
-        <property name="fecha" column="fecha" type="string" length="100" not-null="false" lazy="false"/>
-        <property name="contenido" column="contenido" type="text" not-null="false" lazy="false"/>
-        <many-to-one name="administradoridAdministrador" cascade="lock" column="AdministradoridAdministrador"
-                     class="sistemaescolar.Administrador" not-null="true" lazy="proxy" access="field">
-        </many-to-one>
-    </class>
+	<class name="sistemaescolar.Aviso" table="Aviso" lazy="false">
+		<id name="idCircular" column="idCircular" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="titulo" column="titulo" type="string" length="100" not-null="false" lazy="false"/>
+		<property name="fecha" column="fecha" type="string" length="100" not-null="false" lazy="false"/>
+		<property name="contenido" column="contenido" type="text" not-null="false" lazy="false"/>
+		<many-to-one name="administradoridAdministrador" cascade="lock" column="AdministradoridAdministrador" class="sistemaescolar.Administrador" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+	</class>
 </hibernate-mapping>

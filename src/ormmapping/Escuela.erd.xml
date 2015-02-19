@@ -1,313 +1,324 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Model quotesql="1" tablecharset="UTF8" mysql_version="504" mssql_version="2005" derby_version="106" ingres_version="9">
-    <Entity name="Circular">
-        <Column name="idCircular">
-            <PrimaryKey>true</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>9</Type>
-            <Length>255</Length>
-            <Nullable>false</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-        <Column name="titulo">
-            <PrimaryKey>false</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>27</Type>
-            <Length>100</Length>
-            <Nullable>true</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-        <Column name="fecha">
-            <PrimaryKey>false</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>27</Type>
-            <Length>100</Length>
-            <Nullable>true</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-        <Column name="AdministradoridAdministrador">
-            <PrimaryKey>false</PrimaryKey>
-            <ForeignKey>true</ForeignKey>
-            <ReferencedColumn>Administrador.idAdministrador</ReferencedColumn>
-            <Type>9</Type>
-            <Length>11</Length>
-            <Nullable>false</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-        <Column name="contenido">
-            <PrimaryKey>false</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>34</Type>
-            <Length>0</Length>
-            <Nullable>true</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-    </Entity>
-    <Entity name="Aviso">
-        <Column name="idCircular">
-            <PrimaryKey>true</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>9</Type>
-            <Length>255</Length>
-            <Nullable>false</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-        <Column name="titulo">
-            <PrimaryKey>false</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>27</Type>
-            <Length>100</Length>
-            <Nullable>true</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-        <Column name="fecha">
-            <PrimaryKey>false</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>27</Type>
-            <Length>100</Length>
-            <Nullable>true</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-        <Column name="contenido">
-            <PrimaryKey>false</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>34</Type>
-            <Length>0</Length>
-            <Nullable>true</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-        <Column name="AdministradoridAdministrador">
-            <PrimaryKey>false</PrimaryKey>
-            <ForeignKey>true</ForeignKey>
-            <ReferencedColumn>Administrador.idAdministrador</ReferencedColumn>
-            <Type>9</Type>
-            <Length>11</Length>
-            <Nullable>false</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-    </Entity>
-    <Entity name="Evento">
-        <Column name="idCircular">
-            <PrimaryKey>true</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>9</Type>
-            <Length>255</Length>
-            <Nullable>false</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-        <Column name="titulo">
-            <PrimaryKey>false</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>27</Type>
-            <Length>100</Length>
-            <Nullable>true</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-        <Column name="fecha">
-            <PrimaryKey>false</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>27</Type>
-            <Length>100</Length>
-            <Nullable>true</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-        <Column name="contenido">
-            <PrimaryKey>false</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>34</Type>
-            <Length>0</Length>
-            <Nullable>true</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-        <Column name="hora">
-            <PrimaryKey>false</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>19</Type>
-            <Length>0</Length>
-            <Nullable>true</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-        <Column name="AdministradoridAdministrador">
-            <PrimaryKey>false</PrimaryKey>
-            <ForeignKey>true</ForeignKey>
-            <ReferencedColumn>Administrador.idAdministrador</ReferencedColumn>
-            <Type>9</Type>
-            <Length>11</Length>
-            <Nullable>false</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-    </Entity>
-    <Entity name="Alumno">
-        <Column name="idAlumno">
-            <PrimaryKey>true</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>9</Type>
-            <Length>11</Length>
-            <Nullable>false</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-        <Column name="nombreAlumno">
-            <PrimaryKey>false</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>27</Type>
-            <Length>100</Length>
-            <Nullable>true</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-        <Column name="passwordAlumno">
-            <PrimaryKey>false</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>27</Type>
-            <Length>10</Length>
-            <Nullable>false</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-    </Entity>
-    <Entity name="Administrador">
-        <Column name="idAdministrador">
-            <PrimaryKey>true</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>9</Type>
-            <Length>11</Length>
-            <Nullable>false</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-        <Column name="nombreAdministrador">
-            <PrimaryKey>false</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>27</Type>
-            <Length>250</Length>
-            <Nullable>true</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-        <Column name="password">
-            <PrimaryKey>false</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>27</Type>
-            <Length>11</Length>
-            <Nullable>true</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-    </Entity>
-    <Entity name="Devices">
-        <Column name="idDevice">
-            <PrimaryKey>true</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>9</Type>
-            <Length>11</Length>
-            <Nullable>false</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-        <Column name="UDUID">
-            <PrimaryKey>false</PrimaryKey>
-            <ForeignKey>false</ForeignKey>
-            <Type>27</Type>
-            <Length>60</Length>
-            <Nullable>true</Nullable>
-            <IDGenerator>native</IDGenerator>
-            <Unique>false</Unique>
-            <Index>false</Index>
-            <UserTypes/>
-        </Column>
-    </Entity>
-    <ForeignKey name="FKCircular242317">
-        <ReferenceTable>Circular</ReferenceTable>
-        <ReferencedTable>Administrador</ReferencedTable>
-        <Columns>
-            <Column>AdministradoridAdministrador</Column>
-        </Columns>
-        <RefColumns>
-            <Column>idAdministrador</Column>
-        </RefColumns>
-    </ForeignKey>
-    <ForeignKey name="FKAviso150435">
-        <ReferenceTable>Aviso</ReferenceTable>
-        <ReferencedTable>Administrador</ReferencedTable>
-        <Columns>
-            <Column>AdministradoridAdministrador</Column>
-        </Columns>
-        <RefColumns>
-            <Column>idAdministrador</Column>
-        </RefColumns>
-    </ForeignKey>
-    <ForeignKey name="FKEvento708009">
-        <ReferenceTable>Evento</ReferenceTable>
-        <ReferencedTable>Administrador</ReferencedTable>
-        <Columns>
-            <Column>AdministradoridAdministrador</Column>
-        </Columns>
-        <RefColumns>
-            <Column>idAdministrador</Column>
-        </RefColumns>
-    </ForeignKey>
+  <Entity name="Circular">
+    <Column name="idCircular">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>255</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="titulo">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>100</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="fecha">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>100</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="AdministradoridAdministrador">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>Administrador.idAdministrador</ReferencedColumn>
+      <Type>9</Type>
+      <Length>11</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="contenido">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>34</Type>
+      <Length>0</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+  </Entity>
+  <Entity name="Aviso">
+    <Column name="idCircular">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>255</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="titulo">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>100</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="fecha">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>100</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="contenido">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>34</Type>
+      <Length>0</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="AdministradoridAdministrador">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>Administrador.idAdministrador</ReferencedColumn>
+      <Type>9</Type>
+      <Length>11</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+  </Entity>
+  <Entity name="Evento">
+    <Column name="idCircular">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>255</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="titulo">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>100</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="fecha">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>100</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="contenido">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>34</Type>
+      <Length>0</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="horaInicio">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>19</Type>
+      <Length>0</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="AdministradoridAdministrador">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>Administrador.idAdministrador</ReferencedColumn>
+      <Type>9</Type>
+      <Length>11</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="horaFinal">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>19</Type>
+      <Length>0</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+  </Entity>
+  <Entity name="Alumno">
+    <Column name="idAlumno">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>11</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="nombreAlumno">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>100</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="passwordAlumno">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>10</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+  </Entity>
+  <Entity name="Administrador">
+    <Column name="idAdministrador">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>11</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="nombreAdministrador">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>250</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="password">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>11</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+  </Entity>
+  <Entity name="Devices">
+    <Column name="idDevice">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>11</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="UDUID">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>60</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+  </Entity>
+  <ForeignKey name="FKCircular242317">
+    <ReferenceTable>Circular</ReferenceTable>
+    <ReferencedTable>Administrador</ReferencedTable>
+    <Columns>
+      <Column>AdministradoridAdministrador</Column>
+    </Columns>
+    <RefColumns>
+      <Column>idAdministrador</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKAviso150435">
+    <ReferenceTable>Aviso</ReferenceTable>
+    <ReferencedTable>Administrador</ReferencedTable>
+    <Columns>
+      <Column>AdministradoridAdministrador</Column>
+    </Columns>
+    <RefColumns>
+      <Column>idAdministrador</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKEvento708009">
+    <ReferenceTable>Evento</ReferenceTable>
+    <ReferencedTable>Administrador</ReferencedTable>
+    <Columns>
+      <Column>AdministradoridAdministrador</Column>
+    </Columns>
+    <RefColumns>
+      <Column>idAdministrador</Column>
+    </RefColumns>
+  </ForeignKey>
 </Model>
