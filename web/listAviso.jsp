@@ -28,7 +28,7 @@
                                 $('#gimmeContent').empty();
                             },
                             success: function () {
-                                $('#title').empty().append('Editar Circular');
+                                $('#title').empty().append('Editar Aviso');
                             },
                             target: '#gimmeContent'
                         }

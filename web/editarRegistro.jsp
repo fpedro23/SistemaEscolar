@@ -15,6 +15,25 @@
 <head>
     <title>Nuevo registro</title>
     <script type="text/javascript">
+        $('#allDayEvent').change(
+                function() {
+                    var horaInicio = $('#horaInicio')[0];
+                    var horaFin    = $('#horaFinal')[0];
+
+                    if(this.checked) {
+                        horaInicio.disabled = true;
+                        horaFin.disabled = true;
+
+                        horaInicio.value = null;
+                        horaFin.value    = null;
+                    }
+                    else {
+                        horaInicio.disabled = false;
+                        horaFin.disabled = false;
+                    }
+                }
+        );
+
         // Setup form validation and ajax execution instead of loading new page
         $(document).ready(
                 function () {
@@ -79,15 +98,27 @@
                         %>"/>
                 </td>
             </tr>
+            <%
+                if(evento != null) {
+            %>
+                    <tr>
+                        <td>Evento de todo el d&iacute;a</td>
+                        <td><input type="checkbox" id="allDayEvent"/></td>
+                    </tr>
+                    <tr>
+                        <td>Hora Inicio</td>
+                        <td><input name="horaInicio" id="horaInicio" type="time" value="<%= evento.getHoraInicio() != null ? evento.getHoraInicio() : null %>"></td>
+                    </tr>
+                    <tr>
+                        <td>Hora Fin</td>
+                        <td><input name="horaFinal" id="horaFinal" type="time" value="<%= evento.getHoraFinal() != null ? evento.getHoraFinal() : null %>"/> </td>
+                    </tr>
+            <%
+                }
+            %>
             <tr>
                 <td>Remitente</td>
                 <td>
-                    <%--<input type="text" name="remitente" value="<%--%>
-                            <%--Administrador remitente = circular != null ? circular.getAdministradoridAdministrador() :--%>
-                                                      <%--evento   != null ? evento.getAdministradoridAdministrador()   :--%>
-                                                                         <%--aviso.getAdministradoridAdministrador();--%>
-                            <%--response.getWriter().print(remitente.getIdAdministrador());--%>
-                        <%--%>"/>--%>
                     <select name="idRemitente">
                         <%
                             Administrador remitente = circular != null ? circular.getAdministradoridAdministrador() :
@@ -116,12 +147,13 @@
             <tr>
                 <td>Contenido</td>
                 <td>
-                    <textarea name="contenido" id="contenido"><%=
-                circular != null ? circular.getContenido() :
-                        evento != null ? evento.getContenido() :
-                                aviso.getContenido()
-                %>
-                </textarea>
+                    <textarea name="contenido" id="contenido">
+                        <%=
+                            circular != null ? circular.getContenido() :
+                            evento   != null ? evento.getContenido() :
+                                               aviso.getContenido()
+                        %>
+                    </textarea>
                 </td>
             </tr>
         </table>

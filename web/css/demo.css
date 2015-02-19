@@ -40,7 +40,7 @@ tr {
 .circular_content {
     overflow: hidden;
     height: auto;
-    max-height: 5em;
+    max-height: 6em;
 }
 
 

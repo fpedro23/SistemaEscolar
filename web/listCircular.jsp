@@ -97,7 +97,7 @@
                 <%= circular.getFecha()     %>
             </td>
             <td>
-                <%= circular.getContenido() %>
+                <div class="circular_content"> <%= circular.getContenido() %> </div>
             </td>
             <td>
                 <form action="editCircular.action" method="get" id="editCircular<%=circular.getIdCircular()%>">

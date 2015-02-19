@@ -31,7 +31,7 @@ public class EventoAD {
 
 
             try{
-                SimpleDateFormat sdf = new SimpleDateFormat(horaInicio);
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 
                 long ms = sdf.parse(horaInicio).getTime();
                 Time timeInicio = new Time(ms);
@@ -48,14 +48,6 @@ public class EventoAD {
                 sistemaEscolarEvento.setHoraFinal(null);
                 e.printStackTrace();
             }
-
-
-
-
-
-
-
-
 
             EventoDAO.save(sistemaEscolarEvento);
             t.commit();

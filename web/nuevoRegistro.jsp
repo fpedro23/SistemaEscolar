@@ -17,25 +17,57 @@
     <link rel="stylesheet" type="text/css" href="css/component.css"/>
 
     <title>Nuevo registro</title>
+
+    <script type="text/javascript" src="js/helper.js"></script>
     <script type="text/javascript">
+        $('#fecha').val(getToday());
         $('#allDayEvent').change(
                 function() {
-                    var horaInicio = $('#horaInicio')[0];
-                    var horaFin    = $('#horaFinal')[0];
+                    var horaInicio = $('#horaInicio');
+                    var horaFin    = $('#horaFinal');
 
                     if(this.checked) {
-                        horaInicio.disabled = true;
-                        horaFin.disabled = true;
+                        horaInicio.prop('disabled', true);
+                        horaFin.prop('disabled', true);
 
-                        horaInicio.value = null;
-                        horaFin.value    = null;
+                        horaInicio.val(null);
+                        horaFin.val(null);
                     }
                     else {
-                        horaInicio.disabled = false;
-                        horaFin.disabled = false;
+                        horaInicio.prop('disabled', false);
+                        horaFin.prop('disabled', false);
                     }
                 }
         );
+        $('#horaInicio').change(
+                function() {
+                    if(!$('#allDayEvent').checked) {
+                        var horaFinal = $('#horaFinal').val();
+                        if(horaFinal && timeParse(this.value) > timeParse(horaFinal)) {
+                            alert('La hora de inicio debe ser menor a la hora de fin');
+                            $('#submitForm').prop('disabled', true);
+                        }
+                        else
+                            $('#submitForm').prop('disabled', false);
+                    }
+                }
+        );
+
+        $('#horaFinal').change(
+                function() {
+                    if(!$('#allDayEvent').checked) {
+                        var horaInicio = $('#horaInicio').val();
+                        if(horaInicio && timeParse(this.value) < timeParse(horaInicio)) {
+                            alert('La hora de inicio debe ser menor a la hora de fin');
+                            $('#submitForm').prop('disabled', true);
+                        }
+                        else
+                            $('#submitForm').prop('disabled', false);
+                    }
+                }
+        );
+
+
         // Setup form validation and ajax execution instead of loading new page
         $(document).ready(
                 function () {
@@ -86,7 +118,7 @@
                 <td><input type="date" name="fecha" id="fecha"/></td>
             </tr>
             <%
-                if(tipo.equals("Event")) {
+                if(tipo != null && tipo.equals("Event")) {
             %>
                 <tr>
                     <td>Evento de todo el día</td>
@@ -127,7 +159,7 @@
             </tr>
         </table>
         <br>
-        <button type="submit" value="Enviar">Enviar</button>
+        <button id="submitForm" type="submit" value="Enviar">Enviar</button>
         <div id="result"></div>
     </div>
 </form>

@@ -27,7 +27,7 @@
                                     $('#gimmeContent').empty();
                                 },
                                 success: function () {
-                                    $('#title').empty().append('Editar Circular');
+                                    $('#title').empty().append('Editar Evento');
                                 },
                                 target: '#gimmeContent'
                             }
@@ -80,7 +80,9 @@
             <th>Título</th>
             <th>Remitente</th>
             <th>Fecha</th>
-            <th>Contenido</th>
+            <th>Hora Inicio</th>
+            <th>Hora Fin</th>
+            <th>Descripci&oacute;n</th>
         </tr>
         <%
             for (Evento evento : (Evento[]) request.getAttribute("eventos")) {
@@ -92,8 +94,9 @@
             </td>
             <td><%= evento.getFecha()     %>
             </td>
-            <td><%= evento.getContenido() %>
-            </td>
+            <td><%= evento.getHoraInicio() != null ? evento.getHoraInicio() : "N/A" %></td>
+            <td><%= evento.getHoraFinal() != null ? evento.getHoraFinal() : "N/A" %></td>
+            <td><div class="circular_content"> <%= evento.getContenido() %> </div></td>
             <td>
                 <form action="readEventById.action" method="get" id="editEvento<%=evento.getIdCircular()%>">
                     <input type="hidden" name="id" value="<%= evento.getIdCircular() %>"/>
