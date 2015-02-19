@@ -1,5 +1,6 @@
 <%@ page import="sistemaescolar.dbmanagement.AdministratorDBManager" %>
 <%@ page import="sistemaescolar.Administrador" %>
+<%@ page import="sistemaescolar.Evento" %>
 <%--
   Created by IntelliJ IDEA.
   User: mng687
@@ -17,6 +18,24 @@
 
     <title>Nuevo registro</title>
     <script type="text/javascript">
+        $('#allDayEvent').change(
+                function() {
+                    var horaInicio = $('#horaInicio')[0];
+                    var horaFin    = $('#horaFinal')[0];
+
+                    if(this.checked) {
+                        horaInicio.disabled = true;
+                        horaFin.disabled = true;
+
+                        horaInicio.value = null;
+                        horaFin.value    = null;
+                    }
+                    else {
+                        horaInicio.disabled = false;
+                        horaFin.disabled = false;
+                    }
+                }
+        );
         // Setup form validation and ajax execution instead of loading new page
         $(document).ready(
                 function () {
@@ -66,6 +85,26 @@
                 <td>Fecha</td>
                 <td><input type="date" name="fecha" id="fecha"/></td>
             </tr>
+            <%
+                if(tipo.equals("Event")) {
+            %>
+                <tr>
+                    <td>Evento de todo el día</td>
+                   <td>
+                       <input id="allDayEvent" type="checkbox"/>
+                   </td>
+                </tr>
+                <tr>
+                    <td>Hora de inicio</td>
+                    <td><input name="horaInicio" id="horaInicio" type="time"/></td>
+                </tr>
+                <tr>
+                    <td>Hora fin</td>
+                    <td><input name="horaFinal" id="horaFinal" type="time"/></td>
+                </tr>
+            <%
+                }
+            %>
             <tr>
                 <td>Remitente</td>
                 <td>

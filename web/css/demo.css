@@ -37,14 +37,14 @@ tr {
     padding-bottom: 10px;
 }
 
-td {
+.circular_content {
     overflow: hidden;
     height: auto;
     max-height: 5em;
 }
 
 
-input[type=text], input[type=password], select {
+input[type=text], input[type=password], input[type=time], select {
     padding: 10px;
     background-color: #ed8151;
     border-radius: 10px;
