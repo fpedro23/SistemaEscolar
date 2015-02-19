@@ -38,7 +38,7 @@ public class CreateEscuelaData {
 			sistemaescolar.AlumnoDAO.save(sistemaEscolarAlumno);*/
             sistemaescolar.Administrador sistemaEscolarAdministrador = sistemaescolar.AdministradorDAO.createAdministrador();
             // TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : evento, aviso, circular
-            sistemaEscolarAdministrador.setNombreAdministrador("Tesoreria");
+            sistemaEscolarAdministrador.setNombreAdministrador("pedro");
             sistemaEscolarAdministrador.setPassword("pedro");
             sistemaEscolarAdministrador.circular.add(CircularDAO.getCircularByORMID(1));
             sistemaescolar.AdministradorDAO.save(sistemaEscolarAdministrador);

@@ -45,7 +45,7 @@
 
         <action name="doLogin" class="sistemaescolar.action.AdministradorAction" method="doLogin">
             <result name="success">index.jsp</result>
-            <result name="failure">login.jsp</result>
+            <result name="error">login.jsp</result>
         </action>
 
         <action name="createAdministrador" class="sistemaescolar.action.AdministradorAction"

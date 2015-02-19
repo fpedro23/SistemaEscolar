@@ -1,9 +1,9 @@
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
- *
+ * 
  * This is an automatic generated file. It will be regenerated every time 
  * you generate persistence class.
- *
+ * 
  * Modifying its content may cause the program not work, or your work may lost.
  */
 
@@ -16,104 +16,118 @@ package sistemaescolar;
 import com.google.gson.annotations.Expose;
 
 public class Evento {
-    org.orm.util.ORMAdapter _ormAdapter = new org.orm.util.AbstractORMAdapter() {
-        public void setOwner(Object owner, int key) {
-            this_setOwner(owner, key);
-        }
-
-    };
+	public Evento() {
+	}
+	
+	private void this_setOwner(Object owner, int key) {
+		if (key == ORMConstants.KEY_EVENTO_ADMINISTRADORIDADMINISTRADOR) {
+			this.administradoridAdministrador = (Administrador) owner;
+		}
+	}
+	
+	org.orm.util.ORMAdapter _ormAdapter = new org.orm.util.AbstractORMAdapter() {
+		public void setOwner(Object owner, int key) {
+			this_setOwner(owner, key);
+		}
+		
+	};
     @Expose
     private int idCircular;
     @Expose
     private String titulo;
+
     @Expose
     private String fecha;
+
     @Expose
-    private String contenido;
+	private String contenido;
+
     @Expose
-    private java.sql.Time hora;
+	private java.sql.Time horaInicio;
+	
+	private Administrador administradoridAdministrador;
+
     @Expose
-    private Administrador administradoridAdministrador;
-
-    public Evento() {
-    }
-
-    private void this_setOwner(Object owner, int key) {
-        if (key == ORMConstants.KEY_EVENTO_ADMINISTRADORIDADMINISTRADOR) {
-            this.administradoridAdministrador = (Administrador) owner;
-        }
-    }
-
-    public int getIdCircular() {
-        return idCircular;
-    }
-
-    private void setIdCircular(int value) {
-        this.idCircular = value;
-    }
-
-    public int getORMID() {
-        return getIdCircular();
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String value) {
-        this.titulo = value;
-    }
-
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String value) {
-        this.fecha = value;
-    }
-
-    public String getContenido() {
-        return contenido;
-    }
-
-    public void setContenido(String value) {
-        this.contenido = value;
-    }
-
-    public java.sql.Time getHora() {
-        return hora;
-    }
-
-    public void setHora(java.sql.Time value) {
-        this.hora = value;
-    }
-
-    public Administrador getAdministradoridAdministrador() {
-        return administradoridAdministrador;
-    }
-
-    public void setAdministradoridAdministrador(Administrador value) {
-        if (administradoridAdministrador != null) {
-            administradoridAdministrador.evento.remove(this);
-        }
-        if (value != null) {
-            value.evento.add(this);
-        }
-    }
-
-    private Administrador getORM_AdministradoridAdministrador() {
-        return administradoridAdministrador;
-    }
-
-    /**
-     * This method is for internal use only.
-     */
-    public void setORM_AdministradoridAdministrador(Administrador value) {
-        this.administradoridAdministrador = value;
-    }
-
-    public String toString() {
-        return String.valueOf(getIdCircular());
-    }
-
+	private java.sql.Time horaFinal;
+	
+	private void setIdCircular(int value) {
+		this.idCircular = value;
+	}
+	
+	public int getIdCircular() {
+		return idCircular;
+	}
+	
+	public int getORMID() {
+		return getIdCircular();
+	}
+	
+	public void setTitulo(String value) {
+		this.titulo = value;
+	}
+	
+	public String getTitulo() {
+		return titulo;
+	}
+	
+	public void setFecha(String value) {
+		this.fecha = value;
+	}
+	
+	public String getFecha() {
+		return fecha;
+	}
+	
+	public void setContenido(String value) {
+		this.contenido = value;
+	}
+	
+	public String getContenido() {
+		return contenido;
+	}
+	
+	public void setHoraInicio(java.sql.Time value) {
+		this.horaInicio = value;
+	}
+	
+	public java.sql.Time getHoraInicio() {
+		return horaInicio;
+	}
+	
+	public void setHoraFinal(java.sql.Time value) {
+		this.horaFinal = value;
+	}
+	
+	public java.sql.Time getHoraFinal() {
+		return horaFinal;
+	}
+	
+	public void setAdministradoridAdministrador(Administrador value) {
+		if (administradoridAdministrador != null) {
+			administradoridAdministrador.evento.remove(this);
+		}
+		if (value != null) {
+			value.evento.add(this);
+		}
+	}
+	
+	public Administrador getAdministradoridAdministrador() {
+		return administradoridAdministrador;
+	}
+	
+	/**
+	 * This method is for internal use only.
+	 */
+	public void setORM_AdministradoridAdministrador(Administrador value) {
+		this.administradoridAdministrador = value;
+	}
+	
+	private Administrador getORM_AdministradoridAdministrador() {
+		return administradoridAdministrador;
+	}
+	
+	public String toString() {
+		return String.valueOf(getIdCircular());
+	}
+	
 }
