@@ -44,8 +44,8 @@ public class Evento {
 
     @Expose
 	private java.sql.Time horaInicio;
-	
-	private Administrador administradoridAdministrador;
+    @Expose
+    private Administrador administradoridAdministrador;
 
     @Expose
 	private java.sql.Time horaFinal;
