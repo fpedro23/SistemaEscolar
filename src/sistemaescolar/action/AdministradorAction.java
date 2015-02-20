@@ -43,7 +43,7 @@ public class AdministradorAction extends ActionSupport implements SessionAware {
 
     public String doMobileLogin() throws PersistentException {
         user = AdministratorDBManager.doLogin(nombre, password);
-        if(resultado != null)
+        if (user != null)
             return "success";
         else
             return "failure";

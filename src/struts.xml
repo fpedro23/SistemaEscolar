@@ -38,6 +38,8 @@
 
         <action name="mobileLogin" class="sistemaescolar.action.AdministradorAction" method="doMobileLogin">
             <result name="success">action_responses/login.jsp</result>
+            <result name="failure">action_responses/login.jsp</result>
+
         </action>
 
 
