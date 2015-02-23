@@ -8,5 +8,5 @@
     if(user != null)
         response.getWriter().print(gson.toJson(user));
     else
-        response.getWriter().print("{\"succes\":\"false\"}");
+        response.getWriter().print("{\"success\":\"false\"}");
 %>

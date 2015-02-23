@@ -72,7 +72,7 @@ public class EventoAD {
         return sistemaEscolarEvento;
     }
 
-    public static boolean updateEvent(int idEvento, String fecha, Integer idRemitente, String contenido, String titulo) throws PersistentException {
+    public static boolean updateEvent(int idEvento, String fecha, Integer idRemitente, String contenido, String titulo, String horaInicio, String horaFinal) throws PersistentException {
         PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
@@ -82,6 +82,26 @@ public class EventoAD {
             sistemaEscolarEvento.setAdministradoridAdministrador(AdministradorDAO.getAdministradorByORMID(idRemitente));
             sistemaEscolarEvento.setContenido(contenido);
             sistemaEscolarEvento.setTitulo(titulo);
+
+            try{
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+
+                long ms = sdf.parse(horaInicio).getTime();
+                Time timeInicio = new Time(ms);
+
+                sistemaEscolarEvento.setHoraInicio(timeInicio);
+
+                ms = sdf.parse(horaFinal).getTime();
+                Time timeFinal = new Time(ms);
+                sistemaEscolarEvento.setHoraFinal(timeFinal);
+
+            }
+            catch (Exception e){
+                sistemaEscolarEvento.setHoraInicio(null);
+                sistemaEscolarEvento.setHoraFinal(null);
+                e.printStackTrace();
+            }
+
             EventoDAO.save(sistemaEscolarEvento);
             t.commit();
             return true;

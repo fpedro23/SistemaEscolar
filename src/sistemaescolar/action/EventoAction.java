@@ -3,6 +3,7 @@ package sistemaescolar.action;
 import com.opensymphony.xwork2.ActionSupport;
 import org.orm.PersistentException;
 import sistemaescolar.Evento;
+import sistemaescolar.ZeroPushHelper;
 import sistemaescolar.dbmanagement.EventoAD;
 
 /**
@@ -16,6 +17,7 @@ public class EventoAction extends ActionSupport {
     private Evento evento;
     private boolean mobile;
     private String tipo;
+    private String notifyUsers;
 
 
     public String createEvent() throws PersistentException {
@@ -28,6 +30,9 @@ public class EventoAction extends ActionSupport {
                     horaInicio,
                     horaFinal);
             resultado = "Evento creado existosamente";
+
+            if(notifyUsers.equals("on"))
+                ZeroPushHelper.sendBroadcast("Nuevo Evento", titulo);
         } catch (Exception e) {
             System.out.println(e.toString());
             resultado = "Error al crear evento";
@@ -55,8 +60,13 @@ public class EventoAction extends ActionSupport {
                     fecha,
                     Integer.parseInt(getIdRemitente()),
                     contenido,
-                    titulo);
+                    titulo,
+                    horaInicio,
+                    horaFinal);
             resultado = "Evento actualizado existosamente";
+
+            if(notifyUsers.equals("on"))
+                ZeroPushHelper.sendBroadcast("Evento actualizado", "Se actualizó el evento " + titulo);
 
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -173,5 +183,13 @@ public class EventoAction extends ActionSupport {
 
     public void setHoraFinal(String horaFinal) {
         this.horaFinal = horaFinal;
+    }
+
+    public String getNotifyUsers() {
+        return notifyUsers;
+    }
+
+    public void setNotifyUsers(String notifyUsers) {
+        this.notifyUsers = notifyUsers;
     }
 }

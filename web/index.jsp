@@ -42,7 +42,7 @@
             }
 
             function init() {
-                loadPage("Nueva Circular", "nuevoRegistro.jsp?tipo=Circular");
+//                loadPage("Nueva Circular", "nuevoRegistro.jsp?tipo=Circular");
 
                 $("a").click(
                         function() {
@@ -50,6 +50,7 @@
                             return false;
                         }
                 );
+                $('#menu_link_crear_circular').trigger('click');
             }
 
             $(document).ready(function() {

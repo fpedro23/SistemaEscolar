@@ -163,8 +163,9 @@
                             evento   != null ? evento.getIdCircular()   :
                                                aviso.getIdCircular()
                         %>"/>
+        Notificar usuarios <input type="checkbox" name="notifyUsers" checked="checked">
+        <br>
         <button type="submit">Editar</button>
-
         <div id="result"></div>
     </form>
 </div>

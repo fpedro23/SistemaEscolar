@@ -11,6 +11,7 @@ public class DeviceAction {
     public String resultado;
 
 
+
     public String createDevice() throws PersistentException {
         try {
             boolean transaccionExitosa = DevicesDBManager.createDevice(

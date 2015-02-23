@@ -5,7 +5,10 @@ import com.opensymphony.xwork2.Preparable;
 import org.hibernate.Hibernate;
 import org.orm.PersistentException;
 import sistemaescolar.Circular;
+import sistemaescolar.ZeroPushHelper;
 import sistemaescolar.dbmanagement.CircularDBManager;
+
+import java.io.UnsupportedEncodingException;
 
 /**
  * SistemaEscolar
@@ -19,13 +22,14 @@ public class CircularAction extends ActionSupport {
     private Circular circular;
     private Circular[] circulars;
     private String tipo;
+    private String notifyUsers;
 
     @Override
     public String execute() throws Exception {
         return super.execute();
     }
 
-    public String create() throws PersistentException {
+    public String create() throws PersistentException, UnsupportedEncodingException {
         if (CircularDBManager.create(
                 getTitulo(),
                 getFecha(),
@@ -33,6 +37,10 @@ public class CircularAction extends ActionSupport {
                 getContenido()
         )) {
             resultado = "success";
+
+            if(notifyUsers.equals("on"))
+                ZeroPushHelper.sendBroadcast("Nueva Circular", titulo);
+
             return "success";
         } else {
             resultado = "failure";
@@ -46,7 +54,7 @@ public class CircularAction extends ActionSupport {
     }
 
 
-    public String update() throws PersistentException {
+    public String update() throws PersistentException, UnsupportedEncodingException {
         if (CircularDBManager.update(
                 getId(),
                 getTitulo(),
@@ -55,6 +63,10 @@ public class CircularAction extends ActionSupport {
                 getContenido()
         )) {
             resultado = "success";
+
+            if(notifyUsers.equals("on"))
+                ZeroPushHelper.sendBroadcast("Circular Actualizada", "Se actualizó la circular" + titulo);
+
             return "success";
         } else {
             resultado = "failure";
@@ -175,5 +187,11 @@ public class CircularAction extends ActionSupport {
         this.circulars = circulars;
     }
 
+    public String getNotifyUsers() {
+        return notifyUsers;
+    }
 
+    public void setNotifyUsers(String notifyUsers) {
+        this.notifyUsers = notifyUsers;
+    }
 }

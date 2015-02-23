@@ -3,6 +3,7 @@ package sistemaescolar.action;
 import com.opensymphony.xwork2.ActionSupport;
 import org.orm.PersistentException;
 import sistemaescolar.Aviso;
+import sistemaescolar.ZeroPushHelper;
 import sistemaescolar.dbmanagement.AvisoAD;
 
 /**
@@ -16,6 +17,7 @@ public class AvisoAction extends ActionSupport {
     private Aviso aviso;
     private boolean mobile;
     private String tipo;
+    private String notifyUsers;
 
     public String createAviso() throws PersistentException {
         try {
@@ -25,6 +27,9 @@ public class AvisoAction extends ActionSupport {
                     contenido,
                     titulo);
             resultado = "Aviso creado existosamente";
+
+            if(notifyUsers.equals("on"))
+                ZeroPushHelper.sendBroadcast("Nuevo Aviso", titulo);
         }
         catch (Exception e) {
             System.out.println(e.toString());
@@ -55,6 +60,8 @@ public class AvisoAction extends ActionSupport {
                     contenido,
                     titulo);
             resultado = "Aviso actualizado existosamente";
+            if(notifyUsers.equals("on"))
+                ZeroPushHelper.sendBroadcast("Aviso actualizado", "Se actualizó el aviso " + titulo);
 
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -153,5 +160,13 @@ public class AvisoAction extends ActionSupport {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getNotifyUsers() {
+        return notifyUsers;
+    }
+
+    public void setNotifyUsers(String notifyUsers) {
+        this.notifyUsers = notifyUsers;
     }
 }

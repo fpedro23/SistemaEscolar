@@ -1,6 +1,5 @@
 <%@ page import="sistemaescolar.dbmanagement.AdministratorDBManager" %>
 <%@ page import="sistemaescolar.Administrador" %>
-<%@ page import="sistemaescolar.Evento" %>
 <%--
   Created by IntelliJ IDEA.
   User: mng687
@@ -158,6 +157,8 @@
                 <td><textarea name="contenido" id="contenido"> </textarea></td>
             </tr>
         </table>
+        <br>
+        Notificar usuarios <input type="checkbox" name="notifyUsers" checked="checked">
         <br>
         <button id="submitForm" type="submit" value="Enviar">Enviar</button>
         <div id="result"></div>

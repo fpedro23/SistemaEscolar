@@ -13,7 +13,7 @@
 	<div id="form_container">
 	
 		<h1><a>Login</a></h1>
-		<form id="form_972819" class="appnitro"  method="get" action="doLogin">
+		<form id="form_972819" class="appnitro"  method="post" action="doLogin">
 					<div class="form_description">
 			<h2>Login</h2>
 			<p>Introduzca los datos de un administrador para iniciar sesión.</p>
