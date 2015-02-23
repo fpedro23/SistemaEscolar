@@ -75,13 +75,20 @@ public class ZeroPushHelper {
                 + "&time_to_live=40320"
         );
 
+
+       /* curl https://api.zeropush.com/broadcast \
+        -d "auth_token=iosdev_Rqohwid72sxjNEqkpszG" \
+        -d "alert=hello world" \
+        -d "badge=+1" \
+        -d "sound=''"*/
+
+
         String iosReponse = executePost(
                 BROADCAST_URL,
                 "auth_token=" + URLEncoder.encode(IOS_AUTH_KEY, "UTF-8")
-                + "&badge=" + URLEncoder.encode("1+", "UTF-8")
+                + "&badge=" + URLEncoder.encode("+1", "UTF-8")
                 + "&sound=" + URLEncoder.encode(" ", "UTF-8")
-                + "&alert" + URLEncoder.encode(alert, "UTF-8")
-                + "&message" + URLEncoder.encode(message, "UTF-8")
+                + "&alert=" + URLEncoder.encode(alert, "UTF-8")
                 + "&collapse_key=friend_request"
                 + "&delay_while_idle=false"
                 + "&time_to_live=40320"
