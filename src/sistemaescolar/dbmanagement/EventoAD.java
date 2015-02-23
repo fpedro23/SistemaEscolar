@@ -8,9 +8,7 @@ import sistemaescolar.Evento;
 import sistemaescolar.EventoDAO;
 
 import java.sql.Time;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Formatter;
 
 /**
  * Created by Pedro on 03/02/15.
@@ -63,7 +61,8 @@ public class EventoAD {
 
     public static Evento[] listEvents() throws PersistentException {
         System.out.println("Listing Evento...");
-        Evento[] sistemaEscolarEventos = EventoDAO.listEventoByQuery(null, "fecha DESC");
+        Evento[] sistemaEscolarEventos = EventoDAO.listEventoByQuery(null, "horaInicio ASC");
+
         return sistemaEscolarEventos;
     }
 
