@@ -127,20 +127,20 @@
                         </li>
                     </ul>
 
-                    <a class="typcn-clipboard">Administradores</a>
+                    <a class="typcn-clipboard">Areas</a>
                     <ul style="list-style-type: none">
                         <li>
                             <%--<a href="#" onclick="loadPage('Nuevo Administrador', 'nuevoRegistro.jsp?TipoEvent')" class="typcn-plus-outline">--%>
                                 <%--Crear Nuevo Administrador--%>
                             <%--</a>--%>
                             <a id="menu_link_crear_administrador" href="nuevoRegistroAdministrador.action" class="typcn-plus-outline">
-                                Crear Nuevo Administrador
+                                Crear Nueva Area
                             </a>
                             <%--<a href="readAdministrador.action" onclick="loadPage('Administrar Administradores', 'readAdministrador')" class="typcn-folder-open">--%>
                                 <%--Administrar Administradores--%>
                             <%--</a>--%>
                             <a id="menu_link_administrar_evento" href="readAdministrador.action" class="typcn-folder-open">
-                                Administrar Administradores
+                                Administrar Areas
                             </a>
                         </li>
 

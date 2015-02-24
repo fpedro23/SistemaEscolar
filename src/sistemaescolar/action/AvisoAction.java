@@ -29,7 +29,7 @@ public class AvisoAction extends ActionSupport {
             resultado = "Aviso creado existosamente";
 
             if(notifyUsers.equals("on"))
-                ZeroPushHelper.sendBroadcast("Ha llegado un nuevo aviso", titulo);
+                ZeroPushHelper.sendBroadcast("Nuevo Aviso", titulo);
         }
         catch (Exception e) {
             System.out.println(e.toString());
@@ -61,7 +61,7 @@ public class AvisoAction extends ActionSupport {
                     titulo);
             resultado = "Aviso actualizado existosamente";
             if(notifyUsers.equals("on"))
-                ZeroPushHelper.sendBroadcast("Aviso actualizado", "Se actualizó el aviso " + titulo);
+                ZeroPushHelper.sendBroadcast("Aviso actualizado", titulo);
 
         } catch (Exception e) {
             System.out.println(e.toString());

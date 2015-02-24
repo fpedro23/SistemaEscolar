@@ -43,13 +43,11 @@
                                     titulo: 'required',
                                     fecha: 'date',
                                     remitente: 'required',
-                                    contenido: 'required'
                                 },
                                 messages: {
                                     titulo: 'Debes ingresar un t&iacute;tulo',
                                     fecha: 'Debes ingresar una fecha',
                                     remitente: 'Debes ingresar un remitente',
-                                    contenido: 'Debes ingresar un contenido'
                                 },
                                 submitHandler: function (form) {
                                     $(form).ajaxSubmit(

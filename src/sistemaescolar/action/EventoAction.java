@@ -66,7 +66,7 @@ public class EventoAction extends ActionSupport {
             resultado = "Evento actualizado existosamente";
 
             if(notifyUsers.equals("on"))
-                ZeroPushHelper.sendBroadcast("Evento actualizado", "Se actualizó el evento " + titulo);
+                ZeroPushHelper.sendBroadcast("Evento actualizado", titulo);
 
         } catch (Exception e) {
             System.out.println(e.toString());

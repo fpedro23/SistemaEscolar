@@ -65,7 +65,7 @@ public class CircularAction extends ActionSupport {
             resultado = "success";
 
             if(notifyUsers.equals("on"))
-                ZeroPushHelper.sendBroadcast("Circular Actualizada", "Se actualizó la circular" + titulo);
+                ZeroPushHelper.sendBroadcast("Circular Actualizada", titulo);
 
             return "success";
         } else {
