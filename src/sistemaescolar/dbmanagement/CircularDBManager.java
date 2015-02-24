@@ -13,13 +13,15 @@ import sistemaescolar.EscuelaPersistentManager;
  * Created by mng687 on 1/30/15 at 2:50 PM
  */
 public class CircularDBManager {
-    public static boolean create(String titulo, String fecha, Integer idRemitente, String contenido) throws PersistentException {
+    public static Circular create(String titulo, String fecha, Integer idRemitente, String contenido) throws PersistentException {
         boolean success = false;
 
+        Circular circular = CircularDAO.createCircular();
+
         if (titulo != null && fecha != null && idRemitente != null && contenido != null)
+
             try {
                 PersistentTransaction transaction = EscuelaPersistentManager.instance().getSession().beginTransaction();
-                Circular circular = CircularDAO.createCircular();
 
                 circular.setTitulo(titulo);
                 circular.setFecha(fecha);
@@ -36,15 +38,16 @@ public class CircularDBManager {
                 EscuelaPersistentManager.instance().disposePersistentManager();
             }
 
-        return success;
+        return circular;
     }
 
-    public static boolean update(int id, String titulo, String fecha, Integer idRemitente, String contenido) throws PersistentException {
+    public static Circular update(int id, String titulo, String fecha, Integer idRemitente, String contenido) throws PersistentException {
         boolean success = false;
+        Circular circular;
 
         try {
             PersistentTransaction transaction = EscuelaPersistentManager.instance().getSession().beginTransaction();
-            Circular circular = CircularDAO.getCircularByORMID(id);
+            circular = CircularDAO.getCircularByORMID(id);
             if (circular != null) {
                 if (titulo != null)
                     circular.setTitulo(titulo);
@@ -63,8 +66,9 @@ public class CircularDBManager {
         } finally {
             EscuelaPersistentManager.instance().disposePersistentManager();
         }
+        circular = CircularDAO.getCircularByORMID(id);
 
-        return success;
+        return circular;
     }
 
     public static boolean delete(int id) throws PersistentException {

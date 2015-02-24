@@ -1,5 +1,7 @@
 package sistemaescolar.action;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 import org.orm.PersistentException;
 import sistemaescolar.Evento;
@@ -22,7 +24,7 @@ public class EventoAction extends ActionSupport {
 
     public String createEvent() throws PersistentException {
         try {
-            boolean transaccionExitosa = EventoAD.createEvent(
+            Evento transaccionExitosa = EventoAD.createEvent(
                     fecha,
                     Integer.parseInt(getIdRemitente()),
                     contenido,
@@ -31,8 +33,13 @@ public class EventoAction extends ActionSupport {
                     horaFinal);
             resultado = "Evento creado existosamente";
 
-            if(notifyUsers.equals("on"))
-                ZeroPushHelper.sendBroadcast("Nuevo Evento", titulo);
+            if(notifyUsers.equals("on")){
+                Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+
+                ZeroPushHelper.sendBroadcast("Nuevo Evento", titulo,gson.toJson(transaccionExitosa));
+
+
+            }
         } catch (Exception e) {
             System.out.println(e.toString());
             resultado = "Error al crear evento";
@@ -55,7 +62,7 @@ public class EventoAction extends ActionSupport {
 
     public String updateEvent() throws PersistentException {
         try {
-            boolean transaccionExitosa = EventoAD.updateEvent(
+            Evento transaccionExitosa = EventoAD.updateEvent(
                     id,
                     fecha,
                     Integer.parseInt(getIdRemitente()),
@@ -65,8 +72,11 @@ public class EventoAction extends ActionSupport {
                     horaFinal);
             resultado = "Evento actualizado existosamente";
 
-            if(notifyUsers.equals("on"))
-                ZeroPushHelper.sendBroadcast("Evento actualizado", titulo);
+            if(notifyUsers.equals("on")){
+                Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+
+                ZeroPushHelper.sendBroadcast("Evento Actualizado", titulo,gson.toJson(transaccionExitosa));
+            }
 
         } catch (Exception e) {
             System.out.println(e.toString());

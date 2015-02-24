@@ -65,7 +65,7 @@ public class ZeroPushHelper {
         }
     }
 
-    public static boolean sendBroadcast(String alert, String message) throws UnsupportedEncodingException {
+    public static boolean sendBroadcast(String alert, String message, String objectJson) throws UnsupportedEncodingException {
         String response = executePost(BROADCAST_URL,
                 "auth_token=" + URLEncoder.encode(ANDROID_AUTH_KEY, "UTF-8")
                 + "&data[alert]=" + URLEncoder.encode(alert, "UTF-8")
@@ -89,7 +89,8 @@ public class ZeroPushHelper {
                 + "&badge=" + URLEncoder.encode("+1", "UTF-8")
                 + "&sound=" + URLEncoder.encode(" ", "UTF-8")
                 + "&alert=" + URLEncoder.encode(alert+": "+message, "UTF-8")
-                + "&collapse_key=friend_request"
+                        + "&info=" +objectJson
+                        + "&collapse_key=friend_request"
                 + "&delay_while_idle=false"
                 + "&time_to_live=40320"
         );

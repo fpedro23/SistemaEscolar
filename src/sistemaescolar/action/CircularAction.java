@@ -1,5 +1,7 @@
 package sistemaescolar.action;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 import org.hibernate.Hibernate;
@@ -30,16 +32,22 @@ public class CircularAction extends ActionSupport {
     }
 
     public String create() throws PersistentException, UnsupportedEncodingException {
-        if (CircularDBManager.create(
+
+        Circular circularResult = CircularDBManager.create(
                 getTitulo(),
                 getFecha(),
                 Integer.parseInt(getIdRemitente()),
                 getContenido()
-        )) {
+        );
+
+        if (circularResult!=null) {
+            Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+
             resultado = "success";
 
             if(notifyUsers.equals("on"))
-                ZeroPushHelper.sendBroadcast("Nueva Circular", titulo);
+
+                ZeroPushHelper.sendBroadcast("Nueva Circular", titulo, gson.toJson(circularResult));
 
             return "success";
         } else {
@@ -55,17 +63,21 @@ public class CircularAction extends ActionSupport {
 
 
     public String update() throws PersistentException, UnsupportedEncodingException {
-        if (CircularDBManager.update(
+        Circular circularResult = CircularDBManager.update(
                 getId(),
                 getTitulo(),
                 getFecha(),
                 Integer.parseInt(getIdRemitente()),
                 getContenido()
-        )) {
+        );
+
+        if (circularResult != null) {
+            Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+
             resultado = "success";
 
             if(notifyUsers.equals("on"))
-                ZeroPushHelper.sendBroadcast("Circular Actualizada", titulo);
+                ZeroPushHelper.sendBroadcast("Circular Actualizada", titulo, gson.toJson(circularResult));
 
             return "success";
         } else {

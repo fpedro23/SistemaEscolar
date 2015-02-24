@@ -7,6 +7,7 @@ import sistemaescolar.EscuelaPersistentManager;
 import sistemaescolar.Evento;
 import sistemaescolar.EventoDAO;
 
+import java.awt.*;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 
@@ -16,7 +17,7 @@ import java.text.SimpleDateFormat;
 public class EventoAD {
 
 
-    public static boolean createEvent(String fecha, Integer idRemitente, String contenido, String titulo, String horaInicio, String horaFinal) throws PersistentException {
+    public static Evento createEvent(String fecha, Integer idRemitente, String contenido, String titulo, String horaInicio, String horaFinal) throws PersistentException {
         PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
@@ -49,11 +50,11 @@ public class EventoAD {
 
             EventoDAO.save(sistemaEscolarEvento);
             t.commit();
-            return true;
+            return sistemaEscolarEvento;
         } catch (Exception e) {
             e.printStackTrace();
             t.rollback();
-            return false;
+            return null;
         } finally {
             EscuelaPersistentManager.instance().disposePersistentManager();
         }
@@ -72,7 +73,7 @@ public class EventoAD {
         return sistemaEscolarEvento;
     }
 
-    public static boolean updateEvent(int idEvento, String fecha, Integer idRemitente, String contenido, String titulo, String horaInicio, String horaFinal) throws PersistentException {
+    public static Evento updateEvent(int idEvento, String fecha, Integer idRemitente, String contenido, String titulo, String horaInicio, String horaFinal) throws PersistentException {
         PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
@@ -104,10 +105,10 @@ public class EventoAD {
 
             EventoDAO.save(sistemaEscolarEvento);
             t.commit();
-            return true;
+            return sistemaEscolarEvento;
         } catch (Exception e) {
             t.rollback();
-            return false;
+            return null;
         }
 
     }

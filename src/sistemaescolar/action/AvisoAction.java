@@ -1,5 +1,7 @@
 package sistemaescolar.action;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 import org.orm.PersistentException;
 import sistemaescolar.Aviso;
@@ -21,15 +23,17 @@ public class AvisoAction extends ActionSupport {
 
     public String createAviso() throws PersistentException {
         try {
-            boolean transaccionExitosa = AvisoAD.createAviso(
+            Aviso transaccionExitosa = AvisoAD.createAviso(
                     fecha,
                     Integer.parseInt(getIdRemitente()),
                     contenido,
                     titulo);
             resultado = "Aviso creado existosamente";
 
-            if(notifyUsers.equals("on"))
-                ZeroPushHelper.sendBroadcast("Nuevo Aviso", titulo);
+            if(notifyUsers.equals("on")){
+                Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+                ZeroPushHelper.sendBroadcast("Nuevo Aviso", titulo,gson.toJson(transaccionExitosa));
+            }
         }
         catch (Exception e) {
             System.out.println(e.toString());
@@ -53,15 +57,18 @@ public class AvisoAction extends ActionSupport {
 
     public String updateAviso() throws PersistentException {
         try {
-            boolean transaccionExitosa = AvisoAD.updateAviso(
+            Aviso transaccionExitosa = AvisoAD.updateAviso(
                     id,
                     fecha,
                     Integer.parseInt(getIdRemitente()),
                     contenido,
                     titulo);
             resultado = "Aviso actualizado existosamente";
-            if(notifyUsers.equals("on"))
-                ZeroPushHelper.sendBroadcast("Aviso actualizado", titulo);
+            if(notifyUsers.equals("on")){
+                Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+                ZeroPushHelper.sendBroadcast("Aviso Actualizado", titulo, gson.toJson(transaccionExitosa));
+            }
+
 
         } catch (Exception e) {
             System.out.println(e.toString());

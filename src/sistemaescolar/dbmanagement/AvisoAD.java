@@ -12,7 +12,7 @@ import sistemaescolar.EscuelaPersistentManager;
  */
 public class AvisoAD {
 
-    public static boolean createAviso(String fecha, Integer idRemitente, String contenido, String titulo) throws PersistentException {
+    public static Aviso createAviso(String fecha, Integer idRemitente, String contenido, String titulo) throws PersistentException {
         PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
@@ -24,10 +24,10 @@ public class AvisoAD {
             sistemaEscolarAviso.setContenido(contenido);
             AvisoDAO.save(sistemaEscolarAviso);
             t.commit();
-            return true;
+            return sistemaEscolarAviso;
         } catch (Exception e) {
             t.rollback();
-            return false;
+            return null;
         } finally {
             EscuelaPersistentManager.instance().disposePersistentManager();
         }
@@ -44,7 +44,7 @@ public class AvisoAD {
         return sistemaEscolarAviso;
     }
 
-    public static boolean updateAviso(int idAviso, String fecha, Integer idRemitente, String contenido, String titulo) throws PersistentException {
+    public static Aviso updateAviso(int idAviso, String fecha, Integer idRemitente, String contenido, String titulo) throws PersistentException {
         PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
@@ -56,10 +56,10 @@ public class AvisoAD {
             sistemaEscolarAviso.setTitulo(titulo);
             AvisoDAO.save(sistemaEscolarAviso);
             t.commit();
-            return true;
+            return sistemaEscolarAviso;
         } catch (Exception e) {
             t.rollback();
-            return false;
+            return null;
         }
 
     }
