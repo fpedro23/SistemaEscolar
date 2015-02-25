@@ -42,8 +42,6 @@
             }
 
             function init() {
-//                loadPage("Nueva Circular", "nuevoRegistro.jsp?tipo=Circular");
-
                 $("a").click(
                         function() {
                             loadPage(this.innerHTML, this.href);
@@ -62,12 +60,11 @@
         <div id="perspective" class="perspective effect-rotateleft">
             <div class="container">
                 <div class="wrapper"><!-- wrapper needed for scroll -->
-
                     <!-- Top Navigation -->
                     <div class="codrops-top clearfix">
                         <p>
-                            <span class="right">
-                                <button id="showMenu" style="font-size: large">Men&uacute;</button>
+                            <span>
+                                <button id="showMenu" style="font-size: large; position: fixed; top: 0; right: 10px;">Men&uacute;</button>
                             </span>
                         </p>
                     </div>
@@ -127,20 +124,20 @@
                         </li>
                     </ul>
 
-                    <a class="typcn-clipboard">Areas</a>
+                    <a class="typcn-clipboard">&Aacute;reas</a>
                     <ul style="list-style-type: none">
                         <li>
                             <%--<a href="#" onclick="loadPage('Nuevo Administrador', 'nuevoRegistro.jsp?TipoEvent')" class="typcn-plus-outline">--%>
                                 <%--Crear Nuevo Administrador--%>
                             <%--</a>--%>
                             <a id="menu_link_crear_administrador" href="nuevoRegistroAdministrador.action" class="typcn-plus-outline">
-                                Crear Nueva Area
+                                Crear Nueva &Aacute;rea
                             </a>
                             <%--<a href="readAdministrador.action" onclick="loadPage('Administrar Administradores', 'readAdministrador')" class="typcn-folder-open">--%>
                                 <%--Administrar Administradores--%>
                             <%--</a>--%>
                             <a id="menu_link_administrar_evento" href="readAdministrador.action" class="typcn-folder-open">
-                                Administrar Areas
+                                Administrar &Aacute;reas
                             </a>
                         </li>
 

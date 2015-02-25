@@ -64,17 +64,21 @@ public class AdministratorDBManager{
         return administrador;
     }
 
-    public static boolean updateAdministrador(Integer idAdministrador, String nombre, String password) throws PersistentException {
+    public static boolean updateAdministrador(Integer idAdministrador, String nombre, String password, String oldPassword) throws PersistentException {
         PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
         try {
             Administrador administrador = AdministradorDAO.getAdministradorByORMID(idAdministrador);
-            // Update the properties of the persistent object
-            administrador.setNombreAdministrador(nombre);
-            administrador.setPassword(password);
-            AdministradorDAO.save(administrador);
-            t.commit();
-            return true;
+
+            if(administrador.getPassword().equals(oldPassword)) {
+                administrador.setNombreAdministrador(nombre);
+                administrador.setPassword(password);
+                AdministradorDAO.save(administrador);
+                t.commit();
+                return true;
+            }
+            else
+                return false;
         } catch (Exception e) {
             t.rollback();
             return false;

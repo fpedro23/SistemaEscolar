@@ -16,13 +16,14 @@ public class AdministradorAction extends ActionSupport implements SessionAware {
     public String resultado;
     public Administrador[] administradors;
     private int id;
-    private String nombre, password;
+    private String nombre, password, oldPassword;
     private Administrador administrador;
     private boolean mobile;
     private Map<String, Object> sessionMap;
     public String mensajeResultado;
     private String tipo;
     public Administrador user;
+    public boolean success;
 
     public String doLogin() throws PersistentException {
 
@@ -33,9 +34,12 @@ public class AdministradorAction extends ActionSupport implements SessionAware {
             mensajeResultado = "Bienvenido " + resultado.getNombreAdministrador();
 
             sessionMap.put("USER", resultado);
+            success = true;
             return "success";
-        } else {
+        }
+        else {
             mensajeResultado = "Login Fallido";
+            success = false;
             return "error";
         }
 
@@ -84,18 +88,23 @@ public class AdministradorAction extends ActionSupport implements SessionAware {
 
     public String updateAdministrador() throws PersistentException {
         try {
-            boolean transaccionExitosa = AdministratorDBManager.updateAdministrador(
+            if(AdministratorDBManager.updateAdministrador(
                     id,
                     nombre,
-                    password);
-            resultado = "Aviso actualizado existosamente";
+                    password,
+                    oldPassword)) {
+                resultado = "Aviso actualizado existosamente";
+                return "success";
+            }
+            else
+                return "failure";
 
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             System.out.println(e.toString());
             resultado = "Error al actualizar Aviso";
+            return "failure";
         }
-
-        return "success";
     }
 
     public String deleteAdministrador() throws PersistentException {
@@ -162,6 +171,14 @@ public class AdministradorAction extends ActionSupport implements SessionAware {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getOldPassword() {
+        return oldPassword;
+    }
+
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
     }
 
     @Override
