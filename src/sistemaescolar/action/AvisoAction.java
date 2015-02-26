@@ -14,6 +14,7 @@ import sistemaescolar.dbmanagement.AvisoAD;
 public class AvisoAction extends ActionSupport {
     public String resultado;
     public Aviso[] avisos;
+    public Aviso elementoEscolar;
     private int id;
     private String fecha, idRemitente, contenido, titulo;
     private Aviso aviso;
@@ -32,7 +33,7 @@ public class AvisoAction extends ActionSupport {
 
             if(notifyUsers.equals("on")){
                 Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-                ZeroPushHelper.sendBroadcast("Nuevo Aviso", titulo,gson.toJson(transaccionExitosa));
+                ZeroPushHelper.sendBroadcast("Nuevo Aviso", titulo, Integer.toString(transaccionExitosa.getIdCircular()), "aviso");
             }
         }
         catch (Exception e) {
@@ -66,7 +67,7 @@ public class AvisoAction extends ActionSupport {
             resultado = "Aviso actualizado existosamente";
             if(notifyUsers.equals("on")){
                 Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-                ZeroPushHelper.sendBroadcast("Aviso Actualizado", titulo, gson.toJson(transaccionExitosa));
+                ZeroPushHelper.sendBroadcast("Aviso Actualizado", titulo, Integer.toString(transaccionExitosa.getIdCircular()), "aviso");
             }
 
 
@@ -94,6 +95,16 @@ public class AvisoAction extends ActionSupport {
     public String nuevoRegistro(){
         tipo= "Aviso";
         return "success";
+    }
+
+
+    public String getMobileAvisoByID() throws PersistentException {
+        elementoEscolar = AvisoAD.listAvisosById(id);
+        if (elementoEscolar != null) {
+            return "success";
+        } else
+            return "failure";
+
     }
 
     public String readAvisosMobile() throws PersistentException {

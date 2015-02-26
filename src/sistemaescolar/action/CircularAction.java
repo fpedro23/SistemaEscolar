@@ -1,10 +1,6 @@
 package sistemaescolar.action;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.Preparable;
-import org.hibernate.Hibernate;
 import org.orm.PersistentException;
 import sistemaescolar.Circular;
 import sistemaescolar.ZeroPushHelper;
@@ -18,6 +14,7 @@ import java.io.UnsupportedEncodingException;
  */
 public class CircularAction extends ActionSupport {
     public String resultado;
+    public Circular elementoEscolar;
     private int id;
     private String fecha, idRemitente, contenido, titulo;
     private boolean mobile;
@@ -41,13 +38,12 @@ public class CircularAction extends ActionSupport {
         );
 
         if (circularResult!=null) {
-            Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
             resultado = "success";
 
             if(notifyUsers.equals("on"))
 
-                ZeroPushHelper.sendBroadcast("Nueva Circular", titulo, gson.toJson(circularResult));
+                ZeroPushHelper.sendBroadcast("Nueva Circular", titulo, Integer.toString(circularResult.getIdCircular()), "circular");
 
             return "success";
         } else {
@@ -72,12 +68,11 @@ public class CircularAction extends ActionSupport {
         );
 
         if (circularResult != null) {
-            Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
             resultado = "success";
 
             if(notifyUsers.equals("on"))
-                ZeroPushHelper.sendBroadcast("Circular Actualizada", titulo, gson.toJson(circularResult));
+                ZeroPushHelper.sendBroadcast("Circular Actualizada", titulo, Integer.toString(circularResult.getIdCircular()), "circular");
 
             return "success";
         } else {
@@ -124,6 +119,16 @@ public class CircularAction extends ActionSupport {
             return "json";
         else
             return "failure";
+    }
+
+    public String getMobileCircularByID() throws PersistentException {
+        elementoEscolar = CircularDBManager.getById(getId());
+        if (elementoEscolar != null) {
+            setCircular(elementoEscolar);
+            return "success";
+        } else
+            return "failure";
+
     }
 
 

@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="SistemaEscolar:war exploded">
+  <artifact type="war" name="SistemaEscolar:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/SistemaEscolar_war_exploded</output-path>
-    <root id="root">
+    <root id="archive" name="SistemaEscolar_war exploded.war">
       <element id="javaee-facet-resources" facet="SistemaEscolar/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
