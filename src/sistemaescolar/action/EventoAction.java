@@ -14,13 +14,13 @@ import sistemaescolar.dbmanagement.EventoAD;
 public class EventoAction extends ActionSupport {
     public String resultado;
     public Evento[] eventos;
+    public Evento elementoEscolar;
     private int id;
     private String fecha, idRemitente, contenido, titulo, horaInicio, horaFinal;
     private Evento evento;
     private boolean mobile;
     private String tipo;
     private String notifyUsers;
-
 
     public String createEvent() throws PersistentException {
         try {
@@ -36,7 +36,7 @@ public class EventoAction extends ActionSupport {
             if(notifyUsers.equals("on")){
                 Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
-                ZeroPushHelper.sendBroadcast("Nuevo Evento", titulo,gson.toJson(transaccionExitosa));
+                ZeroPushHelper.sendBroadcast("Nuevo Evento", titulo, Integer.toString(transaccionExitosa.getIdCircular()), "evento");
 
 
             }
@@ -73,9 +73,8 @@ public class EventoAction extends ActionSupport {
             resultado = "Evento actualizado existosamente";
 
             if(notifyUsers.equals("on")){
-                Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
-                ZeroPushHelper.sendBroadcast("Evento Actualizado", titulo,gson.toJson(transaccionExitosa));
+                ZeroPushHelper.sendBroadcast("Evento Actualizado", titulo, Integer.toString(transaccionExitosa.getIdCircular()), "evento");
             }
 
         } catch (Exception e) {
@@ -113,6 +112,16 @@ public class EventoAction extends ActionSupport {
             return "json";
         else
             return "failure";
+    }
+
+
+    public String getMobileEventoByID() throws PersistentException {
+        elementoEscolar = EventoAD.listEventById(id);
+        if (elementoEscolar != null) {
+            return "success";
+        } else
+            return "failure";
+
     }
 
     public boolean isMobile() {

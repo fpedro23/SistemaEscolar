@@ -3,8 +3,11 @@
   <component name="FacetManager">
     <facet type="hibernate" name="Hibernate">
       <configuration>
-        <datasource-map />
+        <datasource-map>
+          <unit-entry name="ormmapping:Escuela.cfg.xml" />
+        </datasource-map>
         <naming-strategy-map />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/ormmapping/Escuela.cfg.xml" />
       </configuration>
     </facet>
     <facet type="web" name="Web">
@@ -39,4 +42,3 @@
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
   </component>
 </module>
-

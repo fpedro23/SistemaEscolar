@@ -28,6 +28,19 @@
             <result name="json">action_responses/getcircularall.jsp</result>
         </action>
 
+        <action name="mobileReadCircularByID" class="sistemaescolar.action.CircularAction"
+                method="getMobileCircularByID">
+            <result name="success">action_responses/getElementoEscolarMobile.jsp</result>
+        </action>
+
+        <action name="mobileReadAvisoByID" class="sistemaescolar.action.AvisoAction" method="getMobileAvisoByID">
+            <result name="success">action_responses/getElementoEscolarMobile.jsp</result>
+        </action>
+
+        <action name="mobileReadEventoByID" class="sistemaescolar.action.EventoAction" method="getMobileEventoByID">
+            <result name="success">action_responses/getElementoEscolarMobile.jsp</result>
+        </action>
+
         <action name="mobileReadAvisos" class="sistemaescolar.action.AvisoAction" method="readAvisosMobile">
             <result name="json">action_responses/ListaAvisos.jsp</result>
         </action>
