@@ -12,13 +12,13 @@ License Type: Evaluation
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 
-        <property name="connection.url">jdbc:mysql://localhost:3306/edicomexc_aris</property>
-        <property name="connection.username">edicomexc_aris</property>
-        <property name="connection.password">BcOjg2F0DoL6</property>
+        <!--<property name="connection.url">jdbc:mysql://localhost:3306/edicomexc_aris</property>-->
+        <!--<property name="connection.username">edicomexc_aris</property>-->
+        <!--<property name="connection.password">BcOjg2F0DoL6</property>-->
 
-        <!--<property name="connection.url">jdbc:mysql://localhost:3306/sistema_escolar</property>-->
-        <!--<property name="connection.username">root</property>-->
-        <!--<property name="connection.password"></property>-->
+        <property name="connection.url">jdbc:mysql://localhost:3306/sistema_escolar</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password"></property>
 
 
         <!-- <property name="hibernate.c3p0.acquire_increment">1</property>

@@ -66,14 +66,12 @@ public class ZeroPushHelper {
     }
 
     public static boolean sendBroadcast(String alert, String message, String idCircular, String tipo) throws UnsupportedEncodingException {
-        //Object Json
-
-        String payload = "{ \"idCircular\":" + idCircular + ", \"tipo\":\"" + tipo + "\" }";
+        String payload = "{ \"idCircular\":" + idCircular + ", \"tipo\":\"" + tipo + "\", \"titulo\":\"" + message + "\" }";
 
         String response = executePost(BROADCAST_URL,
                 "auth_token=" + URLEncoder.encode(ANDROID_AUTH_KEY, "UTF-8")
                 + "&data[alert]=" + URLEncoder.encode(alert, "UTF-8")
-                        + "&data[message]=" + payload //URLEncoder.encode("Se actualizó la circular" +message, "UTF-8")
+                + "&data[message]=" + payload
                 + "&collapse_key=friend_request"
                 + "&delay_while_idle=false"
                 + "&time_to_live=40320"
@@ -86,8 +84,8 @@ public class ZeroPushHelper {
                 + "&badge=" + URLEncoder.encode("+1", "UTF-8")
                 + "&sound=" + URLEncoder.encode(" ", "UTF-8")
                 + "&alert=" + URLEncoder.encode(alert+": "+message, "UTF-8")
-                        + "&info=" + payload
-                        + "&collapse_key=friend_request"
+                + "&info=" + payload
+                + "&collapse_key=friend_request"
                 + "&delay_while_idle=false"
                 + "&time_to_live=40320"
         );
