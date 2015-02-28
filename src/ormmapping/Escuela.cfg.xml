@@ -5,48 +5,56 @@ License Type: Evaluation
 -->
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
- "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-	<session-factory>
-   	<!-- properties -->
-		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <session-factory>
+        <!-- properties -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 
         <property name="connection.url">jdbc:mysql://localhost:3306/edicomexc_aris</property>
         <property name="connection.username">edicomexc_aris</property>
         <property name="connection.password">BcOjg2F0DoL6</property>
 
-        <!--<property name="connection.url">jdbc:mysql://localhost:3306/sistema_escolar</property>-->
-        <!--<property name="connection.username">root</property>-->
-        <!--<property name="connection.password"></property>-->
+        <!--                        <property name="connection.url">jdbc:mysql://localhost:3306/sistema_escolar</property>
+                                <property name="connection.username">root</property>
+                                <property name="connection.password">root</property>-->
 
 
-        <!-- <property name="hibernate.c3p0.acquire_increment">1</property>
-		<property name="hibernate.c3p0.idle_test_period">0</property>
-		<property name="hibernate.c3p0.min_size">1</property>
-		<property name="hibernate.c3p0.max_size">15</property>
-		<property name="hibernate.c3p0.timeout">0</property> -->
-
-        <property name="hibernate.connection.provider_class">
+        <property name="connection.provider_class">
             org.hibernate.service.jdbc.connections.internal.C3P0ConnectionProvider
         </property>
-        <property name="c3p0.acquire_increment">1</property>
-        <property name="c3p0.idle_test_period">100</property>
-        <!-- seconds -->
-        <property name="c3p0.max_size">100</property>
-        <property name="c3p0.max_statements">0</property>
-        <property name="c3p0.min_size">10</property>
-        <property name="c3p0.timeout">1800</property>
+        <!-- C3P0 Stuff -->
+        <property name="hibernate.c3p0.acquire_increment">3</property>
+        <property name="hibernate.c3p0.idle_test_period">14400</property>
+
+        <property name="hibernate.c3p0.timeout">25200</property>
+        <property name="hibernate.c3p0.max_size">15</property>
+        <property name="hibernate.c3p0.min_size">3</property>
+        <property name="hibernate.c3p0.max_statements">0</property>
+        <property name="hibernate.c3p0.preferredTestQuery">select 1;</property>
+
+
+        <!--        <property name="hibernate.c3p0.acquire_increment">3</property>
+                <property name="hibernate.c3p0.idle_test_period">60</property>
+
+                <property name="hibernate.c3p0.timeout">100</property>
+                <property name="hibernate.c3p0.max_size">15</property>
+                <property name="hibernate.c3p0.min_size">3</property>
+                <property name="hibernate.c3p0.max_statements">0</property>
+                <property name="hibernate.c3p0.preferredTestQuery">select 1;</property>-->
+
+
         <!-- seconds -->
 
         <property name="show_sql">false</property>
-		<property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
-		<!-- mapping files -->
-		<mapping resource="ormmapping/sistemaescolar/Administrador.hbm.xml" />
-		<mapping resource="ormmapping/sistemaescolar/Alumno.hbm.xml" />
-		<mapping resource="ormmapping/sistemaescolar/Aviso.hbm.xml" />
-		<mapping resource="ormmapping/sistemaescolar/Circular.hbm.xml" />
-		<mapping resource="ormmapping/sistemaescolar/Devices.hbm.xml" />
-		<mapping resource="ormmapping/sistemaescolar/Evento.hbm.xml" />
-	</session-factory>
+        <property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
+        <!-- mapping files -->
+        <mapping resource="ormmapping/sistemaescolar/Administrador.hbm.xml"/>
+        <mapping resource="ormmapping/sistemaescolar/Alumno.hbm.xml"/>
+        <mapping resource="ormmapping/sistemaescolar/Aviso.hbm.xml"/>
+        <mapping resource="ormmapping/sistemaescolar/Circular.hbm.xml"/>
+        <mapping resource="ormmapping/sistemaescolar/Devices.hbm.xml"/>
+        <mapping resource="ormmapping/sistemaescolar/Evento.hbm.xml"/>
+    </session-factory>
 </hibernate-configuration>
