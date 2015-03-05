@@ -1,7 +1,5 @@
 package sistemaescolar.action;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 import org.orm.PersistentException;
 import sistemaescolar.Evento;
@@ -34,7 +32,6 @@ public class EventoAction extends ActionSupport {
             resultado = "Evento creado existosamente";
 
             if(notifyUsers.equals("on")){
-                Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
                 ZeroPushHelper.sendBroadcast("Nuevo Evento", titulo, Integer.toString(transaccionExitosa.getIdCircular()), "evento");
 
