@@ -1,7 +1,7 @@
-<%@ page import="sistemaescolar.Evento" %>
-<%@ page import="sistemaescolar.Circular" %>
-<%@ page import="sistemaescolar.Aviso" %>
 <%@ page import="sistemaescolar.Administrador" %>
+<%@ page import="sistemaescolar.Aviso" %>
+<%@ page import="sistemaescolar.Circular" %>
+<%@ page import="sistemaescolar.Evento" %>
 <%@ page import="sistemaescolar.dbmanagement.AdministratorDBManager" %>
 <%--
   Created by IntelliJ IDEA.
@@ -74,7 +74,7 @@
     Aviso aviso = (Aviso) request.getAttribute("aviso");
 %>
 <div align="center">
-    <form action="update<%= tipo %>" method="get" name="registro" id="editForm">
+    <form action="update<%= tipo %>" method="get" name="registro" id="editForm" accept-charset="utf-8">
         <table>
             <tr>
                 <td>T&iacute;tulo</td>
