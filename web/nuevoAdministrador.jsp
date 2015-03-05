@@ -45,7 +45,7 @@
 </head>
 <body>
 <div align="center">
-    <form action="createAdministrador.action" method="get" name="registro" id="editForm" accept-charset="utf-8">
+    <form action="createAdministrador.action" method="post" name="registro" id="editForm" accept-charset="utf-8">
         <table>
             <tr>
                 <td>Nombre</td>

@@ -1,7 +1,5 @@
 package sistemaescolar.action;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 import org.orm.PersistentException;
 import sistemaescolar.Aviso;
@@ -31,10 +29,9 @@ public class AvisoAction extends ActionSupport {
                     titulo);
             resultado = "Aviso creado existosamente";
 
-            if(notifyUsers.equals("on")){
-                Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+            if (notifyUsers != null)
                 ZeroPushHelper.sendBroadcast("Nuevo Aviso", titulo, Integer.toString(transaccionExitosa.getIdCircular()), "aviso");
-            }
+
         }
         catch (Exception e) {
             System.out.println(e.toString());
@@ -65,10 +62,8 @@ public class AvisoAction extends ActionSupport {
                     contenido,
                     titulo);
             resultado = "Aviso actualizado existosamente";
-            if(notifyUsers.equals("on")){
-                Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+            if (notifyUsers != null)
                 ZeroPushHelper.sendBroadcast("Aviso Actualizado", titulo, Integer.toString(transaccionExitosa.getIdCircular()), "aviso");
-            }
 
 
         } catch (Exception e) {

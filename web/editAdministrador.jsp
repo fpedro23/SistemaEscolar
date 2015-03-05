@@ -51,7 +51,7 @@
     Administrador administrador = (Administrador) request.getAttribute("administrador");
 %>
 <div align="center">
-    <form action="updateAdministrador.action" method="get" name="registro" id="editForm" accept-charset="utf-8">
+    <form action="updateAdministrador.action" method="post" name="registro" id="editForm" accept-charset="utf-8">
         <table>
             <tr>
                 <td>Nombre</td>

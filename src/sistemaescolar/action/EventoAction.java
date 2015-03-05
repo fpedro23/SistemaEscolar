@@ -31,12 +31,10 @@ public class EventoAction extends ActionSupport {
                     horaFinal);
             resultado = "Evento creado existosamente";
 
-            if(notifyUsers.equals("on")){
+            if (notifyUsers != null)
 
                 ZeroPushHelper.sendBroadcast("Nuevo Evento", titulo, Integer.toString(transaccionExitosa.getIdCircular()), "evento");
 
-
-            }
         } catch (Exception e) {
             System.out.println(e.toString());
             resultado = "Error al crear evento";
@@ -69,10 +67,10 @@ public class EventoAction extends ActionSupport {
                     horaFinal);
             resultado = "Evento actualizado existosamente";
 
-            if(notifyUsers.equals("on")){
+            if (notifyUsers != null)
 
                 ZeroPushHelper.sendBroadcast("Evento Actualizado", titulo, Integer.toString(transaccionExitosa.getIdCircular()), "evento");
-            }
+
 
         } catch (Exception e) {
             System.out.println(e.toString());
