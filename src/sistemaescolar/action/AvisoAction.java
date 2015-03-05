@@ -93,7 +93,7 @@ public class AvisoAction extends ActionSupport {
     }
 
     public String nuevoRegistro(){
-        tipo= "Aviso";
+        tipo = "Aviso";
         return "success";
     }
 

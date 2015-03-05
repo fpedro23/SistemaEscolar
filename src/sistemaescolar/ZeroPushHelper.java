@@ -34,39 +34,39 @@ public class ZeroPushHelper {
             connection.setDoOutput(true);
 
             //Send request
-            DataOutputStream wr = new DataOutputStream (
-                    connection.getOutputStream ());
+            DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
             wr.writeBytes (urlParameters);
-            wr.flush ();
-            wr.close ();
+            wr.flush();
+            wr.close();
 
             //Get Response
             InputStream is = connection.getInputStream();
             BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+
             String line;
-            StringBuffer response = new StringBuffer();
+            StringBuilder response = new StringBuilder();
             while((line = rd.readLine()) != null) {
                 response.append(line);
                 response.append('\r');
             }
+
             rd.close();
             return response.toString();
 
-        } catch (Exception e) {
-
+        }
+        catch (Exception e) {
             e.printStackTrace();
             return null;
 
-        } finally {
-
-            if(connection != null) {
+        }
+        finally {
+            if(connection != null)
                 connection.disconnect();
-            }
         }
     }
 
     public static boolean sendBroadcast(String alert, String message, String idCircular, String tipo) throws UnsupportedEncodingException {
-        String payload = "{ \"idCircular\":" + idCircular + ", \"tipo\":\"" + tipo + "\", \"titulo\":\"" + message + "\" }";
+        String payload = "{\"idCircular\":" + idCircular + ", \"tipo\":\"" + tipo + "\", \"titulo\":\"" + message + "\"}";
 
         String response = executePost(BROADCAST_URL,
                 "auth_token=" + URLEncoder.encode(ANDROID_AUTH_KEY, "UTF-8")
@@ -76,7 +76,6 @@ public class ZeroPushHelper {
                 + "&delay_while_idle=false"
                 + "&time_to_live=40320"
         );
-
 
         String iosReponse = executePost(
                 BROADCAST_URL,
@@ -89,7 +88,6 @@ public class ZeroPushHelper {
                 + "&delay_while_idle=false"
                 + "&time_to_live=40320"
         );
-
 
         return response.contains("sent_count") && iosReponse.contains("sent_count");
     }

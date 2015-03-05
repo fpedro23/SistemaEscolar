@@ -57,7 +57,8 @@ public class AvisoAD {
             AvisoDAO.save(sistemaEscolarAviso);
             t.commit();
             return sistemaEscolarAviso;
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             t.rollback();
             return null;
         }

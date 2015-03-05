@@ -49,6 +49,7 @@
                         }
                 );
                 $('#menu_link_crear_circular').trigger('click');
+                $('#showMenu').trigger('click');
             }
 
             $(document).ready(function() {
@@ -84,7 +85,7 @@
             <nav class="outer-nav right vertical">
                 <ul>
 
-                    <a class="typcn-news"> Circulares </a>
+                    <a class="typcn-news" onclick="return false"> Circulares </a>
 
                     <ul style="list-style-type: none">
                         <li>
@@ -97,7 +98,7 @@
                         </li>
                     </ul>
 
-                    <a class="typcn-warning" style="opacity: 1">Avisos</a>
+                    <a class="typcn-warning" onclick="return false" style="opacity: 1">Avisos</a>
 
                     <ul style="list-style-type: none">
                         <li>
@@ -110,7 +111,7 @@
                         </li>
                     </ul>
 
-                    <a class="typcn-calendar">Calendario</a>
+                    <a class="typcn-calendar" onclick="return false">Calendario</a>
 
 
                     <ul style="list-style-type: none">
@@ -124,7 +125,7 @@
                         </li>
                     </ul>
 
-                    <a class="typcn-clipboard">&Aacute;reas</a>
+                    <a class="typcn-clipboard" onclick="return false">&Aacute;reas</a>
                     <ul style="list-style-type: none">
                         <li>
                             <%--<a href="#" onclick="loadPage('Nuevo Administrador', 'nuevoRegistro.jsp?TipoEvent')" class="typcn-plus-outline">--%>
