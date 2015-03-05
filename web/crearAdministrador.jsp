@@ -15,7 +15,7 @@
 
     <h1><a>Nuevo Administrador</a></h1>
 
-    <form id="form_972463" class="appnitro" method="post" action="createAdministrador.action">
+    <form id="form_972463" class="appnitro" method="post" action="createAdministrador.action" accept-charset="utf-8">
         <div class="form_description">
             <h2>Nuevo Administrador</h2>
 

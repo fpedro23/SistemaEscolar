@@ -7,7 +7,6 @@ import sistemaescolar.EscuelaPersistentManager;
 import sistemaescolar.Evento;
 import sistemaescolar.EventoDAO;
 
-import java.awt.*;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 
@@ -20,6 +19,8 @@ public class EventoAD {
     public static Evento createEvent(String fecha, Integer idRemitente, String contenido, String titulo, String horaInicio, String horaFinal) throws PersistentException {
         PersistentTransaction t = EscuelaPersistentManager.instance().getSession().beginTransaction();
 
+        long ms;
+
         try {
             Evento sistemaEscolarEvento = EventoDAO.createEvento();
             // Initialize the properties of the persistent object here
@@ -27,15 +28,20 @@ public class EventoAD {
             sistemaEscolarEvento.setAdministradoridAdministrador(AdministradorDAO.getAdministradorByORMID(idRemitente));
             sistemaEscolarEvento.setFecha(fecha);
             sistemaEscolarEvento.setContenido(contenido);
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 
+
+            try {
+
+                ms = sdf.parse(horaInicio).getTime();
+                Time timeInicio = new Time(ms);
+                sistemaEscolarEvento.setHoraInicio(timeInicio);
+            } catch (Exception e) {
+                sistemaEscolarEvento.setHoraInicio(null);
+                e.printStackTrace();
+            }
 
             try{
-                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-
-                long ms = sdf.parse(horaInicio).getTime();
-                Time timeInicio = new Time(ms);
-
-                sistemaEscolarEvento.setHoraInicio(timeInicio);
 
                 ms = sdf.parse(horaFinal).getTime();
                 Time timeFinal = new Time(ms);
@@ -43,7 +49,6 @@ public class EventoAD {
 
             }
             catch (Exception e){
-                sistemaEscolarEvento.setHoraInicio(null);
                 sistemaEscolarEvento.setHoraFinal(null);
                 e.printStackTrace();
             }
