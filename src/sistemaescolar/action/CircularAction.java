@@ -41,7 +41,7 @@ public class CircularAction extends ActionSupport {
 
             resultado = "success";
 
-            if(notifyUsers.equals("on"))
+            if (notifyUsers != null)
 
                 ZeroPushHelper.sendBroadcast("Nueva Circular", titulo, Integer.toString(circularResult.getIdCircular()), "circular");
 
@@ -71,7 +71,7 @@ public class CircularAction extends ActionSupport {
 
             resultado = "success";
 
-            if(notifyUsers.equals("on"))
+            if (notifyUsers != null)
                 ZeroPushHelper.sendBroadcast("Circular Actualizada", titulo, Integer.toString(circularResult.getIdCircular()), "circular");
 
             return "success";

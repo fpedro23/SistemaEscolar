@@ -1,7 +1,5 @@
 package sistemaescolar.action;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 import org.orm.PersistentException;
 import sistemaescolar.Evento;
@@ -33,13 +31,11 @@ public class EventoAction extends ActionSupport {
                     horaFinal);
             resultado = "Evento creado existosamente";
 
-            if(notifyUsers.equals("on")) {
-                Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+            if (notifyUsers != null)
                 ZeroPushHelper.sendBroadcast("Nuevo Evento", titulo, Integer.toString(transaccionExitosa.getIdCircular()), "evento");
 
-
-            }
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             System.out.println(e.toString());
             resultado = "Error al crear evento";
         }
@@ -71,9 +67,9 @@ public class EventoAction extends ActionSupport {
                     horaFinal);
             resultado = "Evento actualizado existosamente";
 
-            if(notifyUsers.equals("on"))
+            if (notifyUsers != null)
                 ZeroPushHelper.sendBroadcast("Evento Actualizado", titulo, Integer.toString(transaccionExitosa.getIdCircular()), "evento");
-            
+
 
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -84,6 +80,7 @@ public class EventoAction extends ActionSupport {
     }
 
     public String deleteEvent() throws PersistentException {
+        EventoAD eventoManager = new EventoAD();
         try {
             boolean transaccionExitosa = EventoAD.deleteEvento(id);
             resultado = "Evento eliminado existosamente";

@@ -10,7 +10,8 @@
   Time: 1:33 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="utf-8" contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Nuevo registro</title>
@@ -74,7 +75,7 @@
     Aviso aviso = (Aviso) request.getAttribute("aviso");
 %>
 <div align="center">
-    <form action="update<%= tipo %>" method="get" name="registro" id="editForm" accept-charset="utf-8">
+    <form action="update<%= tipo %>" method="post" name="registro" id="editForm" accept-charset="UTF-8">
         <table>
             <tr>
                 <td>T&iacute;tulo</td>
